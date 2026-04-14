@@ -70,29 +70,6 @@
       </div>
     </section>
 
-    <!-- ======== SKILLS MARQUEE ======== -->
-    <div class="marquee-wrap" aria-hidden="true">
-      <div class="marquee">
-        <span class="marquee__item">Systems Thinking</span>
-        <span class="marquee__item">Enterprise UX</span>
-        <span class="marquee__item">AI&#8209;Accelerated Design</span>
-        <span class="marquee__item">Platform Design</span>
-        <span class="marquee__item">Design Strategy</span>
-        <span class="marquee__item">Responsible AI</span>
-        <span class="marquee__item">Creative Direction</span>
-        <span class="marquee__item">Interaction Design</span>
-        <!-- Duplicate for seamless loop -->
-        <span class="marquee__item">Systems Thinking</span>
-        <span class="marquee__item">Enterprise UX</span>
-        <span class="marquee__item">AI&#8209;Accelerated Design</span>
-        <span class="marquee__item">Platform Design</span>
-        <span class="marquee__item">Design Strategy</span>
-        <span class="marquee__item">Responsible AI</span>
-        <span class="marquee__item">Creative Direction</span>
-        <span class="marquee__item">Interaction Design</span>
-      </div>
-    </div>
-
     <!-- ======== SELECTED WORK ======== -->
     <section class="section" id="work" aria-labelledby="work-heading">
       <div class="container">
@@ -101,75 +78,65 @@
           <h2 id="work-heading">Selected Work</h2>
         </div>
 
-        <div class="work-grid reveal-stagger">
+        <div class="work-list reveal-stagger">
 
           <!-- 1. Customer Self-Serve Orders -->
-          <a href="case-studies/mseds-orders.html" class="project-card project-card--orders reveal">
-            <div class="project-card__image project-card__image--placeholder">
-              <span class="project-card__icon">CSSO</span>
+          <article class="work-item reveal">
+            <div class="work-item__header">
+              <span class="work-item__number">01</span>
+              <h3 class="work-item__title">Customer Self-Serve Orders</h3>
             </div>
-            <div class="project-card__body">
-              <div class="project-card__number">01</div>
-              <h3 class="project-card__title">Customer Self-Serve Orders</h3>
-              <p class="project-card__summary">Transformed enterprise ordering from a manual, operations-heavy workflow into a trusted self-serve experience on M365 Admin Centre.</p>
-              <div class="project-card__stats">
-                <span class="project-card__stat"><strong>1000s</strong> hrs saved</span>
-                <span class="project-card__stat"><strong>~60%</strong> faster</span>
-                <span class="project-card__stat"><strong>~80%</strong> adoption</span>
-              </div>
-              <span class="project-card__cta">View Case Study &rarr;</span>
+            <p class="work-item__summary">Transformed enterprise ordering from a manual, operations-heavy workflow into a trusted self-serve experience on M365 Admin Centre. AI-accelerated methods compressed timelines ~30% across research, content validation, and spec drafting.</p>
+            <div class="work-item__stats">
+              <span class="work-item__stat"><strong>1000s</strong> hours saved annually</span>
+              <span class="work-item__stat"><strong>$Ms</strong> cost avoidance</span>
+              <span class="work-item__stat"><strong>~60%</strong> faster ordering</span>
+              <span class="work-item__stat"><strong>~80%</strong> adoption in 30 days</span>
             </div>
-          </a>
+            <a href="case-studies/mseds-orders.html" class="work-item__link">View Case Study &rarr;</a>
+          </article>
 
           <!-- 2. Commerce Insights -->
-          <a href="case-studies/commerce-insights.html" class="project-card project-card--insights reveal">
-            <div class="project-card__image project-card__image--placeholder">
-              <span class="project-card__icon">CI</span>
+          <article class="work-item reveal">
+            <div class="work-item__header">
+              <span class="work-item__number">02</span>
+              <h3 class="work-item__title">Commerce Insights &mdash; Decision System</h3>
             </div>
-            <div class="project-card__body">
-              <div class="project-card__number">02</div>
-              <h3 class="project-card__title">Commerce Insights &mdash; Decision System</h3>
-              <p class="project-card__summary">Reframed an enterprise seller dashboard from a reporting surface into a trusted, action-driven decision system.</p>
-              <div class="project-card__stats">
-                <span class="project-card__stat"><strong>Decision</strong> system</span>
-                <span class="project-card__stat"><strong>Reduced</strong> Excel use</span>
-              </div>
-              <span class="project-card__cta">View Case Study &rarr;</span>
+            <p class="work-item__summary">Reframed an enterprise seller dashboard from a reporting surface into a trusted, action-driven decision system. Designed principles around decision over reporting, trust as UX, and speed to decision.</p>
+            <div class="work-item__stats">
+              <span class="work-item__stat"><strong>Decision</strong> system reframe</span>
+              <span class="work-item__stat"><strong>Reduced</strong> Excel dependency</span>
+              <span class="work-item__stat"><strong>Trust</strong> signals embedded</span>
             </div>
-          </a>
+            <a href="case-studies/commerce-insights.html" class="work-item__link">View Case Study &rarr;</a>
+          </article>
 
           <!-- 3. Legacy Order System Retirement -->
-          <div class="project-card project-card--legacy reveal" style="cursor: default;">
-            <div class="project-card__image project-card__image--placeholder">
-              <span class="project-card__icon">VLC</span>
+          <article class="work-item reveal">
+            <div class="work-item__header">
+              <span class="work-item__number">03</span>
+              <h3 class="work-item__title">Legacy Order System Retirement &rarr; VL Central</h3>
             </div>
-            <div class="project-card__body">
-              <div class="project-card__number">03</div>
-              <h3 class="project-card__title">Legacy Order System Retirement &rarr; VL Central</h3>
-              <p class="project-card__summary">Retired a mission-critical legacy order entry system supporting multi-billion-dollar transactions. Applied Parity++ principles.</p>
-              <div class="project-card__stats">
-                <span class="project-card__stat"><strong>Multi-B$</strong> platform</span>
-                <span class="project-card__stat"><strong>Zero</strong> UX debt</span>
-              </div>
-              <span class="project-card__soon">Case study coming soon</span>
+            <p class="work-item__summary">Retired a mission-critical legacy order entry system supporting multi-billion-dollar transactions. Applied Parity++ principles: parity where needed, automation where possible, remove redundancy, modernise flows, and identify AI-ready surfaces.</p>
+            <div class="work-item__stats">
+              <span class="work-item__stat"><strong>Multi-B$</strong> transaction platform</span>
+              <span class="work-item__stat"><strong>Zero</strong> UX debt carried over</span>
             </div>
-          </div>
+            <span class="work-item__soon">Case study coming soon</span>
+          </article>
 
           <!-- 4. VL Orders — Evaluative Study -->
-          <div class="project-card project-card--vl reveal" style="cursor: default;">
-            <div class="project-card__image project-card__image--placeholder">
-              <span class="project-card__icon">VL</span>
+          <article class="work-item reveal">
+            <div class="work-item__header">
+              <span class="work-item__number">04</span>
+              <h3 class="work-item__title">VL Orders &mdash; Evaluative UX Study</h3>
             </div>
-            <div class="project-card__body">
-              <div class="project-card__number">04</div>
-              <h3 class="project-card__title">VL Orders &mdash; Evaluative UX Study</h3>
-              <p class="project-card__summary">Led evaluative research into legacy VL ordering workflows. Connected usability findings to trust, velocity, and behavioural friction.</p>
-              <div class="project-card__stats">
-                <span class="project-card__stat"><strong>69.6</strong> SUS score</span>
-              </div>
-              <span class="project-card__soon">Case study coming soon</span>
+            <p class="work-item__summary">Led evaluative research into legacy VL ordering workflows. Used SUS (69.6) as a directional signal, connecting usability findings to trust, velocity, and behavioural friction. Advocated for continuous UX evaluation beyond ship dates.</p>
+            <div class="work-item__stats">
+              <span class="work-item__stat"><strong>69.6</strong> SUS score baseline</span>
             </div>
-          </div>
+            <span class="work-item__soon">Case study coming soon</span>
+          </article>
 
         </div>
       </div>
