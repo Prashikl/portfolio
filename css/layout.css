@@ -1,0 +1,206 @@
+/* ========================================
+   LAYOUT
+   Grid systems, sections, responsive
+   ======================================== */
+
+/* ---- Container ---- */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+.container--narrow {
+  max-width: var(--reading-width);
+}
+
+/* ---- Sections ---- */
+.section {
+  padding: var(--space-24) 0;
+}
+
+.section--hero {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-32) 0;
+}
+
+.section--fullish {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+}
+
+.section__header {
+  margin-bottom: var(--space-12);
+}
+
+.section__overline {
+  font-family: var(--font-body);
+  font-size: var(--text-overline);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  display: block;
+  margin-bottom: var(--space-4);
+}
+
+.section__intro {
+  max-width: 42rem;
+  margin-top: var(--space-4);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
+
+/* ---- Grids ---- */
+.grid {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.grid--2 {
+  grid-template-columns: 1fr;
+}
+
+.grid--3 {
+  grid-template-columns: 1fr;
+}
+
+/* ---- Work List ---- */
+.work-list {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- Experience List ---- */
+.experience-list {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- Beliefs ---- */
+.beliefs {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- Footer ---- */
+.footer {
+  padding: var(--space-16) 0 var(--space-8);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.footer__links {
+  display: flex;
+  gap: var(--space-6);
+  list-style: none;
+  padding: 0;
+  margin-bottom: var(--space-8);
+}
+
+.footer__links a {
+  color: var(--text-secondary);
+  font-size: var(--text-body-sm);
+  font-weight: 500;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.footer__links a:hover {
+  color: var(--text-primary);
+}
+
+.footer__copy {
+  font-size: var(--text-caption);
+  color: var(--text-tertiary);
+}
+
+/* ---- Case Study Page Layout ---- */
+.case-study-hero {
+  padding: calc(var(--nav-height) + var(--space-16)) 0 var(--space-12);
+}
+
+.case-study-content {
+  padding-bottom: var(--space-24);
+}
+
+.case-study-content .section {
+  padding: var(--space-12) 0;
+}
+
+.case-study-content h2 {
+  margin-bottom: var(--space-6);
+}
+
+.case-study-content h3 {
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-4);
+}
+
+.case-study-content p {
+  margin-bottom: var(--space-4);
+}
+
+.case-study-content ul,
+.case-study-content ol {
+  margin-bottom: var(--space-4);
+}
+
+.case-study-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-8) 0;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.case-study-nav a {
+  font-weight: 500;
+  font-size: var(--text-body-sm);
+}
+
+/* ---- Responsive ---- */
+
+/* Tablet (768px+) */
+@media (min-width: 48rem) {
+  .section {
+    padding: var(--space-32) 0;
+  }
+
+  .section__header {
+    margin-bottom: var(--space-16);
+  }
+
+  .grid--2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid--3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .container {
+    padding: 0 var(--space-8);
+  }
+}
+
+/* Desktop (1024px+) */
+@media (min-width: 64rem) {
+  .section {
+    padding: var(--space-40) 0;
+  }
+
+  .grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Large desktop (1440px+) */
+@media (min-width: 90rem) {
+  .section--hero {
+    padding: var(--space-40) 0;
+  }
+}

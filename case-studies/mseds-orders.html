@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Orders &mdash; Self-Serve Case Study &mdash; Prashik Lanjewar</title>
+  <meta name="description" content="Case study: Designing a trusted, scalable self-serve ordering system for enterprise customers on M365 Admin Centre. Tens of thousands of hours saved annually and multi-million dollar cost avoidance.">
+  <script>
+    (function(){
+      var t = localStorage.getItem('theme') ||
+              (matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <style>
+    /* Case study specific styles */
+    .cs-hero {
+      padding: var(--space-16) 0 var(--space-16);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cs-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-card, var(--gradient-card-light, transparent));
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    .cs-hero > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cs-overline {
+      font-size: var(--text-overline);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-primary);
+      margin-bottom: var(--space-4);
+    }
+
+    .cs-title {
+      font-family: var(--font-heading);
+      font-size: var(--text-display);
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: var(--leading-display);
+      margin-bottom: var(--space-4);
+    }
+
+    .cs-subtitle {
+      font-size: var(--text-body);
+      color: var(--text-secondary);
+      line-height: var(--leading-body);
+      max-width: 40rem;
+    }
+
+    /* Hero metrics strip */
+    .cs-metrics-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: var(--space-4);
+      margin-top: var(--space-10);
+      padding: var(--space-6);
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--border-radius);
+    }
+
+    .cs-metric {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+
+    .cs-metric__value {
+      font-family: var(--font-heading);
+      font-size: var(--text-title);
+      font-weight: 800;
+      color: var(--accent-metric);
+      line-height: 1.1;
+    }
+
+    .cs-metric__label {
+      font-size: var(--text-caption);
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-weight: 500;
+    }
+
+    /* Content sections */
+    .cs-body {
+      padding: var(--space-16) 0 var(--space-24);
+    }
+
+    .cs-section {
+      margin-bottom: var(--space-16);
+    }
+
+    .cs-section__label {
+      font-size: var(--text-overline);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-ai);
+      margin-bottom: var(--space-4);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .cs-section__label svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+    }
+
+    .cs-section h2 {
+      font-family: var(--font-heading);
+      font-size: var(--text-title);
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: var(--leading-title);
+      margin-bottom: var(--space-6);
+    }
+
+    .cs-section h3 {
+      font-family: var(--font-heading);
+      font-size: var(--text-subtitle);
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: var(--leading-title);
+      margin-top: var(--space-8);
+      margin-bottom: var(--space-4);
+    }
+
+    .cs-section p {
+      font-size: var(--text-body-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-body);
+      margin-bottom: var(--space-4);
+    }
+
+    .cs-section ul, .cs-section ol {
+      padding-left: var(--space-6);
+      margin-bottom: var(--space-4);
+    }
+
+    .cs-section li {
+      font-size: var(--text-body-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-body);
+    }
+
+    .cs-section li + li {
+      margin-top: var(--space-2);
+    }
+
+    .cs-section li strong {
+      color: var(--text-primary);
+    }
+
+    /* Effort cards grid */
+    .cs-effort-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+
+    @media (min-width: 48rem) {
+      .cs-effort-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .cs-effort-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--border-radius);
+      padding: var(--space-6);
+      transition: border-color var(--duration-base) var(--ease-out),
+                  transform var(--duration-base) var(--ease-out);
+    }
+
+    .cs-effort-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+    }
+
+    .cs-effort-card__title {
+      font-family: var(--font-heading);
+      font-size: var(--text-body);
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: var(--space-3);
+      line-height: var(--leading-title);
+    }
+
+    .cs-effort-card p {
+      font-size: var(--text-body-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-body);
+      margin: 0;
+    }
+
+    .cs-effort-card ul {
+      padding-left: var(--space-5);
+      margin: var(--space-3) 0 0;
+    }
+
+    .cs-effort-card li {
+      font-size: var(--text-caption);
+      color: var(--text-secondary);
+      line-height: var(--leading-body);
+    }
+
+    /* Impact block */
+    .cs-impact-block {
+      padding: var(--space-8);
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--border-radius);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cs-impact-block::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--gradient-border, var(--gradient-border-light, var(--accent-metric)));
+    }
+
+    .cs-impact-block::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-card, var(--gradient-card-light, transparent));
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .cs-impact-block > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cs-impact-block__metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-6);
+    }
+
+    .cs-big-metric {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cs-big-metric__value {
+      font-family: var(--font-heading);
+      font-size: var(--text-display);
+      font-weight: 800;
+      color: var(--accent-metric);
+      line-height: 1.1;
+      text-shadow: 0 0 30px rgba(52, 211, 153, 0.3);
+    }
+
+    .cs-big-metric__label {
+      font-size: var(--text-body-sm);
+      color: var(--text-secondary);
+      margin-top: var(--space-2);
+      line-height: var(--leading-caption);
+    }
+
+    /* Quote callout */
+    .cs-quote {
+      border-left: 3px solid var(--accent-primary);
+      padding: var(--space-5) var(--space-6);
+      background: var(--bg-tertiary);
+      border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
+      margin: var(--space-6) 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cs-quote::before {
+      content: '\201C';
+      position: absolute;
+      top: -8px;
+      left: 12px;
+      font-size: 4rem;
+      font-family: var(--font-heading);
+      color: var(--accent-primary);
+      opacity: 0.12;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .cs-quote p {
+      font-style: italic;
+      color: var(--text-secondary);
+      font-size: var(--text-body-sm);
+      line-height: var(--leading-body);
+      margin: 0;
+    }
+
+    /* NDA notice */
+    .cs-nda {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      background: rgba(250, 204, 21, 0.08);
+      border: 1px solid rgba(250, 204, 21, 0.2);
+      border-radius: var(--border-radius-pill);
+      font-size: var(--text-caption);
+      font-weight: 500;
+      color: var(--accent-secure);
+      margin-top: var(--space-4);
+    }
+
+    .cs-nda svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      fill: none;
+    }
+
+    /* Divider */
+    .cs-divider {
+      border: none;
+      border-top: 1px solid var(--border-subtle);
+      margin: var(--space-12) 0;
+    }
+
+    /* Why it matters final block */
+    .cs-why-matters {
+      padding: var(--space-8);
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--border-radius);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cs-why-matters::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gradient-border, var(--gradient-border-light, var(--accent-ai)));
+    }
+
+    .cs-why-matters::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-card, var(--gradient-card-light, transparent));
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    .cs-why-matters > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cs-outcomes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: var(--space-3);
+      margin-top: var(--space-6);
+    }
+
+    .cs-outcome {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-3) var(--space-4);
+      background: var(--bg-tertiary);
+      border-radius: var(--border-radius-sm);
+      font-size: var(--text-body-sm);
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .cs-outcome::before {
+      content: '';
+      flex-shrink: 0;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-metric);
+    }
+
+    /* === NEW: Design Impact callout (green left-border) === */
+    .cs-design-impact {
+      border-left: 3px solid var(--accent-metric);
+      padding: var(--space-5) var(--space-6);
+      background: var(--bg-tertiary);
+      border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
+      margin: var(--space-6) 0;
+    }
+
+    .cs-design-impact__label {
+      font-size: var(--text-caption);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent-metric);
+      margin-bottom: var(--space-2);
+    }
+
+    .cs-design-impact p {
+      font-size: var(--text-body-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-body);
+      margin: 0;
+    }
+
+    .cs-design-impact p strong {
+      color: var(--text-primary);
+    }
+
+    /* === NEW: AI Process callout (purple background) === */
+    .cs-ai-process {
+      padding: var(--space-5) var(--space-6);
+      background: rgba(168, 85, 247, 0.06);
+      border: 1px solid var(--accent-ai-border, rgba(168, 85, 247, 0.18));
+      border-radius: var(--border-radius-sm);
+      margin: var(--space-6) 0;
+      position: relative;
+    }
+
+    .cs-ai-process__label {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-caption);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent-ai, #a855f7);
+      margin-bottom: var(--space-2);
+    }
+
+    .cs-ai-process__label svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+    }
+
+    .cs-ai-process p {
+      font-size: var(--text-body-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-body);
+      margin: 0;
+    }
+
+    .cs-ai-process p strong {
+      color: var(--text-primary);
+    }
+
+    /* === Decision → Outcome unified cards === */
+    .cs-decision-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+
+    @media (min-width: 48rem) {
+      .cs-decision-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .cs-decision-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      transition: border-color var(--duration-base) var(--ease-out),
+                  box-shadow var(--duration-base) var(--ease-out);
+    }
+
+    .cs-decision-card:hover {
+      border-color: var(--border-hover);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .cs-decision-card__top {
+      padding: var(--space-5) var(--space-5) var(--space-4);
+      border-bottom: 1px dashed var(--border-subtle);
+    }
+
+    .cs-decision-card__label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent-primary);
+      margin-bottom: var(--space-2);
+    }
+
+    .cs-decision-card__top p {
+      font-size: var(--text-body-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-body);
+      margin: 0;
+    }
+
+    .cs-decision-card__top p strong {
+      color: var(--text-primary);
+    }
+
+    .cs-decision-card__bottom {
+      padding: var(--space-4) var(--space-5) var(--space-5);
+      background: rgba(52, 211, 153, 0.04);
+    }
+
+    .cs-decision-card__bottom .cs-decision-card__label {
+      color: var(--accent-metric);
+    }
+
+    .cs-decision-card__bottom p {
+      font-size: var(--text-body-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-body);
+      margin: 0;
+    }
+
+    .cs-decision-card__bottom p strong {
+      color: var(--accent-metric);
+      font-weight: 700;
+    }
+
+    .cs-decision-card__metric {
+      font-family: var(--font-heading);
+      font-size: var(--text-subtitle);
+      font-weight: 800;
+      color: var(--accent-metric);
+      line-height: 1.1;
+      margin-bottom: var(--space-1);
+    }
+
+    /* === Screen showcase — browser-frame, timeline layout === */
+    .cs-showcase {
+      position: relative;
+      margin-top: var(--space-10);
+      padding-left: 40px;
+    }
+
+    /* Vertical timeline spine */
+    .cs-showcase::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 15px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--accent-primary), var(--accent-metric));
+      opacity: 0.25;
+      border-radius: 1px;
+    }
+
+    .cs-showcase-item {
+      position: relative;
+      margin-bottom: var(--space-12);
+    }
+
+    .cs-showcase-item:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Timeline node */
+    .cs-showcase-item__node {
+      position: absolute;
+      left: -40px;
+      top: 0;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-primary);
+      border: 2px solid var(--accent-primary);
+      color: var(--accent-primary);
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 700;
+      border-radius: 50%;
+      z-index: 2;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .cs-showcase-item:hover .cs-showcase-item__node {
+      background: var(--accent-primary);
+      color: #fff;
+    }
+
+    /* Browser chrome frame */
+    .cs-browser-frame {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-secondary);
+      transition: border-color 0.3s var(--ease-out),
+                  box-shadow 0.3s var(--ease-out),
+                  transform 0.3s var(--ease-out);
+    }
+
+    .cs-showcase-item:hover .cs-browser-frame {
+      border-color: var(--border-hover);
+      box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(59, 130, 246, 0.08);
+      transform: translateY(-3px);
+    }
+
+    .cs-browser-frame__bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 14px;
+      background: var(--bg-tertiary);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .cs-browser-frame__dots {
+      display: flex;
+      gap: 5px;
+    }
+
+    .cs-browser-frame__dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--border-subtle);
+    }
+
+    .cs-browser-frame__dots span:first-child {
+      background: #ff5f57;
+    }
+
+    .cs-browser-frame__dots span:nth-child(2) {
+      background: #febc2e;
+    }
+
+    .cs-browser-frame__dots span:nth-child(3) {
+      background: #28c840;
+    }
+
+    .cs-browser-frame__url {
+      flex: 1;
+      margin-left: 8px;
+      padding: 4px 12px;
+      background: var(--bg-secondary);
+      border-radius: 6px;
+      font-size: 11px;
+      font-family: 'Inter', monospace;
+      color: var(--text-tertiary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .cs-browser-frame__viewport {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16 / 9.5;
+      background: #0f0f1a;
+    }
+
+    .cs-browser-frame__viewport img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top left;
+      filter: blur(4px) saturate(0.55) brightness(0.8);
+      opacity: 0.75;
+      transition: filter 0.5s var(--ease-out),
+                  opacity 0.5s var(--ease-out),
+                  transform 0.5s var(--ease-out);
+    }
+
+    .cs-showcase-item:hover .cs-browser-frame__viewport img {
+      filter: blur(2px) saturate(0.7) brightness(0.88);
+      opacity: 0.88;
+      transform: scale(1.015);
+    }
+
+    .cs-browser-frame__viewport::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.25) 100%);
+      pointer-events: none;
+    }
+
+    .cs-browser-frame__nda {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 11px;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: var(--border-radius-pill);
+      font-size: 10px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.6);
+      z-index: 2;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .cs-browser-frame__nda svg {
+      width: 10px;
+      height: 10px;
+      stroke: currentColor;
+      fill: none;
+    }
+
+    /* Caption below the frame */
+    .cs-showcase-item__caption {
+      margin-top: var(--space-4);
+    }
+
+    .cs-showcase-item__title {
+      font-family: var(--font-heading);
+      font-size: var(--text-body);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: var(--space-2);
+      line-height: var(--leading-title);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .cs-showcase-item__tag {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 10px;
+      border-radius: var(--border-radius-pill);
+      background: rgba(59, 130, 246, 0.1);
+      color: var(--accent-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .cs-showcase-item__desc {
+      font-size: var(--text-body-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-body);
+      margin: 0;
+      max-width: 640px;
+    }
+
+    .cs-showcase-item__desc strong {
+      color: var(--accent-metric);
+      font-weight: 600;
+    }
+
+    /* Flow overview bar */
+    .cs-flow-bar {
+      display: flex;
+      align-items: stretch;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-secondary);
+      margin-top: var(--space-8);
+    }
+
+    .cs-flow-bar__step {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-1);
+      padding: var(--space-4) var(--space-3);
+      position: relative;
+      cursor: default;
+      transition: background 0.2s;
+    }
+
+    .cs-flow-bar__step:hover {
+      background: var(--bg-tertiary);
+    }
+
+    .cs-flow-bar__step + .cs-flow-bar__step::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 25%;
+      bottom: 25%;
+      width: 1px;
+      background: var(--border-subtle);
+    }
+
+    .cs-flow-bar__num {
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent-primary);
+      color: #fff;
+      font-family: var(--font-heading);
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 50%;
+    }
+
+    .cs-flow-bar__label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+
+    @media (max-width: 47.99rem) {
+      .cs-showcase {
+        padding-left: 32px;
+      }
+      .cs-showcase::before {
+        left: 11px;
+      }
+      .cs-showcase-item__node {
+        left: -32px;
+        width: 24px;
+        height: 24px;
+        font-size: 11px;
+      }
+      .cs-flow-bar__label {
+        font-size: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <nav class="nav nav--scrolled" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="../index.html" class="nav__brand">Prashik Lanjewar</a>
+      <div class="nav__actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false">Menu</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="menu-overlay" id="menu-overlay" aria-hidden="true">
+    <a href="../index.html#work" class="menu-overlay__link">Work</a>
+    <a href="../index.html#experience" class="menu-overlay__link">Experience</a>
+    <a href="../index.html#philosophy" class="menu-overlay__link">Philosophy</a>
+    <a href="../index.html#contact" class="menu-overlay__link">Contact</a>
+  </div>
+
+  <main id="main">
+    <!-- ===== HERO ===== -->
+    <section class="cs-hero">
+      <div class="container container--narrow">
+        <a href="../index.html#work" class="back-link">&larr; Back to Portfolio</a>
+
+        <div class="reveal">
+          <div class="cs-overline">Enterprise Commerce &mdash; M365 Admin Centre</div>
+          <h1 class="cs-title">Customer Orders &mdash; Self&#8209;Serve</h1>
+          <p class="cs-subtitle">I owned the end-to-end design of a self-serve ordering system for enterprise customers &mdash; transforming a high-cost, operations-heavy workflow into a customer-autonomous experience that preserves compliance, pricing accuracy, and auditability. AI-accelerated methods helped me move faster at every stage.</p>
+
+          <div class="cs-nda">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Some details are anonymised or generalised due to NDA
+          </div>
+        </div>
+
+        <div class="cs-metrics-strip reveal">
+          <div class="cs-metric">
+            <span class="cs-metric__value">1000s</span>
+            <span class="cs-metric__label">of hours saved annually</span>
+          </div>
+          <div class="cs-metric">
+            <span class="cs-metric__value">$Ms</span>
+            <span class="cs-metric__label">in cost avoidance</span>
+          </div>
+          <div class="cs-metric">
+            <span class="cs-metric__value">~60%</span>
+            <span class="cs-metric__label">faster ordering</span>
+          </div>
+          <div class="cs-metric">
+            <span class="cs-metric__value">~80%</span>
+            <span class="cs-metric__label">adoption in 30 days</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== BODY ===== -->
+    <div class="cs-body">
+      <div class="container container--narrow">
+
+        <!-- 1. Programme Definition -->
+        <section class="cs-section reveal">
+          <div class="cs-section__label">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0l1.5 5.5L15 8l-5.5 1.5L8 15l-1.5-5.5L1 8l5.5-1.5z"/></svg>
+            Programme Definition
+          </div>
+          <h2>What I built &amp; why it mattered</h2>
+          <p>I was the design owner for Customer Self-Serve Orders &mdash; a multi-phase programme to transform enterprise ordering from manual, operations-dependent workflows into a self-serve, scalable experience. I anchored every design decision on the Plan of Record (POR), which established the north star: customer autonomy paired with operational safety.</p>
+          <p>My first framing decision was critical: I treated self-serve as a <strong>trust problem</strong>, not a speed problem. Enterprise customers don&rsquo;t just want faster checkout &mdash; they need confidence that pricing is enrolment-accurate, eligibility rules are enforced, and compliance paths can&rsquo;t be broken. This framing set the direction for the entire programme.</p>
+
+          <div class="cs-effort-grid" style="margin-top: var(--space-6);">
+            <div class="cs-effort-card">
+              <div class="cs-effort-card__title">Plan of Record (POR)</div>
+              <ul>
+                <li>I established the <strong>north star for self-serve</strong> (customer autonomy + ops safety)</li>
+                <li>Defined <strong>in-scope / out-of-scope</strong> guardrails critical to UX decisions</li>
+                <li>Anchored design on <strong>SKU-level pricing visibility and auditability</strong></li>
+              </ul>
+            </div>
+            <div class="cs-effort-card">
+              <div class="cs-effort-card__title">Scope of Work</div>
+              <ul>
+                <li>Translated contractual and pricing constraints into usable flows</li>
+                <li>Designed for <strong>true-ups, step-ups, new orders, reservation reconciliation</strong></li>
+                <li>Ensured role-based access and action visibility on MAC</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="cs-design-impact">
+            <div class="cs-design-impact__label">Design Impact</div>
+            <p>My framing decision &mdash; treating self-serve as a <strong>trust problem</strong> rather than a speed problem &mdash; set the direction for the entire programme. Every downstream design choice (upfront eligibility, quote previews, audit trails) flowed from this reframe.</p>
+          </div>
+
+          <div class="cs-ai-process">
+            <div class="cs-ai-process__label">
+              <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0l1.5 5.5L15 8l-5.5 1.5L8 15l-1.5-5.5L1 8l5.5-1.5z"/></svg>
+              AI in my process
+            </div>
+            <p>I used Copilot to rapidly synthesise the POR&rsquo;s contractual and pricing constraints into structured design principles, <strong>compressing days of analysis into hours</strong> and letting me focus on framing rather than extraction.</p>
+          </div>
+        </section>
+
+        <hr class="cs-divider">
+
+        <!-- 2. My Role & Design Impact (NEW) -->
+        <section class="cs-section reveal">
+          <div class="cs-section__label">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0l1.5 5.5L15 8l-5.5 1.5L8 15l-1.5-5.5L1 8l5.5-1.5z"/></svg>
+            My Role &amp; Ownership
+          </div>
+          <h2>Design owner for Orders</h2>
+          <p>Over multiple semesters, I evolved into the design owner for Orders, responsible for strategy, end-to-end flow design, partner validation (cogwalks), design-to-dev execution, accessibility readiness (Grade C met), bug-bash and fit-and-finish ownership, and launch success.</p>
+          <p>My Orders work directly supported the organisation&rsquo;s consolidation goals and enabled retirement of multiple legacy ordering platforms.</p>
+
+          <div class="cs-design-impact">
+            <div class="cs-design-impact__label">Design Impact</div>
+            <p>I owned the outcome, not just the output. Every cogwalk, every bug-bash decision, every stakeholder alignment call went through my judgement. This wasn&rsquo;t delegated ownership &mdash; it was <strong>earned through delivery</strong>.</p>
+          </div>
+        </section>
+
+        <hr class="cs-divider">
+
+        <!-- 3. Research & Validation -->
+        <section class="cs-section reveal">
+          <div class="cs-section__label">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0l1.5 5.5L15 8l-5.5 1.5L8 15l-1.5-5.5L1 8l5.5-1.5z"/></svg>
+            Research &amp; Validation
+          </div>
+          <h2>I reframed the problem: trust, not speed</h2>
+          <p>I led product discovery and synthesised customer pain points into design principles. The critical insight: enterprise customers didn&rsquo;t need faster checkout. They needed <strong>confidence</strong> that their orders were correct, compliant, and auditable. I reframed &ldquo;self-serve&rdquo; from a speed play to a trust play &mdash; and this shift shaped everything we built.</p>
+
+          <h3>Partner Cogwalks &amp; Feedback</h3>
+          <p>I led and participated in multiple partner and ROC/OSC cognitive walkthroughs to validate delighters, pain points, and usability gaps. These weren&rsquo;t usability tests &mdash; they were <strong>confidence tests</strong>. I was looking for where partners hesitated, where they second-guessed the system, and where they needed proactive guidance.</p>
+
+          <div class="cs-quote">
+            <p>&ldquo;My head is spinning. This split works just grand, it&rsquo;s awesome.&rdquo; &mdash; Partner, Cogwalk feedback</p>
+          </div>
+
+          <div class="cs-quote">
+            <p>&ldquo;This will make our lives super easy.&rdquo; &mdash; Partner, Cogwalk feedback</p>
+          </div>
+
+          <ul>
+            <li>Identified need for <strong>proactive guidance + &ldquo;flag for review&rdquo; patterns</strong></li>
+            <li>Informed bulk actions, pricing visibility, and audit trails</li>
+            <li>Applied behavioural and value lens: what &ldquo;self-serve&rdquo; actually means for enterprise is <strong>outcome confidence</strong></li>
+          </ul>
+
+          <div class="cs-design-impact">
+            <div class="cs-design-impact__label">Design Impact</div>
+            <p>The trust reframe wasn&rsquo;t obvious. Other teams were optimising for speed and task completion. <strong>I chose confidence as the primary UX KPI</strong> &mdash; and the adoption numbers validated that choice.</p>
+          </div>
+
+          <div class="cs-ai-process">
+            <div class="cs-ai-process__label">
+              <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0l1.5 5.5L15 8l-5.5 1.5L8 15l-1.5-5.5L1 8l5.5-1.5z"/></svg>
+              AI in my process
+            </div>
+            <p>I used AI tools to synthesise cogwalk transcripts into structured insight clusters &mdash; <strong>compressing 2&ndash;3 days of affinity mapping into a focused half-day</strong>. This let me iterate on design principles faster and share findings with PM within the same sprint.</p>
+          </div>
+        </section>
+
+        <hr class="cs-divider">
+
+        <!-- 4. Design Execution -->
+        <section class="cs-section reveal">
+          <div class="cs-section__label">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0l1.5 5.5L15 8l-5.5 1.5L8 15l-1.5-5.5L1 8l5.5-1.5z"/></svg>
+            Design Execution
+          </div>
+          <h2>What I designed &mdash; and the impact of each decision</h2>
+
+          <div class="cs-effort-grid">
+            <div class="cs-effort-card">
+              <div class="cs-effort-card__title">UX &amp; Content Validation</div>
+              <p>I caught and removed ambiguous terms (&ldquo;contract&rdquo; &rarr; &ldquo;enrolment&rdquo;) that were causing downstream confusion. I ensured every message matched legal, compliance, and customer mental models &mdash; <strong>directly reducing downstream clarification tickets and rework</strong>.</p>
+            </div>
+            <div class="cs-effort-card">
+              <div class="cs-effort-card__title">Specs &amp; North Star</div>
+              <p>I partnered with PM to shape behavioural scenarios and ensured design feasibility under RP, pricing, and compliance constraints. My UX risk signals <strong>directly influenced fast-follow prioritisation</strong> &mdash; preventing scope creep from undermining launch quality.</p>
+            </div>
+            <div class="cs-effort-card">
+              <div class="cs-effort-card__title">Design Walkthroughs (Owned)</div>
+              <p>I used walkthroughs to align PM, Eng, Ops, and Leadership &mdash; surfacing UX risks early (validation gaps, cognitive load, flow breaks). These sessions <strong>reduced late-stage surprises before UAT/GA</strong> and built cross-team confidence in the design.</p>
+            </div>
+            <div class="cs-effort-card">
+              <div class="cs-effort-card__title">E2E Flow Ownership</div>
+              <p>I owned the full flow: eligibility &rarr; pricing &rarr; quote &rarr; PO &rarr; submission &rarr; management. Multi-PO, bulk editing, multi-SKU search. I treated <strong>quote previews as high-trust artefacts</strong>, not intermediate steps &mdash; a choice that proved critical for adoption.</p>
+            </div>
+          </div>
+
+          <div class="cs-design-impact">
+            <div class="cs-design-impact__label">Design Impact</div>
+            <p>My decision to surface eligibility and pricing upfront &mdash; before the customer committed to an order &mdash; is the <strong>single design choice most responsible for the ~60% time reduction</strong>. It prevented errors instead of recovering from them.</p>
+          </div>
+
+          <div class="cs-ai-process">
+            <div class="cs-ai-process__label">
+              <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0l1.5 5.5L15 8l-5.5 1.5L8 15l-1.5-5.5L1 8l5.5-1.5z"/></svg>
+              AI in my process
+            </div>
+            <p><strong>I used AI to rapidly generate and evaluate UX copy variants</strong>, test message clarity against compliance requirements, and draft spec language &mdash; cutting content-validation cycles from days to hours.</p>
+          </div>
+        </section>
+
+        <hr class="cs-divider">
+
+        <!-- 4b. Design Screens — Confidential Preview -->
+        <section class="cs-section reveal">
+          <div class="cs-section__label">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0l1.5 5.5L15 8l-5.5 1.5L8 15l-1.5-5.5L1 8l5.5-1.5z"/></svg>
+            Product Screens
+          </div>
+          <h2>The experience I designed</h2>
+          <p>Representative screens from the self-serve ordering flow I owned end-to-end. Images are intentionally blurred to maintain confidentiality under NDA.</p>
+
+          <!-- Flow overview bar -->
+          <div class="cs-flow-bar">
+            <div class="cs-flow-bar__step">
+              <span class="cs-flow-bar__num">1</span>
+              <span class="cs-flow-bar__label">Entry</span>
+            </div>
+            <div class="cs-flow-bar__step">
+              <span class="cs-flow-bar__num">2</span>
+              <span class="cs-flow-bar__label">Contract</span>
+            </div>
+            <div class="cs-flow-bar__step">
+              <span class="cs-flow-bar__num">3</span>
+              <span class="cs-flow-bar__label">Catalogue</span>
+            </div>
+            <div class="cs-flow-bar__step">
+              <span class="cs-flow-bar__num">4</span>
+              <span class="cs-flow-bar__label">Cart</span>
+            </div>
+            <div class="cs-flow-bar__step">
+              <span class="cs-flow-bar__num">5</span>
+              <span class="cs-flow-bar__label">Manage</span>
+            </div>
+          </div>
+
+          <!-- Vertical timeline with browser frames -->
+          <div class="cs-showcase">
+
+            <!-- Screen 1: Entry Point -->
+            <div class="cs-showcase-item reveal">
+              <span class="cs-showcase-item__node">1</span>
+              <div class="cs-browser-frame">
+                <div class="cs-browser-frame__bar">
+                  <div class="cs-browser-frame__dots"><span></span><span></span><span></span></div>
+                  <div class="cs-browser-frame__url">admin.microsoft.com/Adminportal#/vlcenrollments</div>
+                </div>
+                <div class="cs-browser-frame__viewport">
+                  <img src="images/mseds-entry-point.png" alt="Volume Licensing landing page showing entry points for order creation and management" loading="lazy">
+                  <span class="cs-browser-frame__nda">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    NDA
+                  </span>
+                </div>
+              </div>
+              <div class="cs-showcase-item__caption">
+                <div class="cs-showcase-item__title">
+                  Entry Point &mdash; Volume Licensing Home
+                  <span class="cs-showcase-item__tag">Navigation</span>
+                </div>
+                <p class="cs-showcase-item__desc">I designed the &ldquo;Your Products&rdquo; landing as the single entry point to self-serve ordering. Clear CTAs for &ldquo;Create order&rdquo; and &ldquo;View orders&rdquo; replaced the fragmented navigation that previously required operations support. Grouping contracts, transactions, and reservations as parallel paths <strong>reduced partner confusion about where to start</strong>.</p>
+              </div>
+            </div>
+
+            <!-- Screen 2: Contract Selection -->
+            <div class="cs-showcase-item reveal">
+              <span class="cs-showcase-item__node">2</span>
+              <div class="cs-browser-frame">
+                <div class="cs-browser-frame__bar">
+                  <div class="cs-browser-frame__dots"><span></span><span></span><span></span></div>
+                  <div class="cs-browser-frame__url">admin.microsoft.com/Adminportal#/vlcenrollments/orders/create</div>
+                </div>
+                <div class="cs-browser-frame__viewport">
+                  <img src="images/mseds-contract-selection.png" alt="Contract selection screen with filterable enrolment table" loading="lazy">
+                  <span class="cs-browser-frame__nda">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    NDA
+                  </span>
+                </div>
+              </div>
+              <div class="cs-showcase-item__caption">
+                <div class="cs-showcase-item__title">
+                  Contract Selection
+                  <span class="cs-showcase-item__tag">Eligibility</span>
+                </div>
+                <p class="cs-showcase-item__desc">I surfaced compliance status, anniversary dates, and coverage windows directly in the table &mdash; so users could <strong>assess eligibility before committing</strong>. This upfront visibility prevented downstream errors and contributed to the <strong>~60% time reduction</strong>.</p>
+              </div>
+            </div>
+
+            <!-- Screen 3: Product Catalogue -->
+            <div class="cs-showcase-item reveal">
+              <span class="cs-showcase-item__node">3</span>
+              <div class="cs-browser-frame">
+                <div class="cs-browser-frame__bar">
+                  <div class="cs-browser-frame__dots"><span></span><span></span><span></span></div>
+                  <div class="cs-browser-frame__url">admin.microsoft.com/Adminportal#/vlcenrollments/orders/create/products</div>
+                </div>
+                <div class="cs-browser-frame__viewport">
+                  <img src="images/mseds-product-catalog.png" alt="Product catalogue showing SKU-level pricing with inline editing" loading="lazy">
+                  <span class="cs-browser-frame__nda">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    NDA
+                  </span>
+                </div>
+              </div>
+              <div class="cs-showcase-item__caption">
+                <div class="cs-showcase-item__title">
+                  Product Catalogue &amp; Order Creation
+                  <span class="cs-showcase-item__tag">Core Flow</span>
+                </div>
+                <p class="cs-showcase-item__desc">Inline editing with real-time subtotals, product-type filters, and bulk selection &mdash; the capabilities that enabled <strong>&gt;50% time reduction for step-ups</strong>. The &ldquo;Save as draft&rdquo; option was a trust decision: letting users pause without losing work.</p>
+              </div>
+            </div>
+
+            <!-- Screen 4: Cart & Order Review -->
+            <div class="cs-showcase-item reveal">
+              <span class="cs-showcase-item__node">4</span>
+              <div class="cs-browser-frame">
+                <div class="cs-browser-frame__bar">
+                  <div class="cs-browser-frame__dots"><span></span><span></span><span></span></div>
+                  <div class="cs-browser-frame__url">admin.microsoft.com/Adminportal#/vlcenrollments/orders/review</div>
+                </div>
+                <div class="cs-browser-frame__viewport">
+                  <img src="images/mseds-cart-review.png" alt="Cart review screen showing order summary with pricing, PO entry, and submit" loading="lazy">
+                  <span class="cs-browser-frame__nda">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    NDA
+                  </span>
+                </div>
+              </div>
+              <div class="cs-showcase-item__caption">
+                <div class="cs-showcase-item__title">
+                  Cart &amp; Order Review
+                  <span class="cs-showcase-item__tag">Trust Surface</span>
+                </div>
+                <p class="cs-showcase-item__desc">The cart is where trust is built or broken. I designed <strong>full pricing transparency</strong> with separate sections for new products and reconciliations, quote downloads, and split-order tools. The quote download acts as a <strong>high-trust artefact</strong> &mdash; driving ~80% adoption within 30 days.</p>
+              </div>
+            </div>
+
+            <!-- Screen 5: Order Management -->
+            <div class="cs-showcase-item reveal">
+              <span class="cs-showcase-item__node">5</span>
+              <div class="cs-browser-frame">
+                <div class="cs-browser-frame__bar">
+                  <div class="cs-browser-frame__dots"><span></span><span></span><span></span></div>
+                  <div class="cs-browser-frame__url">admin.microsoft.com/Adminportal#/vlcenrollments/orders</div>
+                </div>
+                <div class="cs-browser-frame__viewport">
+                  <img src="images/mseds-order-management.png" alt="Order management dashboard showing draft and submitted orders" loading="lazy">
+                  <span class="cs-browser-frame__nda">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    NDA
+                  </span>
+                </div>
+              </div>
+              <div class="cs-showcase-item__caption">
+                <div class="cs-showcase-item__title">
+                  Order Management
+                  <span class="cs-showcase-item__tag">Lifecycle</span>
+                </div>
+                <p class="cs-showcase-item__desc">Submitted/draft tabs, auto-deletion notices, and contract-level filtering. Designed to give customers <strong>proactive confidence</strong> that their orders were progressing correctly &mdash; not just a list, but a trust surface.</p>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="cs-nda" style="margin-top: var(--space-6);">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Full-fidelity screens available under NDA in a portfolio review, or if you are a Microsoft customer you can view the experience at <a href="https://admin.microsoft.com/Adminportal#" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">admin.microsoft.com</a>
+          </div>
+        </section>
+
+        <hr class="cs-divider">
+
+        <!-- 5. AI-Accelerated Design Process (NEW) -->
+        <section class="cs-section reveal">
+          <div class="cs-section__label">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0l1.5 5.5L15 8l-5.5 1.5L8 15l-1.5-5.5L1 8l5.5-1.5z"/></svg>
+            AI-Accelerated Design
+          </div>
+          <h2>How AI made me faster without replacing my judgement</h2>
+          <p>This project was one of the places where we worked with AI to make the process faster. After permutations and combinations and quick experimentation, we were able to take the project to success. AI didn&rsquo;t design the experience &mdash; I did. But AI compressed the time between raw input and structured thinking, letting me spend more time on the decisions that mattered.</p>
+
+          <div class="cs-effort-grid">
+            <div class="cs-effort-card">
+              <div class="cs-effort-card__title">Research Synthesis</div>
+              <p>Used AI to cluster cogwalk transcripts and feedback into insight themes. <strong>What took 2&ndash;3 days of affinity mapping became a focused half-day.</strong> I still made every framing call &mdash; but AI surfaced the patterns faster.</p>
+            </div>
+            <div class="cs-effort-card">
+              <div class="cs-effort-card__title">Scenario Mapping</div>
+              <p>Used Copilot to rapidly generate permutations of order scenarios (true-ups, step-ups, bulk, mixed-SKU). <strong>This let me stress-test flows against edge cases</strong> before dev handoff, catching issues that would have surfaced in UAT.</p>
+            </div>
+            <div class="cs-effort-card">
+              <div class="cs-effort-card__title">Content Validation</div>
+              <p>Used AI to generate and evaluate UX copy variants against compliance requirements. <strong>Cut content-validation cycles from days to hours</strong> &mdash; critical when legal language had to be precise but human-readable.</p>
+            </div>
+            <div class="cs-effort-card">
+              <div class="cs-effort-card__title">Spec &amp; Handover Drafting</div>
+              <p>Used AI to draft spec structures, handover checklists, and scenario documentation. <strong>~30% reduction in repetitive content and handover effort</strong> &mdash; freeing time for design-to-dev collaboration.</p>
+            </div>
+          </div>
+
+          <div class="cs-design-impact">
+            <div class="cs-design-impact__label">Design Impact</div>
+            <p>AI compressed the time between raw input and structured thinking. <strong>I still made every framing call.</strong> But AI let me make those calls faster, iterate more, and ship with higher confidence. The ~30% reduction in handover effort meant I could spend that time on what actually moves outcomes: partner validation and cross-team alignment.</p>
+          </div>
+        </section>
+
+        <hr class="cs-divider">
+
+        <!-- 6. Validation & UAT -->
+        <section class="cs-section reveal">
+          <div class="cs-section__label">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0l1.5 5.5L15 8l-5.5 1.5L8 15l-1.5-5.5L1 8l5.5-1.5z"/></svg>
+            Validation &amp; UAT
+          </div>
+          <h2>Ensuring trust before launch</h2>
+          <p>I ran design-focused bug-bashes and UAT walkthroughs, treating every issue through a trust lens. This wasn&rsquo;t just quality assurance &mdash; it was about ensuring no trust-breaking issue shipped to customers.</p>
+          <ul>
+            <li>I <strong>blocked three issues</strong> engineering had marked as low-priority but that would have undermined quote confidence at GA</li>
+            <li>Logged UX-critical issues (validation, messaging, affordances) and tracked them to resolution</li>
+            <li>Used UAT feedback (pricing, currency, eligibility) as <strong>design signals</strong>, not just bugs &mdash; feeding insights back into fast-follow prioritisation</li>
+            <li>Ensured Orders + Credits GA delivered with <strong>Accessibility Grade-C compliance</strong> met</li>
+          </ul>
+
+          <div class="cs-design-impact">
+            <div class="cs-design-impact__label">Design Impact</div>
+            <p>My fit-and-finish ownership became a turning point. I turned a neglected phase into a <strong>design-quality gate</strong> &mdash; catching trust-breaking issues before they reached customers.</p>
+          </div>
+        </section>
+
+        <hr class="cs-divider">
+
+        <!-- 7. Leadership Visibility -->
+        <section class="cs-section reveal">
+          <div class="cs-section__label">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0l1.5 5.5L15 8l-5.5 1.5L8 15l-1.5-5.5L1 8l5.5-1.5z"/></svg>
+            Leadership Visibility
+          </div>
+          <h2>Demos &amp; executive alignment</h2>
+          <p>I built the before/after narrative for LT and exec demos, deliberately positioning design as an enabler of <strong>scale, not polish</strong>. I demonstrated self-serve as a credible enterprise-grade solution &mdash; not a UI facelift. The customer self-serve work received acclaim from LT and execs, and the legacy platform integration was recognised as a key organisational outcome.</p>
+
+          <div class="cs-design-impact">
+            <div class="cs-design-impact__label">Design Impact</div>
+            <p>The acclaim was not accidental. I deliberately shaped the narrative to make design contribution visible at leadership level. <strong>I positioned design as a business multiplier</strong> &mdash; and the exec response validated that framing.</p>
+          </div>
+        </section>
+
+        <hr class="cs-divider">
+
+        <!-- 8. Business Impact -->
+        <section class="cs-section reveal">
+          <div class="cs-section__label">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0l1.5 5.5L15 8l-5.5 1.5L8 15l-1.5-5.5L1 8l5.5-1.5z"/></svg>
+            Business Impact
+          </div>
+          <h2>My design decisions &rarr; measurable outcomes</h2>
+
+          <div class="cs-impact-block">
+            <div class="cs-impact-block__metrics">
+              <div class="cs-big-metric">
+                <span class="cs-big-metric__value">1000s</span>
+                <span class="cs-big-metric__label">of hours saved annually</span>
+              </div>
+              <div class="cs-big-metric">
+                <span class="cs-big-metric__value">$Ms</span>
+                <span class="cs-big-metric__label">estimated cost avoidance</span>
+              </div>
+              <div class="cs-big-metric">
+                <span class="cs-big-metric__value">~60%</span>
+                <span class="cs-big-metric__label">faster ordering via bulk edits</span>
+              </div>
+              <div class="cs-big-metric">
+                <span class="cs-big-metric__value">~80%</span>
+                <span class="cs-big-metric__label">adoption within 30 days (Non-EA)</span>
+              </div>
+              <div class="cs-big-metric">
+                <span class="cs-big-metric__value">+32%</span>
+                <span class="cs-big-metric__label">adoption in one week (Phase 2 pilot)</span>
+              </div>
+              <div class="cs-big-metric">
+                <span class="cs-big-metric__value">~70%</span>
+                <span class="cs-big-metric__label">agility boost (multi-order creation)</span>
+              </div>
+            </div>
+          </div>
+
+          <h3 style="margin-top: var(--space-10);">Decision &rarr; Outcome</h3>
+          <p>These metrics trace back to specific design decisions I made:</p>
+
+          <div class="cs-decision-grid" style="margin-top: var(--space-4);">
+
+            <div class="cs-decision-card">
+              <div class="cs-decision-card__top">
+                <div class="cs-decision-card__label">Decision</div>
+                <p>I surfaced eligibility and pricing <strong>upfront</strong>, before order commitment &mdash; not as a validation step after submission.</p>
+              </div>
+              <div class="cs-decision-card__bottom">
+                <div class="cs-decision-card__label">Outcome</div>
+                <div class="cs-decision-card__metric">~60%</div>
+                <p>Faster ordering &mdash; errors prevented, not corrected.</p>
+              </div>
+            </div>
+
+            <div class="cs-decision-card">
+              <div class="cs-decision-card__top">
+                <div class="cs-decision-card__label">Decision</div>
+                <p>I treated quote previews as <strong>high-trust artefacts</strong> &mdash; full transparency before commitment.</p>
+              </div>
+              <div class="cs-decision-card__bottom">
+                <div class="cs-decision-card__label">Outcome</div>
+                <div class="cs-decision-card__metric">~80%</div>
+                <p>Adoption in 30 days &mdash; customers trusted the system enough to self-serve immediately.</p>
+              </div>
+            </div>
+
+            <div class="cs-decision-card">
+              <div class="cs-decision-card__top">
+                <div class="cs-decision-card__label">Decision</div>
+                <p>I designed bulk editing + multi-PO as a <strong>first-class flow</strong>, not a bolt-on &mdash; up to 50 orders at once.</p>
+              </div>
+              <div class="cs-decision-card__bottom">
+                <div class="cs-decision-card__label">Outcome</div>
+                <div class="cs-decision-card__metric">~70%</div>
+                <p>Agility boost for multi-order creation, <strong>+32% adoption in one week</strong> during pilot.</p>
+              </div>
+            </div>
+
+            <div class="cs-decision-card">
+              <div class="cs-decision-card__top">
+                <div class="cs-decision-card__label">Decision</div>
+                <p>I validated <strong>confidence, not just usability</strong> in partner cogwalks &mdash; testing trust in outcomes, not just clicks.</p>
+              </div>
+              <div class="cs-decision-card__bottom">
+                <div class="cs-decision-card__label">Outcome</div>
+                <div class="cs-decision-card__metric">Days &rarr; Min</div>
+                <p>Order creation time collapsed. Rapid adoption driven by partner trust.</p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <hr class="cs-divider">
+
+        <!-- 9. Why This Matters -->
+        <section class="cs-section reveal">
+          <div class="cs-section__label">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0l1.5 5.5L15 8l-5.5 1.5L8 15l-1.5-5.5L1 8l5.5-1.5z"/></svg>
+            Why This Matters
+          </div>
+          <h2>Enterprise-grade UX, not consumer checkout design</h2>
+
+          <div class="cs-why-matters">
+            <p style="font-family: var(--font-heading); font-size: var(--text-subtitle); font-weight: 600; color: var(--text-primary); line-height: var(--leading-title); margin-bottom: var(--space-4);">This case study represents design acting as a business multiplier &mdash; not a delivery function.</p>
+            <p style="font-size: var(--text-body-sm); color: var(--text-secondary); line-height: var(--leading-body); margin-bottom: 0;">I productised a high-risk, high-cost operational workflow into a customer-autonomous, self-serve experience &mdash; while preserving trust, compliance, and auditability at enterprise scale. AI-accelerated methods let me move faster at every stage while maintaining the judgement that enterprise design demands.</p>
+
+            <div class="cs-outcomes-grid">
+              <div class="cs-outcome">Customer confidence to self-serve</div>
+              <div class="cs-outcome">Reduced operational friction</div>
+              <div class="cs-outcome">Faster time-to-action</div>
+              <div class="cs-outcome">Preserved trust &amp; compliance</div>
+              <div class="cs-outcome">Foundation for AI assistance</div>
+              <div class="cs-outcome">Reusable at enterprise scale</div>
+              <div class="cs-outcome">AI-accelerated design process</div>
+            </div>
+          </div>
+
+          <div class="cs-design-impact" style="margin-top: var(--space-8);">
+            <div class="cs-design-impact__label">Design Impact</div>
+            <p>I proved that one designer with strong judgement and AI-accelerated methods can drive outcomes typically attributed to entire teams. <strong>Multi-million dollar cost avoidance, thousands of hours saved annually, legacy platform retirement</strong> &mdash; all grounded in design decisions I owned end-to-end.</p>
+          </div>
+        </section>
+
+        <!-- Back to portfolio -->
+        <div style="text-align: center; margin-top: var(--space-16);" class="reveal">
+          <a href="../index.html#work" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border: 1px solid var(--border-subtle); color: var(--text-secondary); border-radius: var(--border-radius-sm); font-weight: 500; font-size: var(--text-body-sm); text-decoration: none; transition: all var(--duration-base) var(--ease-out);">&larr; Back to Portfolio</a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <ul class="footer__links">
+        <li><a href="mailto:prashik.y.lanjewar@gmail.com">Email</a></li>
+        <li><a href="https://linkedin.com/in/prashiklanjewar" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+      <p class="footer__copy">&copy; 2026 Prashik Lanjewar. Designer II at Microsoft.</p>
+    </div>
+  </footer>
+
+  <script src="../js/theme.js" defer></script>
+  <script src="../js/reveal.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commerce Insights &mdash; Decision System Case Study &mdash; Prashik Lanjewar</title>
+  <meta name="description" content="Case study: Transforming an enterprise seller dashboard from a reporting surface into a trusted, action-driven decision system.">
+  <script>
+    (function(){
+      var t = localStorage.getItem('theme') ||
+              (matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <style>
+    /* Case study specific styles — shared with MSEDS pattern */
+    .cs-hero {
+      padding: var(--space-16) 0 var(--space-16);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cs-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-card, var(--gradient-card-light, transparent));
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    .cs-hero > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cs-overline {
+      font-size: var(--text-overline);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-primary);
+      margin-bottom: var(--space-4);
+    }
+
+    .cs-title {
+      font-family: var(--font-heading);
+      font-size: var(--text-display);
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: var(--leading-display);
+      margin-bottom: var(--space-4);
+    }
+
+    .cs-subtitle {
+      font-size: var(--text-body);
+      color: var(--text-secondary);
+      line-height: var(--leading-body);
+      max-width: 40rem;
+    }
+
+    .cs-metrics-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: var(--space-4);
+      margin-top: var(--space-10);
+      padding: var(--space-6);
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--border-radius);
+    }
+
+    .cs-metric {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+
+    .cs-metric__value {
+      font-family: var(--font-heading);
+      font-size: var(--text-title);
+      font-weight: 800;
+      color: var(--accent-metric);
+      line-height: 1.1;
+    }
+
+    .cs-metric__label {
+      font-size: var(--text-caption);
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .cs-body {
+      padding: var(--space-8) 0 var(--space-16);
+    }
+
+    .cs-section {
+      padding: var(--space-10) 0;
+    }
+
+    .cs-section h2 {
+      font-family: var(--font-heading);
+      font-size: var(--text-title);
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: var(--leading-title);
+      margin-bottom: var(--space-4);
+    }
+
+    .cs-section h3 {
+      font-family: var(--font-heading);
+      font-size: var(--text-subtitle);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-top: var(--space-8);
+      margin-bottom: var(--space-3);
+    }
+
+    .cs-section p {
+      font-size: var(--text-body);
+      color: var(--text-secondary);
+      line-height: var(--leading-body);
+      margin-bottom: var(--space-4);
+    }
+
+    .cs-section ul, .cs-section ol {
+      padding-left: var(--space-5);
+      margin-bottom: var(--space-4);
+    }
+
+    .cs-section li {
+      font-size: var(--text-body);
+      color: var(--text-secondary);
+      line-height: var(--leading-body);
+      margin-bottom: var(--space-2);
+    }
+
+    .cs-section li strong {
+      color: var(--text-primary);
+    }
+
+    .cs-section__label {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-overline);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-primary);
+      margin-bottom: var(--space-4);
+    }
+
+    .cs-section__label svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+    }
+
+    .cs-nda {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-5);
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--border-radius-pill);
+      font-size: var(--text-caption);
+      color: var(--text-tertiary);
+      margin-top: var(--space-6);
+    }
+
+    .cs-nda svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      fill: none;
+    }
+
+    .cs-divider {
+      border: none;
+      border-top: 1px solid var(--border-subtle);
+      margin: 0;
+    }
+
+    /* Effort grid */
+    .cs-effort-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+      margin-top: var(--space-6);
+    }
+
+    @media (min-width: 48rem) {
+      .cs-effort-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .cs-effort-card {
+      padding: var(--space-6);
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--border-radius);
+      transition: border-color var(--duration-base) var(--ease-out);
+    }
+
+    .cs-effort-card:hover {
+      border-color: var(--border-hover);
+    }
+
+    .cs-effort-card__title {
+      font-family: var(--font-heading);
+      font-size: var(--text-body);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: var(--space-3);
+    }
+
+    .cs-effort-card p, .cs-effort-card li {
+      font-size: var(--text-body-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-body);
+    }
+
+    /* Design impact callout */
+    .cs-design-impact {
+      margin-top: var(--space-6);
+      padding: var(--space-5) var(--space-6);
+      border-left: 3px solid var(--accent-primary);
+      background: var(--bg-secondary);
+      border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
+    }
+
+    .cs-design-impact__label {
+      font-size: var(--text-overline);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent-primary);
+      margin-bottom: var(--space-2);
+    }
+
+    .cs-design-impact p {
+      font-size: var(--text-body-sm);
+      margin-bottom: 0;
+    }
+
+    /* AI process callout */
+    .cs-ai-process {
+      margin-top: var(--space-6);
+      padding: var(--space-5) var(--space-6);
+      border-left: 3px solid var(--accent-ai);
+      background: var(--bg-secondary);
+      border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
+    }
+
+    .cs-ai-process__label {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-overline);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent-ai);
+      margin-bottom: var(--space-2);
+    }
+
+    .cs-ai-process__label svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+    }
+
+    .cs-ai-process p {
+      font-size: var(--text-body-sm);
+      margin-bottom: 0;
+    }
+
+    /* Decision → Outcome cards */
+    .cs-decision-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+      margin-top: var(--space-6);
+    }
+
+    @media (min-width: 48rem) {
+      .cs-decision-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .cs-decision-card {
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      transition: border-color var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out);
+    }
+
+    .cs-decision-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+    }
+
+    .cs-decision-card__top {
+      padding: var(--space-5) var(--space-6);
+      background: var(--bg-secondary);
+    }
+
+    .cs-decision-card__label {
+      font-size: var(--text-overline);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent-primary);
+      margin-bottom: var(--space-2);
+    }
+
+    .cs-decision-card__top p {
+      font-size: var(--text-body-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-body);
+      margin: 0;
+    }
+
+    .cs-decision-card__bottom {
+      padding: var(--space-5) var(--space-6);
+      background: var(--bg-tertiary);
+    }
+
+    .cs-decision-card__bottom .cs-decision-card__label {
+      color: var(--accent-metric);
+    }
+
+    .cs-decision-card__bottom p {
+      font-size: var(--text-body-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-body);
+      margin: 0;
+    }
+
+    .cs-decision-card__metric {
+      font-family: var(--font-heading);
+      font-size: var(--text-title);
+      font-weight: 800;
+      color: var(--accent-metric);
+      margin-bottom: var(--space-2);
+    }
+
+    /* Impact block */
+    .cs-impact-block {
+      padding: var(--space-8);
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--border-radius);
+      margin-top: var(--space-6);
+    }
+
+    .cs-impact-block__metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: var(--space-6);
+    }
+
+    .cs-big-metric {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+
+    .cs-big-metric__value {
+      font-family: var(--font-heading);
+      font-size: var(--text-display);
+      font-weight: 800;
+      color: var(--accent-metric);
+      line-height: 1.1;
+    }
+
+    .cs-big-metric__label {
+      font-size: var(--text-caption);
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* Principles cards */
+    .cs-principle-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+      margin-top: var(--space-6);
+    }
+
+    @media (min-width: 48rem) {
+      .cs-principle-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .cs-principle-card {
+      padding: var(--space-6);
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--border-radius);
+      text-align: center;
+      transition: border-color var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out);
+    }
+
+    .cs-principle-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+    }
+
+    .cs-principle-card__num {
+      font-family: var(--font-heading);
+      font-size: var(--text-display);
+      font-weight: 800;
+      color: var(--accent-primary);
+      opacity: 0.2;
+      line-height: 1;
+      margin-bottom: var(--space-3);
+    }
+
+    .cs-principle-card__title {
+      font-family: var(--font-heading);
+      font-size: var(--text-body);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: var(--space-2);
+    }
+
+    .cs-principle-card p {
+      font-size: var(--text-body-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-body);
+      margin: 0;
+    }
+
+    /* Why matters section */
+    .cs-why-matters {
+      padding: var(--space-8);
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--border-radius);
+      margin-top: var(--space-6);
+    }
+
+    .cs-why-matters p {
+      font-size: var(--text-body);
+      color: var(--text-secondary);
+      line-height: var(--leading-body);
+    }
+
+    .cs-why-matters p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Outcomes grid */
+    .cs-outcomes-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-3);
+      margin-top: var(--space-6);
+    }
+
+    @media (min-width: 48rem) {
+      .cs-outcomes-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .cs-outcome {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      padding: var(--space-4) var(--space-5);
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--border-radius-sm);
+    }
+
+    .cs-outcome svg {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      color: var(--accent-metric);
+      stroke: currentColor;
+      fill: none;
+      margin-top: 2px;
+    }
+
+    .cs-outcome p {
+      font-size: var(--text-body-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-body);
+      margin: 0;
+    }
+
+    /* Quote block */
+    .cs-quote {
+      padding: var(--space-5) var(--space-6);
+      border-left: 3px solid var(--accent-primary);
+      background: var(--bg-secondary);
+      border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
+      margin: var(--space-4) 0;
+    }
+
+    .cs-quote p {
+      font-style: italic;
+      font-size: var(--text-body-sm);
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 47.999rem) {
+      .cs-title {
+        font-size: clamp(1.5rem, 5vw, 2rem);
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <nav class="nav nav--scrolled" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="../index.html" class="nav__brand">Prashik Lanjewar</a>
+      <div class="nav__actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false">Menu</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="menu-overlay" id="menu-overlay" aria-hidden="true">
+    <a href="../index.html#work" class="menu-overlay__link">Work</a>
+    <a href="../index.html#experience" class="menu-overlay__link">Experience</a>
+    <a href="../index.html#philosophy" class="menu-overlay__link">Philosophy</a>
+    <a href="../index.html#contact" class="menu-overlay__link">Contact</a>
+  </div>
+
+  <main id="main">
+    <!-- ===== HERO ===== -->
+    <section class="cs-hero">
+      <div class="container container--narrow">
+        <a href="../index.html#work" class="back-link">&larr; Back to Portfolio</a>
+
+        <div class="reveal">
+          <div class="cs-overline">Enterprise Commerce &mdash; Seller Platform</div>
+          <h1 class="cs-title">Commerce Insights &mdash; Decision System</h1>
+          <p class="cs-subtitle">I transformed an enterprise seller dashboard from a reporting surface into a trusted, action-driven decision system &mdash; enabling sellers to confidently decide <strong>what to do next</strong>, not just understand what data exists.</p>
+
+          <div class="cs-nda">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Some details are anonymised or generalised due to NDA
+          </div>
+        </div>
+
+        <div class="cs-metrics-strip reveal">
+          <div class="cs-metric">
+            <span class="cs-metric__value">Decision</span>
+            <span class="cs-metric__label">system, not dashboard</span>
+          </div>
+          <div class="cs-metric">
+            <span class="cs-metric__value">Reduced</span>
+            <span class="cs-metric__label">Excel dependency</span>
+          </div>
+          <div class="cs-metric">
+            <span class="cs-metric__value">Trust</span>
+            <span class="cs-metric__label">encoded into UX</span>
+          </div>
+          <div class="cs-metric">
+            <span class="cs-metric__value">Scalable</span>
+            <span class="cs-metric__label">IA without UX debt</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== BODY ===== -->
+    <div class="cs-body">
+      <div class="container container--narrow">
+
+        <!-- 1. Context & Problem -->
+        <section class="cs-section reveal">
+          <div class="cs-section__label">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0l1.5 5.5L15 8l-5.5 1.5L8 15l-1.5-5.5L1 8l5.5-1.5z"/></svg>
+            Context &amp; Problem
+          </div>
+          <h2>Rich data, poor decisions</h2>
+          <p>Commerce Insights is a seller-facing platform aggregating enterprise commerce data across agreements, renewals, subscriptions, concessions, L+SA, and lifecycle milestones. The platform had comprehensive data &mdash; but sellers couldn&rsquo;t use it to make decisions.</p>
+
+          <div class="cs-effort-grid">
+            <div class="cs-effort-card">
+              <div class="cs-effort-card__title">What Sellers Had</div>
+              <ul>
+                <li>Multiple data sources across renewals, subscriptions, and concessions</li>
+                <li>Dashboard views with comprehensive metrics</li>
+                <li>Export-to-Excel as the primary workflow</li>
+              </ul>
+            </div>
+            <div class="cs-effort-card">
+              <div class="cs-effort-card__title">What Sellers Needed</div>
+              <ul>
+                <li>Clarity on <strong>what needs action now</strong></li>
+                <li>Confidence to <strong>act directly</strong> without offline analysis</li>
+                <li>Trust that the data was fresh, sourced, and reliable</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="cs-design-impact">
+            <div class="cs-design-impact__label">Design Impact</div>
+            <p>The core issue was not data availability &mdash; it was the absence of <strong>judgement encoded into the experience</strong>. Data without direction is just noise. My role was to turn noise into signal.</p>
+          </div>
+        </section>
+
+        <hr class="cs-divider">
+
+        <!-- 2. My Role & Ownership -->
+        <section class="cs-section reveal">
+          <div class="cs-section__label">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0l1.5 5.5L15 8l-5.5 1.5L8 15l-1.5-5.5L1 8l5.5-1.5z"/></svg>
+            My Role &amp; Ownership
+          </div>
+          <h2>Design owner for Commerce Insights</h2>
+          <p>I was the design owner responsible for the information architecture, interaction strategy, and visual system for Commerce Insights. My scope covered:</p>
+          <ul>
+            <li><strong>Reframing the product direction</strong> from reporting to decision-enablement</li>
+            <li><strong>Workshop facilitation</strong> to align PM, Eng, and sellers on what &ldquo;actionable&rdquo; actually means</li>
+            <li><strong>Widget-based dashboard architecture</strong> with guardrails for flexibility</li>
+            <li><strong>Seller validation sessions</strong> to test concepts and refine priorities</li>
+            <li><strong>Design system alignment</strong> to ensure scalability and consistency</li>
+          </ul>
+
+          <div class="cs-design-impact">
+            <div class="cs-design-impact__label">Design Impact</div>
+            <p>I didn&rsquo;t inherit a brief and execute &mdash; I <strong>shaped the product direction</strong>. The shift from reporting to decision-enablement was a design-led reframe that changed what this product could become.</p>
+          </div>
+        </section>
+
+        <hr class="cs-divider">
+
+        <!-- 3. The Design Shift -->
+        <section class="cs-section reveal">
+          <div class="cs-section__label">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0l1.5 5.5L15 8l-5.5 1.5L8 15l-1.5-5.5L1 8l5.5-1.5z"/></svg>
+            Design Strategy
+          </div>
+          <h2>Three principles that changed the product</h2>
+          <p>I reframed Commerce Insights around three principles that became the north star for all design decisions:</p>
+
+          <div class="cs-principle-grid">
+            <div class="cs-principle-card reveal">
+              <div class="cs-principle-card__num">01</div>
+              <div class="cs-principle-card__title">Decision over Reporting</div>
+              <p>Prioritised signals and next actions instead of exhaustive metrics. Every widget had to answer: <strong>&ldquo;What should I do next?&rdquo;</strong></p>
+            </div>
+            <div class="cs-principle-card reveal">
+              <div class="cs-principle-card__num">02</div>
+              <div class="cs-principle-card__title">Trust as a UX Requirement</div>
+              <p>Surfaced data freshness, source context, and confidence cues so sellers could <strong>act without second-guessing</strong>.</p>
+            </div>
+            <div class="cs-principle-card reveal">
+              <div class="cs-principle-card__num">03</div>
+              <div class="cs-principle-card__title">Speed to Decision</div>
+              <p>Highlighted deltas, risk, and change &mdash; not raw values. Reduced <strong>time-to-decision</strong> by showing what changed and why it matters.</p>
+            </div>
+          </div>
+
+          <div class="cs-design-impact">
+            <div class="cs-design-impact__label">Design Impact</div>
+            <p>These principles weren&rsquo;t abstract &mdash; they became <strong>acceptance criteria</strong>. Every widget, every layout decision, every data presentation choice was evaluated against them. They gave the team a shared language for &ldquo;good enough to ship.&rdquo;</p>
+          </div>
+        </section>
+
+        <hr class="cs-divider">
+
+        <!-- 4. Design Execution -->
+        <section class="cs-section reveal">
+          <div class="cs-section__label">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0l1.5 5.5L15 8l-5.5 1.5L8 15l-1.5-5.5L1 8l5.5-1.5z"/></svg>
+            Design Execution
+          </div>
+          <h2>What I designed &mdash; and the decisions behind it</h2>
+
+          <div class="cs-effort-grid">
+            <div class="cs-effort-card">
+              <div class="cs-effort-card__title">Action-Framed Insights</div>
+              <p>I used the framing <em>&ldquo;As a seller, I can ___ so that ___&rdquo;</em> to define the value of every widget. This forced the conversation from &ldquo;what data do we show?&rdquo; to &ldquo;what action does this enable?&rdquo;</p>
+            </div>
+            <div class="cs-effort-card">
+              <div class="cs-effort-card__title">Widget-Based Architecture</div>
+              <p>I explored modular, widget-based dashboard models with guardrails for flexibility. Sellers could personalise views without creating chaos &mdash; <strong>structured freedom, not freeform</strong>.</p>
+            </div>
+            <div class="cs-effort-card">
+              <div class="cs-effort-card__title">Trust Signals</div>
+              <p>Every data surface included freshness indicators, source context, and confidence cues. Sellers needed to know <strong>when data was last updated</strong> and <strong>where it came from</strong> before they&rsquo;d act on it.</p>
+            </div>
+            <div class="cs-effort-card">
+              <div class="cs-effort-card__title">Risk &amp; Delta Highlighting</div>
+              <p>Instead of showing raw renewal values, I surfaced <strong>what changed, what&rsquo;s at risk, and what needs attention</strong>. This reduced cognitive load and let sellers focus on exceptions, not totals.</p>
+            </div>
+          </div>
+
+          <div class="cs-ai-process">
+            <div class="cs-ai-process__label">
+              <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0l1.5 5.5L15 8l-5.5 1.5L8 15l-1.5-5.5L1 8l5.5-1.5z"/></svg>
+              AI in my process
+            </div>
+            <p>I used AI tools to rapidly cluster and structure insight ideas from workshops, <strong>compressing ideation and affinity-mapping into focused sessions</strong>. This let me iterate on widget concepts faster and bring structured options to stakeholder reviews within the same sprint.</p>
+          </div>
+        </section>
+
+        <hr class="cs-divider">
+
+        <!-- 5. Research & Validation -->
+        <section class="cs-section reveal">
+          <div class="cs-section__label">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0l1.5 5.5L15 8l-5.5 1.5L8 15l-1.5-5.5L1 8l5.5-1.5z"/></svg>
+            Research &amp; Validation
+          </div>
+          <h2>Validated with real sellers, not assumptions</h2>
+          <p>I validated concepts with real sellers through live feedback sessions. These weren&rsquo;t just usability tests &mdash; they were <strong>trust tests</strong>. I was looking for where sellers hesitated, where they reached for Excel instead of acting in-tool, and where confidence broke down.</p>
+
+          <ul>
+            <li>Ran structured feedback sessions with sellers across different segments</li>
+            <li>Identified <strong>trust gaps</strong> where data was present but sellers wouldn&rsquo;t act on it</li>
+            <li>Mapped the &ldquo;Excel escape hatch&rdquo; pattern &mdash; every time a seller exported data, it indicated a <strong>missing decision cue</strong> in the interface</li>
+            <li>Iterated on widget prioritisation based on seller mental models, not system architecture</li>
+          </ul>
+
+          <div class="cs-design-impact">
+            <div class="cs-design-impact__label">Design Impact</div>
+            <p>The &ldquo;Excel escape hatch&rdquo; mapping was the most valuable research output. It turned a vague complaint (&ldquo;sellers export too much&rdquo;) into a <strong>prioritised list of missing decision cues</strong> that directly informed the design roadmap.</p>
+          </div>
+        </section>
+
+        <hr class="cs-divider">
+
+        <!-- 6. Decision → Outcome -->
+        <section class="cs-section reveal">
+          <div class="cs-section__label">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0l1.5 5.5L15 8l-5.5 1.5L8 15l-1.5-5.5L1 8l5.5-1.5z"/></svg>
+            Decision &rarr; Outcome
+          </div>
+          <h2>Design decisions that drove measurable change</h2>
+
+          <div class="cs-decision-grid">
+            <div class="cs-decision-card reveal">
+              <div class="cs-decision-card__top">
+                <div class="cs-decision-card__label">Decision</div>
+                <p>Reframed dashboards from &ldquo;show all data&rdquo; to &ldquo;surface what needs action now&rdquo;</p>
+              </div>
+              <div class="cs-decision-card__bottom">
+                <div class="cs-decision-card__label">Outcome</div>
+                <p>Reduced seller reliance on offline analysis and Excel exports</p>
+              </div>
+            </div>
+            <div class="cs-decision-card reveal">
+              <div class="cs-decision-card__top">
+                <div class="cs-decision-card__label">Decision</div>
+                <p>Added trust signals: data freshness, source context, confidence cues</p>
+              </div>
+              <div class="cs-decision-card__bottom">
+                <div class="cs-decision-card__label">Outcome</div>
+                <p>Increased seller confidence to act directly within the tool</p>
+              </div>
+            </div>
+            <div class="cs-decision-card reveal">
+              <div class="cs-decision-card__top">
+                <div class="cs-decision-card__label">Decision</div>
+                <p>Highlighted deltas and risk signals instead of raw renewal values</p>
+              </div>
+              <div class="cs-decision-card__bottom">
+                <div class="cs-decision-card__label">Outcome</div>
+                <p>Faster identification of at-risk renewals and prioritisation</p>
+              </div>
+            </div>
+            <div class="cs-decision-card reveal">
+              <div class="cs-decision-card__top">
+                <div class="cs-decision-card__label">Decision</div>
+                <p>Designed scalable widget architecture with structured personalisation</p>
+              </div>
+              <div class="cs-decision-card__bottom">
+                <div class="cs-decision-card__label">Outcome</div>
+                <p>Scalable IA that supports growth without accumulating UX debt</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <hr class="cs-divider">
+
+        <!-- 7. Impact -->
+        <section class="cs-section reveal">
+          <div class="cs-section__label">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0l1.5 5.5L15 8l-5.5 1.5L8 15l-1.5-5.5L1 8l5.5-1.5z"/></svg>
+            Impact
+          </div>
+          <h2>Design &rarr; measurable outcomes</h2>
+
+          <div class="cs-outcomes-grid">
+            <div class="cs-outcome reveal">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <p>Reduced reliance on offline analysis (Excel) for daily seller workflows</p>
+            </div>
+            <div class="cs-outcome reveal">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <p>Faster identification of at-risk renewals through proactive signal surfacing</p>
+            </div>
+            <div class="cs-outcome reveal">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <p>Increased seller confidence to act directly within the tool</p>
+            </div>
+            <div class="cs-outcome reveal">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <p>Scalable information architecture that supports growth without UX debt</p>
+            </div>
+            <div class="cs-outcome reveal">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <p>Established reusable design principles for enterprise commerce UX</p>
+            </div>
+            <div class="cs-outcome reveal">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <p>AI used as a design multiplier &mdash; compressing time-to-insight without replacing judgement</p>
+            </div>
+          </div>
+        </section>
+
+        <hr class="cs-divider">
+
+        <!-- 8. Why This Matters -->
+        <section class="cs-section reveal">
+          <div class="cs-section__label">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0l1.5 5.5L15 8l-5.5 1.5L8 15l-1.5-5.5L1 8l5.5-1.5z"/></svg>
+            Why This Matters
+          </div>
+          <h2>This wasn&rsquo;t a dashboard redesign</h2>
+
+          <div class="cs-why-matters">
+            <p>This work didn&rsquo;t just improve a dashboard. It changed <strong>how enterprise sellers decide what to do next</strong> &mdash; with greater confidence, clarity, and speed.</p>
+            <p>The shift from reporting to decision-enablement is the kind of design intervention that doesn&rsquo;t show up in screenshots but shows up in adoption, trust, and operational efficiency. It required:</p>
+            <ul>
+              <li><strong>System-level thinking</strong> &mdash; seeing beyond individual widgets to the decision architecture</li>
+              <li><strong>Designing for trust</strong> &mdash; treating data confidence as a first-class UX requirement</li>
+              <li><strong>Research-driven iteration</strong> &mdash; using seller behaviour (not stakeholder opinions) as the design compass</li>
+              <li><strong>AI as a multiplier</strong> &mdash; compressing synthesis and ideation without replacing judgement</li>
+            </ul>
+          </div>
+
+          <div class="cs-design-impact" style="margin-top: var(--space-8);">
+            <div class="cs-design-impact__label">Design Impact</div>
+            <p>Commerce Insights demonstrates that the most impactful design work often isn&rsquo;t visual &mdash; it&rsquo;s <strong>structural</strong>. Changing what a product <em>is</em> (a decision system vs. a dashboard) matters more than changing how it looks.</p>
+          </div>
+
+          <div class="cs-nda" style="margin-top: var(--space-8);">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Details generalised where required due to NDA. Full context available in a portfolio review.
+          </div>
+        </section>
+
+        <!-- Back to portfolio -->
+        <div style="text-align: center; margin-top: var(--space-16);" class="reveal">
+          <a href="../index.html#work" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border: 1px solid var(--border-subtle); color: var(--text-secondary); border-radius: var(--border-radius-sm); font-weight: 500; font-size: var(--text-body-sm); text-decoration: none; transition: all var(--duration-base) var(--ease-out);">&larr; Back to Portfolio</a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <ul class="footer__links">
+        <li><a href="mailto:prashik.y.lanjewar@gmail.com">Email</a></li>
+        <li><a href="https://linkedin.com/in/prashiklanjewar" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+      <p class="footer__copy">&copy; 2026 Prashik Lanjewar. Designer II at Microsoft.</p>
+    </div>
+  </footer>
+
+  <script src="../js/theme.js" defer></script>
+  <script src="../js/reveal.js" defer></script>
+</body>
+</html>
