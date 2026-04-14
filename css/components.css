@@ -304,60 +304,180 @@
   margin-top: var(--space-3);
 }
 
-/* ---- Growth Arc ---- */
-.growth-arc {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-8);
-  margin: var(--space-12) 0;
+/* ---- Growth Timeline ---- */
+.timeline {
+  position: relative;
+  padding-left: var(--space-8);
 }
 
-.growth-arc__phase {
-  padding: var(--space-6) 0;
-  border-top: 2px solid var(--border-subtle);
+/* Vertical line */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: var(--space-2);
+  bottom: var(--space-2);
+  width: 2px;
+  background: var(--border-subtle);
 }
 
-.growth-arc__phase--active {
-  border-top-color: var(--accent-primary);
+.timeline__item {
+  position: relative;
+  padding-bottom: var(--space-8);
 }
 
-.growth-arc__label {
+.timeline__item:last-child {
+  padding-bottom: 0;
+}
+
+/* Dot on the line */
+.timeline__item::before {
+  content: '';
+  position: absolute;
+  left: calc(-1 * var(--space-8) + 0px);
+  top: var(--space-1);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-tertiary);
+  border: 2px solid var(--bg-primary);
+  z-index: 1;
+}
+
+.timeline__item--active::before {
+  background: var(--accent-primary);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+}
+
+.timeline__period {
+  font-size: var(--text-caption);
+  font-weight: 600;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: var(--space-1);
+}
+
+.timeline__label {
   font-family: var(--font-heading);
   font-size: var(--text-body);
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-2);
 }
 
-.growth-arc__text {
+.timeline__text {
   font-size: var(--text-body-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-body);
+  max-width: 36rem;
+}
+}
+
+/* ---- Scroll Strip (Sticky Horizontal Scroll) ---- */
+.scroll-section {
+  position: relative;
+  /* height set by JS = 100vh + horizontal scroll distance */
+}
+
+.scroll-section__sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.scroll-strip {
+  overflow: visible;
+  margin: var(--space-4) auto 0;
+  width: 100%;
+  max-width: var(--max-width);
+  padding: 0 var(--space-6);
+}
+
+.scroll-strip__track {
+  display: flex;
+  gap: var(--space-8);
+  will-change: transform;
+}
+
+.scroll-strip__card {
+  flex: 0 0 380px;
+  padding: 0;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--border-radius);
+  background: var(--bg-secondary);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: border-color var(--duration-fast) var(--ease-out);
+}
+
+.scroll-strip__card:hover {
+  border-color: var(--border-hover);
+}
+
+/* Top half — competency content */
+.scroll-strip__content {
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  flex: 1;
+}
+
+.scroll-strip__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-title);
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  line-height: var(--leading-title);
+}
+
+.scroll-strip__detail {
+  font-size: var(--text-body);
   color: var(--text-secondary);
   line-height: var(--leading-body);
 }
 
-/* ---- Competencies List ---- */
-.competencies__list {
-  list-style: none;
-  padding: 0;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-3);
+/* Bottom half — testimonial, visually recessed */
+.scroll-strip__quote {
+  margin: 0;
+  padding: var(--space-6) var(--space-8);
+  background: var(--bg-primary);
+  border-top: 1px solid var(--border-subtle);
 }
 
-.competencies__list li {
-  font-size: var(--text-body-sm);
-  color: var(--text-secondary);
-  padding-left: var(--space-4);
-  position: relative;
-  margin-top: 0;
-}
-
-.competencies__list li::before {
-  content: '\2014';
-  position: absolute;
-  left: 0;
+.scroll-strip__quote p {
+  font-size: var(--text-caption);
   color: var(--text-tertiary);
+  line-height: var(--leading-body);
+  font-style: italic;
+  margin-bottom: var(--space-3);
 }
+
+.scroll-strip__quote cite {
+  font-size: var(--text-overline);
+  font-style: normal;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  letter-spacing: 0.02em;
+}
+
+@media (min-width: 48rem) {
+  .scroll-strip {
+    padding: 0 var(--space-8);
+  }
+
+  .scroll-strip__card {
+    flex: 0 0 420px;
+  }
+}
+
 
 /* ---- Belief ---- */
 .belief {
@@ -492,13 +612,5 @@
 @media (min-width: 48rem) {
   .nav__inner {
     padding: 0 var(--space-8);
-  }
-
-  .growth-arc {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .competencies__list {
-    grid-template-columns: repeat(2, 1fr);
   }
 }
