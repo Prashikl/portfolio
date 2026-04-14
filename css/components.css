@@ -137,6 +137,14 @@
   color: var(--accent-primary);
 }
 
+.menu-overlay__link--dim {
+  color: var(--text-tertiary);
+}
+
+.menu-overlay__link--dim:hover {
+  color: var(--text-secondary);
+}
+
 /* ---- Hero Typography ---- */
 .hero__label {
   font-size: var(--text-body-sm);
