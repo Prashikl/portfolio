@@ -1,0 +1,197 @@
+/* ======== Case Study — Copilot Promptbook (additions) ======== */
+/* Base case-study styles imported via case-study-experience.css */
+
+/* Architecture flow diagram */
+.cs-arch {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+.cs-arch__row {
+  display: flex;
+  gap: var(--space-3);
+  align-items: stretch;
+  overflow-x: auto;
+}
+
+.cs-arch__node {
+  flex: 1 1 0;
+  min-width: 140px;
+  padding: var(--space-5);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--border-radius);
+  text-align: center;
+  position: relative;
+  transition: border-color var(--duration-fast) var(--ease-out);
+}
+
+.cs-arch__node:hover {
+  border-color: var(--border-hover);
+}
+
+.cs-arch__node--accent {
+  border-top: 3px solid var(--accent-primary);
+}
+
+.cs-arch__node--purple {
+  border-top: 3px solid var(--accent-ai);
+}
+
+.cs-arch__node--green {
+  border-top: 3px solid var(--accent-metric);
+}
+
+.cs-arch__node--yellow {
+  border-top: 3px solid var(--accent-secure);
+}
+
+.cs-arch__count {
+  font-family: var(--font-heading);
+  font-size: var(--text-title);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.1;
+}
+
+.cs-arch__label {
+  font-size: var(--text-caption);
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-top: var(--space-1);
+}
+
+.cs-arch__desc {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  line-height: var(--leading-caption);
+  margin-top: var(--space-2);
+}
+
+/* Arrow connector between nodes */
+.cs-arch__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--text-tertiary);
+  font-size: var(--text-body);
+  min-width: 24px;
+}
+
+/* Reference layer */
+.cs-arch__refs {
+  padding: var(--space-4) var(--space-5);
+  background: var(--bg-tertiary);
+  border-radius: var(--border-radius-sm);
+  text-align: center;
+}
+
+.cs-arch__refs-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-tertiary);
+  margin-bottom: var(--space-1);
+}
+
+.cs-arch__refs-text {
+  font-size: var(--text-caption);
+  color: var(--text-secondary);
+}
+
+/* Stat grid */
+.cs-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+.cs-stat-grid__item {
+  padding: var(--space-5);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--border-radius);
+  text-align: center;
+}
+
+.cs-stat-grid__value {
+  font-family: var(--font-heading);
+  font-size: var(--text-title);
+  font-weight: 800;
+  color: var(--accent-metric);
+  line-height: 1.1;
+}
+
+.cs-stat-grid__label {
+  font-size: var(--text-caption);
+  color: var(--text-secondary);
+  margin-top: var(--space-2);
+  line-height: var(--leading-caption);
+}
+
+/* Principle list */
+.cs-principle {
+  display: flex;
+  gap: var(--space-4);
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.cs-principle:last-child {
+  border-bottom: none;
+}
+
+.cs-principle__num {
+  font-family: var(--font-heading);
+  font-size: var(--text-caption);
+  font-weight: 700;
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+  min-width: 24px;
+}
+
+.cs-principle__text {
+  font-size: var(--text-body-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-body);
+}
+
+.cs-principle__text strong {
+  color: var(--text-primary);
+}
+
+/* Playbook mini-cards */
+.cs-playbook-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+.cs-playbook-tag {
+  padding: var(--space-2) var(--space-3);
+  background: var(--bg-tertiary);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--text-caption);
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+@media (max-width: 47.99rem) {
+  .cs-arch__row {
+    flex-direction: column;
+  }
+  .cs-arch__arrow {
+    transform: rotate(90deg);
+    min-height: 24px;
+  }
+  .cs-stat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -1,0 +1,405 @@
+/* ======== Resume Page — ATS-Friendly ======== */
+
+.resume-page {
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: var(--space-12) var(--space-6) var(--space-16);
+}
+
+/* Download bar */
+.resume-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  margin-bottom: var(--space-8);
+}
+
+.resume-download {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-5);
+  background: var(--accent-primary);
+  color: #fff;
+  font-size: var(--text-caption);
+  font-weight: 600;
+  border: none;
+  border-radius: var(--border-radius-pill);
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.resume-download:hover { opacity: 0.85; }
+
+.resume-download svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  fill: none;
+}
+
+/* ---- Header ---- */
+.resume-header {
+  margin-bottom: var(--space-10);
+  padding-bottom: var(--space-8);
+  border-bottom: 2px solid var(--border-subtle);
+}
+
+.resume-header__name {
+  font-family: var(--font-heading);
+  font-size: var(--text-display);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.1;
+  margin-bottom: var(--space-1);
+}
+
+.resume-header__role {
+  font-size: var(--text-subtitle);
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-5);
+}
+
+/* Contact — semantic <address> */
+.resume-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+  margin-bottom: var(--space-6);
+  font-style: normal;
+}
+
+.resume-contact__item {
+  font-size: var(--text-caption);
+  color: var(--text-secondary);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.resume-contact__item:hover { color: var(--accent-primary); }
+
+.resume-contact__item svg {
+  width: 13px;
+  height: 13px;
+  stroke: currentColor;
+  fill: none;
+  flex-shrink: 0;
+}
+
+/* Summary */
+.resume-summary {
+  font-size: var(--text-body-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-body);
+  max-width: 48rem;
+}
+
+/* ---- Sections ---- */
+.resume-section {
+  margin-bottom: var(--space-10);
+}
+
+.resume-section__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-overline);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-primary);
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+/* ---- Experience entries ---- */
+.resume-entry {
+  margin-bottom: var(--space-8);
+  padding-left: var(--space-5);
+  border-left: 2px solid var(--border-subtle);
+}
+
+.resume-entry:last-child { margin-bottom: 0; }
+
+.resume-entry--current {
+  border-left-color: var(--accent-primary);
+}
+
+/* h3 — Company name */
+.resume-entry__company {
+  font-family: var(--font-heading);
+  font-size: var(--text-body);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 var(--space-1);
+}
+
+/* Tenure line */
+.resume-entry__tenure {
+  font-size: var(--text-caption);
+  color: var(--text-tertiary);
+  margin: 0 0 var(--space-4);
+}
+
+/* ---- Roles within a company ---- */
+.resume-role {
+  margin-bottom: var(--space-6);
+}
+
+.resume-role:last-child { margin-bottom: 0; }
+
+/* h4 — Role title */
+.resume-role__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-body-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.resume-role__dates {
+  font-size: var(--text-caption);
+  color: var(--text-tertiary);
+  margin: 0 0 var(--space-3);
+}
+
+/* ---- ATS bullet list ---- */
+.resume-bullets {
+  list-style: disc;
+  padding-left: var(--space-5);
+  margin: var(--space-2) 0 0;
+}
+
+.resume-bullets li {
+  font-size: var(--text-caption);
+  color: var(--text-secondary);
+  line-height: var(--leading-body);
+  margin-bottom: var(--space-2);
+}
+
+.resume-bullets li:last-child { margin-bottom: 0; }
+
+/* ---- Skills — plain text for ATS ---- */
+.resume-skills-text {
+  font-size: var(--text-body-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-body);
+}
+
+/* ---- Education ---- */
+.resume-edu {
+  margin-bottom: var(--space-5);
+}
+
+.resume-edu:last-child { margin-bottom: 0; }
+
+.resume-edu__school {
+  font-family: var(--font-heading);
+  font-size: var(--text-body-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.resume-edu__degree {
+  font-size: var(--text-caption);
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.resume-edu__year {
+  font-size: var(--text-caption);
+  color: var(--text-tertiary);
+  margin: 0;
+}
+
+/* ---- Awards ---- */
+.resume-award {
+  font-size: var(--text-body-sm);
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ======== Print / PDF ======== */
+@media print {
+  .nav,
+  .menu-overlay,
+  .footer,
+  .resume-actions,
+  .skip-link {
+    display: none !important;
+  }
+
+  * {
+    color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  body {
+    background: #fff !important;
+    color: #1a1a1a !important;
+    font-size: 10pt;
+  }
+
+  .resume-page {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .resume-header {
+    border-bottom: 2px solid #222;
+    margin-bottom: 14pt;
+    padding-bottom: 10pt;
+  }
+
+  .resume-header__name {
+    font-size: 22pt;
+    color: #111 !important;
+  }
+
+  .resume-header__role {
+    font-size: 11pt;
+    color: #444 !important;
+    margin-bottom: 8pt;
+  }
+
+  .resume-contact {
+    gap: 4pt 14pt;
+    margin-bottom: 10pt;
+  }
+
+  .resume-contact__item {
+    color: #333 !important;
+    font-size: 8.5pt;
+  }
+
+  .resume-contact__item svg { display: none; }
+
+  .resume-summary {
+    font-size: 9.5pt;
+    color: #333 !important;
+    line-height: 1.55;
+  }
+
+  .resume-section {
+    margin-bottom: 12pt;
+  }
+
+  .resume-section__title {
+    font-size: 8.5pt;
+    color: #111 !important;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 8pt;
+    padding-bottom: 2pt;
+  }
+
+  .resume-entry {
+    border-left: 2px solid #ddd;
+    padding-left: 10pt;
+    margin-bottom: 10pt;
+  }
+
+  .resume-entry--current {
+    border-left-color: #333;
+  }
+
+  .resume-entry__company {
+    font-size: 10.5pt;
+    color: #111 !important;
+  }
+
+  .resume-entry__tenure {
+    font-size: 8pt;
+    color: #666 !important;
+    margin-bottom: 6pt;
+  }
+
+  .resume-role {
+    margin-bottom: 8pt;
+  }
+
+  .resume-role__title {
+    font-size: 9.5pt;
+    color: #111 !important;
+  }
+
+  .resume-role__dates {
+    font-size: 8pt;
+    color: #666 !important;
+    margin-bottom: 4pt;
+  }
+
+  .resume-bullets {
+    padding-left: 14pt;
+    margin-top: 3pt;
+  }
+
+  .resume-bullets li {
+    font-size: 8.5pt;
+    color: #333 !important;
+    line-height: 1.5;
+    margin-bottom: 2pt;
+  }
+
+  .resume-skills-text {
+    font-size: 9pt;
+    color: #333 !important;
+    line-height: 1.5;
+  }
+
+  .resume-edu__school {
+    color: #111 !important;
+    font-size: 9.5pt;
+  }
+
+  .resume-edu__degree,
+  .resume-edu__year {
+    color: #444 !important;
+    font-size: 8.5pt;
+  }
+
+  .resume-edu {
+    margin-bottom: 6pt;
+  }
+
+  .resume-award {
+    color: #333 !important;
+    font-size: 9pt;
+  }
+
+  /* Prevent page breaks inside entries */
+  .resume-entry,
+  .resume-edu {
+    break-inside: avoid;
+  }
+
+  /* Keep role + first 2 bullets together */
+  .resume-role {
+    break-inside: avoid;
+  }
+
+  @page {
+    margin: 1.5cm 1.8cm;
+    size: A4;
+  }
+}
+
+/* ======== Responsive ======== */
+@media (max-width: 47.99rem) {
+  .resume-page {
+    padding: var(--space-8) var(--space-4) var(--space-12);
+  }
+
+  .resume-header__name {
+    font-size: var(--text-title);
+  }
+
+  .resume-contact {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+}

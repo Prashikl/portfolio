@@ -48,9 +48,11 @@
   <!-- Menu Overlay -->
   <div class="menu-overlay" id="menu-overlay" aria-hidden="true">
     <a href="#work" class="menu-overlay__link">Work</a>
+    <a href="#side-projects" class="menu-overlay__link">Side Projects</a>
     <a href="#experience" class="menu-overlay__link">Experience</a>
     <a href="#philosophy" class="menu-overlay__link">Philosophy</a>
     <a href="#contact" class="menu-overlay__link">Contact</a>
+    <a href="resume.html" class="menu-overlay__link">Resume</a>
     <a href="https://prashik.myportfolio.com/" target="_blank" rel="noopener" class="menu-overlay__link menu-overlay__link--dim">Archived Projects</a>
   </div>
 
@@ -93,7 +95,10 @@
               <span class="work-item__stat"><strong>~60%</strong> faster ordering</span>
               <span class="work-item__stat"><strong>~80%</strong> adoption in 30 days</span>
             </div>
-            <a href="case-studies/mseds-orders.html" class="work-item__link">View Case Study &rarr;</a>
+            <div class="work-item__links">
+              <a href="case-studies/mseds-orders.html" class="work-item__link">View Impact Study &rarr;</a>
+              <a href="case-studies/orders-experience.html" class="work-item__link work-item__link--secondary">View Design Process &rarr;</a>
+            </div>
           </article>
 
           <!-- 2. Commerce Insights -->
@@ -138,6 +143,33 @@
             <span class="work-item__soon">Case study coming soon</span>
           </article>
 
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== SIDE PROJECTS ======== -->
+    <section class="section" id="side-projects" aria-labelledby="side-projects-heading">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__overline">Side Projects</span>
+          <h2 id="side-projects-heading">Beyond the Day Job</h2>
+        </div>
+
+        <div class="work-list reveal-stagger">
+          <article class="work-item reveal">
+            <div class="work-item__header">
+              <span class="work-item__number">05</span>
+              <h3 class="work-item__title">AI Copilot Promptbook &mdash; Domain Expert System</h3>
+            </div>
+            <p class="work-item__summary">Designed and built a structured AI promptbook that turns Copilot into a domain expert &mdash; with evidence-backed operating principles, 15 structured playbooks, 4000+ prompts, and a reference architecture that ensures zero unsourced claims. A systems thinking exercise in AI tool design.</p>
+            <div class="work-item__stats">
+              <span class="work-item__stat"><strong>15</strong> domain playbooks</span>
+              <span class="work-item__stat"><strong>4000+</strong> unique prompts</span>
+              <span class="work-item__stat"><strong>20+</strong> evidence-backed sources</span>
+              <span class="work-item__stat"><strong>0</strong> unsourced claims</span>
+            </div>
+            <a href="case-studies/copilot-promptbook.html" class="work-item__link">View Case Study &rarr;</a>
+          </article>
         </div>
       </div>
     </section>
@@ -391,6 +423,7 @@
           <div style="display: flex; gap: var(--space-8); flex-wrap: wrap;">
             <a href="mailto:prashik.y.lanjewar@gmail.com" class="contact__link">prashik.y.lanjewar@gmail.com</a>
             <a href="https://www.linkedin.com/in/prashiklanjewar/" target="_blank" rel="noopener" class="contact__link">LinkedIn</a>
+            <a href="resume.html" class="contact__link">Resume</a>
             <a href="https://prashik.myportfolio.com/" target="_blank" rel="noopener" class="contact__link">Archived Projects</a>
           </div>
         </div>
@@ -403,6 +436,7 @@
       <ul class="footer__links">
         <li><a href="mailto:prashik.y.lanjewar@gmail.com">Email</a></li>
         <li><a href="https://www.linkedin.com/in/prashiklanjewar/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="resume.html">Resume</a></li>
         <li><a href="https://prashik.myportfolio.com/" target="_blank" rel="noopener">Archived Projects</a></li>
       </ul>
       <p class="footer__copy">&copy; 2026 Prashik Lanjewar. Designer II at Microsoft.</p>

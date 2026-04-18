@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orders Self-Serve &mdash; Design Process &mdash; Prashik Lanjewar</title>
+  <meta name="description" content="Experience case study: The end-to-end design process behind enterprise self-serve ordering on M365 Admin Centre — from discovery through user testing and iteration.">
+  <script>
+    (function(){
+      var t = localStorage.getItem('theme') ||
+              (matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/case-study-experience.css">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <nav class="nav nav--scrolled" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="../index.html" class="nav__brand">Prashik Lanjewar</a>
+      <div class="nav__actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false">Menu</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="menu-overlay" id="menu-overlay" aria-hidden="true">
+    <a href="../index.html#work" class="menu-overlay__link">Work</a>
+    <a href="../index.html#experience" class="menu-overlay__link">Experience</a>
+    <a href="../index.html#philosophy" class="menu-overlay__link">Philosophy</a>
+    <a href="../index.html#contact" class="menu-overlay__link">Contact</a>
+    <a href="https://prashik.myportfolio.com/" target="_blank" rel="noopener" class="menu-overlay__link menu-overlay__link--dim">Archived Projects</a>
+  </div>
+
+  <main id="main">
+    <!-- ===== HERO ===== -->
+    <section class="cs-hero">
+      <div class="container container--narrow">
+        <a href="../index.html#work" class="back-link">&larr; Back to Portfolio</a>
+
+        <div class="reveal">
+          <div class="cs-overline">Design Process &mdash; M365 Admin Centre</div>
+          <h1 class="cs-title">Designing Orders Self&#8209;Serve</h1>
+          <p class="cs-subtitle">How I took enterprise ordering from a manual, operations-heavy workflow to a trusted self-serve experience &mdash; through structured discovery, cognitive walkthroughs, iterative prototyping, and continuous user validation.</p>
+
+          <div class="cs-nda">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Some details are anonymised or generalised due to NDA
+          </div>
+        </div>
+
+        <div class="cs-meta-strip reveal">
+          <div class="cs-meta">
+            <span class="cs-meta__label">Role</span>
+            <span class="cs-meta__value">Design Owner, Orders</span>
+          </div>
+          <div class="cs-meta">
+            <span class="cs-meta__label">Duration</span>
+            <span class="cs-meta__value">Multi-semester programme</span>
+          </div>
+          <div class="cs-meta">
+            <span class="cs-meta__label">Platform</span>
+            <span class="cs-meta__value">M365 Admin Centre</span>
+          </div>
+          <div class="cs-meta">
+            <span class="cs-meta__label">Methods</span>
+            <span class="cs-meta__value">Cogwalks, UAT, Bug-bash</span>
+          </div>
+          <div class="cs-meta">
+            <span class="cs-meta__label">Scope</span>
+            <span class="cs-meta__value">Partner, Ops, Customer</span>
+          </div>
+        </div>
+
+        <div class="cs-signal-strip reveal">
+          <div class="cs-signal">
+            <div class="cs-signal__name">Strategic Reframing</div>
+            <div class="cs-signal__proof">Reframed the brief from speed &rarr; trust</div>
+          </div>
+          <div class="cs-signal cs-signal--purple">
+            <div class="cs-signal__name">Research Rigour</div>
+            <div class="cs-signal__proof">6+ cogwalks testing confidence, not clicks</div>
+          </div>
+          <div class="cs-signal">
+            <div class="cs-signal__name">Cross-functional Influence</div>
+            <div class="cs-signal__proof">Aligned PM, Eng, Ops &amp; Leadership</div>
+          </div>
+          <div class="cs-signal cs-signal--yellow">
+            <div class="cs-signal__name">Scope Judgement</div>
+            <div class="cs-signal__proof">Deprioritised features to invest in trust</div>
+          </div>
+          <div class="cs-signal cs-signal--green">
+            <div class="cs-signal__name">Quality Ownership</div>
+            <div class="cs-signal__proof">Bug-bash as a design-quality gate</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="cs-body">
+      <div class="container container--narrow">
+
+        <!-- ======== 1. SETTING THE STAGE ======== -->
+        <section class="cs-section reveal">
+          <div class="cs-section__label">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0l1.5 5.5L15 8l-5.5 1.5L8 15l-1.5-5.5L1 8l5.5-1.5z"/></svg>
+            Setting the Stage
+          </div>
+          <h2>Enterprise ordering is not checkout UX</h2>
+          <p>Before I could design anything, I needed to understand what ordering actually means in enterprise commerce. This isn&rsquo;t an e-commerce cart. It&rsquo;s a high-stakes system where pricing must be enrolment-accurate, eligibility rules must be enforced, compliance paths can&rsquo;t be broken, and a single mistake creates downstream instability across billing, provisioning, and audit.</p>
+          <p>The existing workflow was manual and fragmented. Partners called operations teams. Operations teams keyed orders into legacy tools. Customers had zero visibility into what was happening. The organisation needed a self-serve path &mdash; but one that preserved every constraint the manual process enforced.</p>
+
+          <div class="cs-grid-2" style="margin-top: var(--space-6);">
+            <div class="cs-card">
+              <div class="cs-card__title">Before: Manual &amp; operations-dependent</div>
+              <ul>
+                <li>Partners relied on phone/email to place orders</li>
+                <li>Operations teams manually entered data into POET/VLCT</li>
+                <li>No pricing visibility until after order submission</li>
+                <li>Average order cycle measured in <strong>days, not minutes</strong></li>
+              </ul>
+            </div>
+            <div class="cs-card">
+              <div class="cs-card__title">After: Self-serve with trust built in</div>
+              <ul>
+                <li>Partners and customers create orders independently</li>
+                <li>Upfront eligibility checks and real-time pricing</li>
+                <li>Quote previews as auditable, high-trust artefacts</li>
+                <li>Order creation collapsed to <strong>minutes</strong></li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 style="margin-top: var(--space-8);">Constraints I Designed Within</h3>
+          <div class="cs-constraints">
+            <div class="cs-constraint">12 order types, each with unique compliance rules</div>
+            <div class="cs-constraint">Multi-semester timeline with shifting priorities</div>
+            <div class="cs-constraint">Legacy tool retirement deadline (POET/VLCT)</div>
+            <div class="cs-constraint">Grade-C accessibility requirement</div>
+            <div class="cs-constraint">NDA-restricted research access</div>
+            <div class="cs-constraint">3 distinct personas with competing needs</div>
+          </div>
+        </section>
+        <section class="cs-section">
+          <div class="cs-section__label reveal">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0l1.5 5.5L15 8l-5.5 1.5L8 15l-1.5-5.5L1 8l5.5-1.5z"/></svg>
+            The Design Process
+          </div>
+          <h2 class="reveal">Six phases from ambiguity to launch</h2>
+          <p>This wasn&rsquo;t a linear double diamond. Enterprise design at this scale requires constant negotiation between what&rsquo;s ideal, what&rsquo;s feasible, and what&rsquo;s safe. Here&rsquo;s how I structured the work.</p>
+
+          <div class="cs-process">
+
+            <!-- Phase 1: Discover -->
+            <div class="cs-process-step reveal">
+              <div class="cs-process-step__marker cs-process-step__marker--discover">1</div>
+              <div class="cs-process-step__body">
+                <h3>I sat with ops teams before I opened Figma</h3>
+                <div class="cs-step-duration">Weeks 1&ndash;3</div>
+                <p>I started by mapping the existing operational workflow end-to-end. Not from documentation &mdash; from sitting with operations teams, watching them key orders into POET, and asking <em>&ldquo;why do you do it this way?&rdquo;</em> at every step. I needed to understand the invisible constraints before I could design around them.</p>
+                <p>I synthesised the Plan of Record&rsquo;s contractual and pricing constraints into structured design principles. This turned a 60+ page programme document into actionable guardrails I could reference throughout the project.</p>
+                <ul>
+                  <li>Mapped current-state workflows across Partner, OSC/ROC, and Customer personas</li>
+                  <li>Identified 12 distinct order types with unique compliance requirements</li>
+                  <li>Documented pricing rules, eligibility logic, and audit requirements</li>
+                  <li>Interviewed operations staff to surface tacit knowledge not in any spec</li>
+                </ul>
+
+                <!-- Journey Emotion Map -->
+                <div class="cs-emotion-map">
+                  <div class="cs-emotion-map__label">What discovery revealed: partner emotional journey (old workflow)</div>
+                  <div class="cs-emotion-map__track">
+                    <div class="cs-emotion-node cs-emotion-node--mid">
+                      <div class="cs-emotion-node__dot cs-emotion-node__dot--gray"></div>
+                      <div class="cs-emotion-node__label">Uncertain</div>
+                      <div class="cs-emotion-node__step">Receive order request</div>
+                    </div>
+                    <div class="cs-emotion-node cs-emotion-node--low">
+                      <div class="cs-emotion-node__dot cs-emotion-node__dot--red"></div>
+                      <div class="cs-emotion-node__label">Frustrated</div>
+                      <div class="cs-emotion-node__step">Call ops for eligibility</div>
+                    </div>
+                    <div class="cs-emotion-node cs-emotion-node--low">
+                      <div class="cs-emotion-node__dot cs-emotion-node__dot--red"></div>
+                      <div class="cs-emotion-node__label">Anxious</div>
+                      <div class="cs-emotion-node__step">Wait for pricing</div>
+                    </div>
+                    <div class="cs-emotion-node cs-emotion-node--low">
+                      <div class="cs-emotion-node__dot cs-emotion-node__dot--yellow"></div>
+                      <div class="cs-emotion-node__label">Blind trust</div>
+                      <div class="cs-emotion-node__step">Submit without preview</div>
+                    </div>
+                    <div class="cs-emotion-node cs-emotion-node--mid">
+                      <div class="cs-emotion-node__dot cs-emotion-node__dot--yellow"></div>
+                      <div class="cs-emotion-node__label">Hoping</div>
+                      <div class="cs-emotion-node__step">Wait for confirmation</div>
+                    </div>
+                    <div class="cs-emotion-node cs-emotion-node--mid">
+                      <div class="cs-emotion-node__dot cs-emotion-node__dot--green"></div>
+                      <div class="cs-emotion-node__label">Relief</div>
+                      <div class="cs-emotion-node__step">Order confirmed (days later)</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="cs-method-tags">
+                  <span class="cs-method-tag cs-method-tag--primary">Contextual Inquiry</span>
+                  <span class="cs-method-tag">Workflow Mapping</span>
+                  <span class="cs-method-tag">Stakeholder Interviews</span>
+                  <span class="cs-method-tag">Document Analysis</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Phase 2: Define -->
+            <div class="cs-process-step reveal">
+              <div class="cs-process-step__marker cs-process-step__marker--define">2</div>
+              <div class="cs-process-step__body">
+                <h3>The brief said speed. The real problem was trust.</h3>
+                <div class="cs-step-duration">Weeks 3&ndash;5</div>
+                <p>This is where the most important design decision happened. The brief said &ldquo;make ordering faster.&rdquo; But after discovery, I realised speed wasn&rsquo;t the real problem. <strong>Trust was.</strong></p>
+                <p>Enterprise customers didn&rsquo;t need faster checkout. They needed confidence that their orders were correct, compliant, and auditable. Partners were slow not because the UI was bad, but because they couldn&rsquo;t verify pricing, eligibility, or compliance without calling someone.</p>
+                <p>I reframed the problem statement from <em>&ldquo;How do we speed up ordering?&rdquo;</em> to <em>&ldquo;How do we give users enough confidence to act independently?&rdquo;</em></p>
+
+                <div class="cs-insight">
+                  <div class="cs-insight__label">Key Reframe</div>
+                  <p>Self-serve in enterprise is not a speed problem. It&rsquo;s a <strong>trust problem</strong>. Users won&rsquo;t self-serve if they can&rsquo;t verify outcomes before committing. This single insight shaped every downstream decision.</p>
+                </div>
+
+                <div class="cs-grid-2">
+                  <div class="cs-card">
+                    <div class="cs-card__title">Design Principles I Established</div>
+                    <ul>
+                      <li><strong>Trust before speed</strong> &mdash; Surface constraints upfront, not after errors</li>
+                      <li><strong>Prevent, don&rsquo;t recover</strong> &mdash; Eligibility checks before commitment</li>
+                      <li><strong>Transparency as UX</strong> &mdash; Pricing and compliance always visible</li>
+                      <li><strong>Confidence to act</strong> &mdash; Every screen answers &ldquo;Am I doing this right?&rdquo;</li>
+                    </ul>
+                  </div>
+                  <div class="cs-card">
+                    <div class="cs-card__title">Personas Prioritised</div>
+                    <ul>
+                      <li><strong>Partners</strong> &mdash; Most frequent users, time-pressured, need bulk efficiency</li>
+                      <li><strong>OSC/ROC Ops</strong> &mdash; Complex scenarios, compliance-critical</li>
+                      <li><strong>Enterprise Customers</strong> &mdash; Low frequency, high stakes, need guided confidence</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="cs-method-tags">
+                  <span class="cs-method-tag cs-method-tag--primary">Problem Reframing</span>
+                  <span class="cs-method-tag">Design Principles</span>
+                  <span class="cs-method-tag">Persona Prioritisation</span>
+                  <span class="cs-method-tag">Jobs-to-be-Done</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Phase 3: Design -->
+            <div class="cs-process-step reveal">
+              <div class="cs-process-step__marker cs-process-step__marker--design">3</div>
+              <div class="cs-process-step__body">
+                <h3>I designed for constraint visibility, not feature richness</h3>
+                <div class="cs-step-duration">Weeks 5&ndash;10</div>
+                <p>I designed the full end-to-end flow: eligibility &rarr; pricing &rarr; quote &rarr; PO &rarr; submission &rarr; management. But the key decisions weren&rsquo;t about layout or components. They were about <strong>where to surface information and where to enforce constraints</strong>.</p>
+
+                <h3>Information Architecture Decisions</h3>
+                <p>I structured the ordering flow around progressive disclosure of constraints. Each step reveals only what&rsquo;s needed to make the next decision confidently:</p>
+                <ol>
+                  <li><strong>Entry point</strong> &mdash; Clear paths: &ldquo;Create order&rdquo; and &ldquo;View orders&rdquo; replaced fragmented navigation</li>
+                  <li><strong>Contract selection</strong> &mdash; Compliance status, anniversary dates, and coverage windows visible before committing</li>
+                  <li><strong>Product catalogue</strong> &mdash; Inline editing with real-time subtotals, multi-SKU search, and bulk selection</li>
+                  <li><strong>Cart &amp; review</strong> &mdash; Full pricing transparency, quote downloads as auditable artefacts, split-order tools</li>
+                  <li><strong>Order management</strong> &mdash; Proactive status, draft management, auto-deletion notices</li>
+                </ol>
+
+                <div class="cs-decision">
+                  <div class="cs-decision__label">Critical Design Decision</div>
+                  <p>I chose to surface eligibility and pricing <strong>upfront, before order commitment</strong> &mdash; not as validation after submission. This meant more engineering complexity on the front end. But it prevented errors instead of recovering from them. This single decision became the <strong>primary driver of the ~60% time reduction</strong>.</p>
+                </div>
+
+                <h3>Interaction Design Details</h3>
+                <ul>
+                  <li><strong>Multi-PO support</strong> &mdash; Submit up to 50 orders at once, reducing repetitive workflows</li>
+                  <li><strong>Bulk editing</strong> &mdash; Table-level edits for quantity and pricing across multiple SKUs</li>
+                  <li><strong>Save as draft</strong> &mdash; A trust pattern: users can pause without losing work</li>
+                  <li><strong>Quote preview downloads</strong> &mdash; Treated as high-trust artefacts, not intermediate steps</li>
+                  <li><strong>Proactive guidance</strong> &mdash; Contextual messages replacing ambiguous terms (&ldquo;contract&rdquo; &rarr; &ldquo;enrolment&rdquo;)</li>
+                </ul>
+
+                <div class="cs-method-tags">
+                  <span class="cs-method-tag cs-method-tag--primary">Information Architecture</span>
+                  <span class="cs-method-tag">Flow Design</span>
+                  <span class="cs-method-tag">Progressive Disclosure</span>
+                  <span class="cs-method-tag">Content Design</span>
+                  <span class="cs-method-tag">Design Walkthroughs</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Phase 4: Test — Cogwalks -->
+            <div class="cs-process-step reveal">
+              <div class="cs-process-step__marker cs-process-step__marker--test">4</div>
+              <div class="cs-process-step__body">
+                <h3>I tested confidence, not just task completion</h3>
+                <div class="cs-step-duration">Weeks 8&ndash;14 (overlapping with design)</div>
+                <p>I led and participated in multiple rounds of cognitive walkthroughs with partners and ROC/OSC operations teams. These weren&rsquo;t standard usability tests. I was testing for <strong>confidence, not just task completion</strong>.</p>
+
+                <h3>How I Structured the Cogwalks</h3>
+                <div class="cs-grid-2">
+                  <div class="cs-card">
+                    <div class="cs-card__title">Setup &amp; Recruitment</div>
+                    <p>Recruited partners with varying order complexity (simple new orders, bulk step-ups, multi-PO scenarios). Mixed experience levels &mdash; power users alongside infrequent users. <strong>6 partner sessions across 2 rounds</strong>, plus dedicated ROC/OSC walkthroughs.</p>
+                  </div>
+                  <div class="cs-card">
+                    <div class="cs-card__title">Protocol &amp; What I Measured</div>
+                    <p>Think-aloud protocol with scenario-based tasks. I measured not just task success, but <strong>hesitation points</strong>, <strong>confidence levels</strong> (self-reported), and <strong>moments of second-guessing</strong>. I wanted to know where users lost trust in what the system was showing them.</p>
+                  </div>
+                </div>
+
+                <h3>What the Cogwalks Revealed</h3>
+                <div class="cs-grid-2" style="margin-top: var(--space-4);">
+                  <div class="cs-finding">
+                    <div class="cs-finding__header">
+                      <div class="cs-finding__type cs-finding__type--pain">Pain Point</div>
+                      <p>Partners hesitated at contract selection &mdash; they couldn&rsquo;t tell which enrolments were eligible without checking externally</p>
+                    </div>
+                    <div class="cs-finding__action">
+                      <div class="cs-finding__action-label">Design Response</div>
+                      <p>Surfaced compliance status, coverage windows, and anniversary dates directly in the selection table</p>
+                    </div>
+                  </div>
+
+                  <div class="cs-finding">
+                    <div class="cs-finding__header">
+                      <div class="cs-finding__type cs-finding__type--pain">Pain Point</div>
+                      <p>Users wanted to verify pricing before committing but had no way to preview the full quote</p>
+                    </div>
+                    <div class="cs-finding__action">
+                      <div class="cs-finding__action-label">Design Response</div>
+                      <p>Introduced downloadable quote preview as an auditable artefact &mdash; this became the highest-trust feature in the flow</p>
+                    </div>
+                  </div>
+
+                  <div class="cs-finding">
+                    <div class="cs-finding__header">
+                      <div class="cs-finding__type cs-finding__type--delight">Delighter</div>
+                      <p>The split-order tool and multi-PO submission were called out as &ldquo;game changers&rdquo; for high-volume partners</p>
+                    </div>
+                    <div class="cs-finding__action">
+                      <div class="cs-finding__action-label">Validation</div>
+                      <p>Confirmed bulk editing as a first-class flow, not a bolt-on &mdash; increased priority in the dev roadmap</p>
+                    </div>
+                  </div>
+
+                  <div class="cs-finding">
+                    <div class="cs-finding__header">
+                      <div class="cs-finding__type cs-finding__type--insight">Insight</div>
+                      <p>The term &ldquo;contract&rdquo; caused confusion &mdash; partners used &ldquo;enrolment&rdquo; in their mental model</p>
+                    </div>
+                    <div class="cs-finding__action">
+                      <div class="cs-finding__action-label">Design Response</div>
+                      <p>Replaced all instances of &ldquo;contract&rdquo; with &ldquo;enrolment&rdquo; &mdash; reducing downstream clarification tickets</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="cs-quote" style="margin-top: var(--space-6);">
+                  <p>&ldquo;My head is spinning. This split works just grand, it&rsquo;s awesome.&rdquo;</p>
+                  <cite>Partner, Cognitive Walkthrough &mdash; Round 2</cite>
+                </div>
+
+                <div class="cs-quote">
+                  <p>&ldquo;This will make our lives super easy.&rdquo;</p>
+                  <cite>Partner, Cognitive Walkthrough &mdash; Round 1</cite>
+                </div>
+
+                <!-- Finding → Decision → Outcome traceability -->
+                <h3 style="margin-top: var(--space-8);">Finding &rarr; Decision &rarr; Outcome</h3>
+                <div class="cs-trace-flow">
+                  <div class="cs-trace-row">
+                    <div class="cs-trace-cell cs-trace-cell--finding">
+                      <div class="cs-trace-cell__label">Finding</div>
+                      Partners can&rsquo;t verify eligibility without calling ops
+                    </div>
+                    <div class="cs-trace-arrow">&rarr;</div>
+                    <div class="cs-trace-cell cs-trace-cell--decision">
+                      <div class="cs-trace-cell__label">Decision</div>
+                      Surface compliance status upfront in selection table
+                    </div>
+                    <div class="cs-trace-arrow">&rarr;</div>
+                    <div class="cs-trace-cell cs-trace-cell--outcome">
+                      <div class="cs-trace-cell__label">Outcome</div>
+                      <strong style="color: var(--accent-metric);">~60%</strong> faster ordering
+                    </div>
+                  </div>
+                  <div class="cs-trace-row">
+                    <div class="cs-trace-cell cs-trace-cell--finding">
+                      <div class="cs-trace-cell__label">Finding</div>
+                      No way to preview full quote before committing
+                    </div>
+                    <div class="cs-trace-arrow">&rarr;</div>
+                    <div class="cs-trace-cell cs-trace-cell--decision">
+                      <div class="cs-trace-cell__label">Decision</div>
+                      Downloadable quote as auditable trust artefact
+                    </div>
+                    <div class="cs-trace-arrow">&rarr;</div>
+                    <div class="cs-trace-cell cs-trace-cell--outcome">
+                      <div class="cs-trace-cell__label">Outcome</div>
+                      <strong style="color: var(--accent-metric);">~80%</strong> adoption in 30 days
+                    </div>
+                  </div>
+                  <div class="cs-trace-row">
+                    <div class="cs-trace-cell cs-trace-cell--finding">
+                      <div class="cs-trace-cell__label">Finding</div>
+                      Bulk partners need multi-order submission
+                    </div>
+                    <div class="cs-trace-arrow">&rarr;</div>
+                    <div class="cs-trace-cell cs-trace-cell--decision">
+                      <div class="cs-trace-cell__label">Decision</div>
+                      Multi-PO as first-class flow, up to 50 orders
+                    </div>
+                    <div class="cs-trace-arrow">&rarr;</div>
+                    <div class="cs-trace-cell cs-trace-cell--outcome">
+                      <div class="cs-trace-cell__label">Outcome</div>
+                      <strong style="color: var(--accent-metric);">~70%</strong> agility boost
+                    </div>
+                  </div>
+                </div>
+
+                <div class="cs-method-tags">
+                  <span class="cs-method-tag cs-method-tag--primary">Cognitive Walkthroughs</span>
+                  <span class="cs-method-tag">Think-Aloud Protocol</span>
+                  <span class="cs-method-tag">Confidence Testing</span>
+                  <span class="cs-method-tag">Scenario-Based Tasks</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Phase 5: Iterate -->
+            <div class="cs-process-step reveal">
+              <div class="cs-process-step__marker cs-process-step__marker--iterate">5</div>
+              <div class="cs-process-step__body">
+                <h3>Four iterations the cogwalks forced</h3>
+                <div class="cs-step-duration">Weeks 12&ndash;18</div>
+                <p>I didn&rsquo;t treat cogwalk findings as a backlog to triage. I used them to pressure-test every assumption in the design. Some findings confirmed my direction. Others forced significant rework. Here&rsquo;s what changed.</p>
+
+                <div class="cs-grid-2">
+                  <div class="cs-card">
+                    <div class="cs-card__title">Iteration 1: Contract Selection Rework</div>
+                    <p>Partners couldn&rsquo;t assess eligibility at a glance. I redesigned the selection table to surface compliance status, anniversary dates, and coverage windows <strong>inline</strong> &mdash; removing the need to cross-reference external tools.</p>
+                  </div>
+                  <div class="cs-card">
+                    <div class="cs-card__title">Iteration 2: Cart as Trust Surface</div>
+                    <p>The cart was initially a summary screen. After cogwalks, I redesigned it as a <strong>trust verification step</strong> &mdash; with separate sections for new products and reconciliations, full pricing transparency, and downloadable quotes.</p>
+                  </div>
+                  <div class="cs-card">
+                    <div class="cs-card__title">Iteration 3: Content &amp; Language Audit</div>
+                    <p>Replaced &ldquo;contract&rdquo; with &ldquo;enrolment&rdquo; across the entire flow. Rewrote error messages to be prescriptive, not descriptive. Added contextual guidance where partners previously second-guessed the system.</p>
+                  </div>
+                  <div class="cs-card">
+                    <div class="cs-card__title">Iteration 4: Proactive Order Management</div>
+                    <p>Added draft auto-deletion notices, submitted-order filtering, and contract-level grouping. Designed the management view as a <strong>confidence surface</strong>, not just a list.</p>
+                  </div>
+                </div>
+
+                <!-- Before / After diff -->
+                <div class="cs-diff">
+                  <div class="cs-diff__col cs-diff__col--before">
+                    <div class="cs-diff__label">Before iteration</div>
+                    <ul>
+                      <li>&ldquo;Contract&rdquo; terminology confused partners</li>
+                      <li>Cart was a passive summary screen</li>
+                      <li>No eligibility visibility until submission error</li>
+                      <li>Error messages described problems, didn&rsquo;t guide action</li>
+                    </ul>
+                  </div>
+                  <div class="cs-diff__col cs-diff__col--after">
+                    <div class="cs-diff__label">After iteration</div>
+                    <ul>
+                      <li>&ldquo;Enrolment&rdquo; matched partner mental model</li>
+                      <li>Cart redesigned as a trust verification surface</li>
+                      <li>Compliance status visible inline at selection</li>
+                      <li>Error messages prescriptive: told users what to do next</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="cs-decision">
+                  <p>I chose to <strong>deprioritise advanced filtering</strong> in Phase 1 to invest in quote preview and pricing transparency. This was a deliberate trade-off: partners could manage without filters, but they couldn&rsquo;t self-serve without pricing confidence. The data validated this &mdash; quote downloads became the highest-used feature within 30 days.</p>
+                </div>
+
+                <div class="cs-method-tags">
+                  <span class="cs-method-tag cs-method-tag--primary">Design Iteration</span>
+                  <span class="cs-method-tag">Scope Trade-offs</span>
+                  <span class="cs-method-tag">Content Audit</span>
+                  <span class="cs-method-tag">Cross-team Alignment</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Phase 6: Ship & Validate -->
+            <div class="cs-process-step reveal">
+              <div class="cs-process-step__marker cs-process-step__marker--ship">6</div>
+              <div class="cs-process-step__body">
+                <h3>I turned bug-bash into a design-quality gate</h3>
+                <div class="cs-step-duration">Weeks 16&ndash;22</div>
+                <p>I owned fit-and-finish through bug-bash, UAT walkthroughs, and accessibility validation. This wasn&rsquo;t a handoff phase &mdash; it was a design-quality gate.</p>
+
+                <h3>Bug-Bash as Design Practice</h3>
+                <p>I ran design-focused bug-bashes treating every issue through a trust lens. I blocked three issues that engineering had marked as low-priority but would have undermined quote confidence at GA. I logged UX-critical issues (validation gaps, messaging inconsistencies, affordance problems) and tracked each to resolution.</p>
+
+                <h3>UAT as a Research Instrument</h3>
+                <p>I used UAT feedback as design signals, not just defect reports. Pricing discrepancies, currency formatting issues, and eligibility edge cases all fed back into fast-follow prioritisation. This approach turned a compliance gate into a <strong>continuous learning loop</strong>.</p>
+
+                <div class="cs-grid-2">
+                  <div class="cs-card">
+                    <div class="cs-card__title">Accessibility</div>
+                    <p>Ensured Orders + Credits GA delivered with <strong>Accessibility Grade-C compliance</strong> met. Keyboard navigation, screen reader compatibility, and colour contrast validated across all order flows.</p>
+                  </div>
+                  <div class="cs-card">
+                    <div class="cs-card__title">Post-Launch Monitoring</div>
+                    <p>Tracked adoption velocity, completion rates, and support ticket patterns in the first 30 days. <strong>~80% adoption within 30 days</strong> validated the trust-first approach &mdash; users self-served immediately, not gradually.</p>
+                  </div>
+                </div>
+
+                <div class="cs-method-tags">
+                  <span class="cs-method-tag cs-method-tag--primary">UAT Walkthroughs</span>
+                  <span class="cs-method-tag">Bug-Bash</span>
+                  <span class="cs-method-tag">Accessibility Audit</span>
+                  <span class="cs-method-tag">Post-Launch Analytics</span>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- end .cs-process -->
+        </section>
+
+        <hr class="cs-divider">
+
+        <!-- ======== NAVIGATING STAKEHOLDERS ======== -->
+        <section class="cs-section reveal">
+          <div class="cs-section__label">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0l1.5 5.5L15 8l-5.5 1.5L8 15l-1.5-5.5L1 8l5.5-1.5z"/></svg>
+            Navigating Stakeholders
+          </div>
+          <h2>Influence without authority</h2>
+          <p>Senior design work isn&rsquo;t just about making the right decisions &mdash; it&rsquo;s about getting others to trust and act on them. Here are four moments where influence shaped outcomes.</p>
+
+          <div class="cs-grid-2">
+            <div class="cs-stakeholder-card">
+              <div class="cs-stakeholder-card__scenario">Engineering Alignment</div>
+              <div class="cs-stakeholder-card__tension">Upfront eligibility meant more front-end complexity</div>
+              <p>Engineering pushed back on surfacing compliance checks before order commitment &mdash; it added API calls and loading states. I didn&rsquo;t just argue for better UX. I <strong>showed them the downstream cost</strong>: every post-submission error triggered a support ticket, an ops intervention, and a trust loss. The upfront check was cheaper than the recovery path. They agreed.</p>
+            </div>
+
+            <div class="cs-stakeholder-card">
+              <div class="cs-stakeholder-card__scenario">PM Negotiation</div>
+              <div class="cs-stakeholder-card__tension">Requirements shifted mid-sprint. I used design principles as the anchor.</div>
+              <p>When PM wanted to add a feature that conflicted with the &ldquo;prevent, don&rsquo;t recover&rdquo; principle, I didn&rsquo;t block it &mdash; I <strong>reframed the ask</strong> through the lens of the principles we&rsquo;d agreed on. We found a solution that met the business need without breaking the trust model. The principles became the neutral ground.</p>
+            </div>
+
+            <div class="cs-stakeholder-card">
+              <div class="cs-stakeholder-card__scenario">Cross-Team Alignment</div>
+              <div class="cs-stakeholder-card__tension">PM, Eng, and Ops were drifting into internal priorities</div>
+              <p>I ran a 45-minute working session that got PM, Engineering, and Ops aligned on the next sprint&rsquo;s scope. Every time the conversation drifted to internal priorities, I <strong>pulled it back to the user&rsquo;s perspective</strong> &mdash; what the partner would experience, not what was easiest to build. We left with a shared decision, not a compromise.</p>
+            </div>
+
+            <div class="cs-stakeholder-card">
+              <div class="cs-stakeholder-card__scenario">Executive Narrative</div>
+              <div class="cs-stakeholder-card__tension">Design needed to be visible at leadership level</div>
+              <p>I deliberately built the before/after narrative for LT and exec demos. I didn&rsquo;t present self-serve as a UI improvement &mdash; I <strong>positioned it as a scale enabler</strong>. Reduced ops cost, faster deal cycles, legacy retirement. The acclaim from LT wasn&rsquo;t accidental. It was a design decision about how to frame the work.</p>
+            </div>
+          </div>
+        </section>
+
+        <hr class="cs-divider">
+
+        <!-- ======== 3. USER TESTING DEEP DIVE ======== -->
+        <section class="cs-section reveal">
+          <div class="cs-section__label">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0l1.5 5.5L15 8l-5.5 1.5L8 15l-1.5-5.5L1 8l5.5-1.5z"/></svg>
+            User Testing Summary
+          </div>
+          <h2>What testing taught me that the spec couldn&rsquo;t</h2>
+          <p>Across cogwalks, UAT, and post-launch analytics, three themes consistently emerged. These weren&rsquo;t in the original requirements. They came from watching real users interact with the system.</p>
+
+          <div class="cs-test-matrix">
+            <div class="cs-test-result">
+              <div class="cs-test-result__metric">6+</div>
+              <div class="cs-test-result__label">Partner cogwalk sessions across 2 rounds</div>
+            </div>
+            <div class="cs-test-result">
+              <div class="cs-test-result__metric">3</div>
+              <div class="cs-test-result__label">Trust-breaking bugs I blocked before GA</div>
+            </div>
+            <div class="cs-test-result">
+              <div class="cs-test-result__metric">~80%</div>
+              <div class="cs-test-result__label">Adoption in 30 days post-launch</div>
+            </div>
+          </div>
+
+          <h3>Theme 1: Confidence outweighs convenience</h3>
+          <p>Users consistently chose slower paths when they felt more confident about the outcome. The &ldquo;review and download quote&rdquo; step added time to the flow &mdash; but partners used it on nearly every order. Removing it would have been faster but less trusted.</p>
+
+          <h3>Theme 2: Language shapes behaviour</h3>
+          <p>Changing &ldquo;contract&rdquo; to &ldquo;enrolment&rdquo; didn&rsquo;t just fix confusion &mdash; it changed how partners navigated the flow. Terminology that matched their mental model reduced hesitation at every step. Content design was as impactful as interaction design.</p>
+
+          <h3>Theme 3: Error prevention builds more trust than error recovery</h3>
+          <p>Surfacing eligibility upfront didn&rsquo;t just prevent mistakes. It changed the user&rsquo;s posture from cautious to confident. When users know they <em>can&rsquo;t</em> make certain errors, they move faster and engage more deeply with the features that matter.</p>
+        </section>
+
+        <hr class="cs-divider">
+
+        <!-- ======== 4. REFLECTIONS ======== -->
+        <section class="cs-section reveal">
+          <div class="cs-section__label">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0l1.5 5.5L15 8l-5.5 1.5L8 15l-1.5-5.5L1 8l5.5-1.5z"/></svg>
+            Reflections
+          </div>
+          <h2>What I&rsquo;d do differently and what I&rsquo;d keep</h2>
+
+          <div class="cs-reflection">
+            <h3 style="font-family: var(--font-heading); font-size: var(--text-subtitle); font-weight: 700; color: var(--text-primary); margin: 0 0 var(--space-4);">If I did this again</h3>
+
+            <p style="font-size: var(--text-body-sm); color: var(--text-secondary); line-height: var(--leading-body); margin-bottom: var(--space-4);"><strong style="color: #F87171;">A moment I was wrong.</strong> My first cart design was a passive summary screen. I thought it was clean and efficient. Cogwalks proved otherwise &mdash; partners didn&rsquo;t trust what they couldn&rsquo;t verify. I had to rework the entire cart into a trust verification step with separate sections, downloadable quotes, and full pricing transparency. The rework was significant, but it became the highest-trust surface in the entire flow.</p>
+
+            <p style="font-size: var(--text-body-sm); color: var(--text-secondary); line-height: var(--leading-body); margin-bottom: var(--space-4);"><strong style="color: var(--accent-ai);">A bias I discovered.</strong> I was unconsciously designing for power users (high-volume partners) and nearly overlooked the infrequent enterprise customer who orders once a quarter. Cogwalk round 2 caught this &mdash; a first-time user couldn&rsquo;t figure out contract selection because I&rsquo;d assumed familiarity with enrolment structures. I added contextual guidance that helped both personas without slowing down power users.</p>
+
+            <p style="font-size: var(--text-body-sm); color: var(--text-secondary); line-height: var(--leading-body); margin-bottom: var(--space-4);"><strong style="color: var(--accent-metric);">What changed permanently.</strong> Bug-bash as design practice is now something I advocate for on every project. Before this project, fit-and-finish was treated as a QA phase. I turned it into a design-quality gate &mdash; catching three trust-breaking issues that engineering had marked as low-priority. This approach is now part of how I work, not just how I worked here.</p>
+
+            <p style="font-size: var(--text-body-sm); color: var(--text-secondary); line-height: var(--leading-body); margin-bottom: 0;"><strong style="color: var(--accent-secure);">A trade-off that still sits with me.</strong> I chose to deprioritise advanced filtering in Phase 1 to invest in quote preview and pricing transparency. The data validated the call &mdash; quote downloads became the most-used feature. But some partners felt the gap, and I heard it in round 2 cogwalks. I&rsquo;d invest in a lightweight filter earlier in Phase 2 if I did it again. Not every right decision feels clean.</p>
+          </div>
+        </section>
+
+        <hr class="cs-divider">
+
+        <!-- ======== 5. VIEW THE IMPACT CASE STUDY ======== -->
+        <section class="cs-section reveal">
+          <div class="cs-section__label">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0l1.5 5.5L15 8l-5.5 1.5L8 15l-1.5-5.5L1 8l5.5-1.5z"/></svg>
+            Related
+          </div>
+          <h2>See the business impact</h2>
+          <p>This case study focused on the design process. To see the measurable outcomes, metrics, and decision-to-outcome mapping, read the impact case study.</p>
+          <a href="mseds-orders.html" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: var(--accent-primary); color: #fff; border-radius: var(--border-radius-sm); font-weight: 600; font-size: var(--text-body-sm); text-decoration: none; transition: all var(--duration-base) var(--ease-out);">View Impact Case Study &rarr;</a>
+        </section>
+
+        <!-- Back to portfolio -->
+        <div style="text-align: center; margin-top: var(--space-16);" class="reveal">
+          <a href="../index.html#work" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border: 1px solid var(--border-subtle); color: var(--text-secondary); border-radius: var(--border-radius-sm); font-weight: 500; font-size: var(--text-body-sm); text-decoration: none; transition: all var(--duration-base) var(--ease-out);">&larr; Back to Portfolio</a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <ul class="footer__links">
+        <li><a href="mailto:prashik.y.lanjewar@gmail.com">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/prashiklanjewar/" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+      <p class="footer__copy">&copy; 2026 Prashik Lanjewar. Designer II at Microsoft.</p>
+    </div>
+  </footer>
+
+  <script src="../js/theme.js" defer></script>
+  <script src="../js/reveal.js" defer></script>
+</body>
+</html>

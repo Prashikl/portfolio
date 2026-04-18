@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Copilot Promptbook &mdash; Case Study &mdash; Prashik Lanjewar</title>
+  <meta name="description" content="How I designed a structured AI promptbook that turns Copilot into a domain expert — with evidence-backed principles, playbooks, and thousands of prompts.">
+  <script>
+    (function(){
+      var t = localStorage.getItem('theme') ||
+              (matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/case-study-experience.css">
+  <link rel="stylesheet" href="../css/case-study-promptbook.css">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <nav class="nav nav--scrolled" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="../index.html" class="nav__brand">Prashik Lanjewar</a>
+      <div class="nav__actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false">Menu</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="menu-overlay" id="menu-overlay" aria-hidden="true">
+    <a href="../index.html#work" class="menu-overlay__link">Work</a>
+    <a href="../index.html#side-projects" class="menu-overlay__link">Side Projects</a>
+    <a href="../index.html#experience" class="menu-overlay__link">Experience</a>
+    <a href="../index.html#philosophy" class="menu-overlay__link">Philosophy</a>
+    <a href="../index.html#contact" class="menu-overlay__link">Contact</a>
+    <a href="https://prashik.myportfolio.com/" target="_blank" rel="noopener" class="menu-overlay__link menu-overlay__link--dim">Archived Projects</a>
+  </div>
+
+  <main id="main">
+    <!-- ===== HERO ===== -->
+    <section class="cs-hero">
+      <div class="container container--narrow">
+        <a href="../index.html#side-projects" class="back-link">&larr; Back to Portfolio</a>
+
+        <div class="reveal">
+          <div class="cs-overline">Side Project &mdash; AI Systems Design</div>
+          <h1 class="cs-title">Designing a Domain Expert System for&nbsp;Copilot</h1>
+          <p class="cs-subtitle">I designed a structured promptbook that turns Copilot into a reliable domain expert &mdash; with evidence-backed operating principles, layered playbooks, and a reference architecture that ensures every recommendation is grounded in published standards.</p>
+        </div>
+
+        <div class="cs-meta-strip reveal">
+          <div class="cs-meta">
+            <span class="cs-meta__label">Role</span>
+            <span class="cs-meta__value">Creator &amp; System Designer</span>
+          </div>
+          <div class="cs-meta">
+            <span class="cs-meta__label">Type</span>
+            <span class="cs-meta__value">AI Tool Architecture</span>
+          </div>
+          <div class="cs-meta">
+            <span class="cs-meta__label">Challenge</span>
+            <span class="cs-meta__value">Make AI trustworthy in a specialist domain</span>
+          </div>
+          <div class="cs-meta">
+            <span class="cs-meta__label">Scale</span>
+            <span class="cs-meta__value">15 playbooks, 4000+ prompts, 20+ sources</span>
+          </div>
+        </div>
+
+        <div class="cs-signal-strip reveal">
+          <div class="cs-signal">
+            <div class="cs-signal__name">AI Tool Architecture</div>
+            <div class="cs-signal__proof">Designed how an AI should reason about a domain</div>
+          </div>
+          <div class="cs-signal cs-signal--purple">
+            <div class="cs-signal__name">Systems Beyond Screens</div>
+            <div class="cs-signal__proof">Structured expertise into scalable, reusable layers</div>
+          </div>
+          <div class="cs-signal cs-signal--green">
+            <div class="cs-signal__name">Evidence-Backed Craft</div>
+            <div class="cs-signal__proof">Zero unsourced claims &mdash; every rule links to a standard</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="cs-body">
+      <div class="container container--narrow">
+
+        <!-- ======== 1. WHY I BUILT THIS ======== -->
+        <section class="cs-section reveal">
+          <div class="cs-section__label">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0l1.5 5.5L15 8l-5.5 1.5L8 15l-1.5-5.5L1 8l5.5-1.5z"/></svg>
+            Origin
+          </div>
+          <h2>The question behind the project</h2>
+          <p>Most people use AI as a chatbot &mdash; ask a question, get an answer, hope it&rsquo;s right. I wanted to test a different hypothesis: <strong>can you design an information architecture that makes an AI reliably expert in a specialist domain?</strong></p>
+          <p>I chose a domain deliberately outside my professional work &mdash; one that combines hard functional constraints (ergonomic standards, safety codes, measurable specifications) with subjective creative judgement. If you can structure AI reasoning for that kind of complexity, the pattern transfers to any domain.</p>
+          <p>This wasn&rsquo;t a client brief. It was a design exercise in <strong>AI systems architecture</strong> &mdash; treating prompt engineering not as writing instructions, but as designing how an AI should think.</p>
+
+          <div class="cs-insight">
+            <div class="cs-insight__label">Core Hypothesis</div>
+            <p>Prompt engineering is an <strong>information architecture problem</strong>, not a writing problem. If you structure domain knowledge into the right layers &mdash; principles, playbooks, prompts, references &mdash; the AI becomes reliably expert instead of inconsistently helpful.</p>
+          </div>
+        </section>
+
+        <hr class="cs-divider">
+
+        <!-- ======== 2. HOW IT'S STRUCTURED ======== -->
+        <section class="cs-section">
+          <div class="cs-section__label reveal">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0l1.5 5.5L15 8l-5.5 1.5L8 15l-1.5-5.5L1 8l5.5-1.5z"/></svg>
+            System Architecture
+          </div>
+          <h2 class="reveal">Four layers, each feeding the next</h2>
+          <p class="reveal">The promptbook isn&rsquo;t a list of prompts. It&rsquo;s a layered system where each layer constrains and enriches the next &mdash; and a reference layer validates everything from underneath.</p>
+
+          <!-- Architecture diagram -->
+          <div class="cs-arch reveal">
+            <div class="cs-arch__row">
+              <div class="cs-arch__node cs-arch__node--accent">
+                <div class="cs-arch__count">8</div>
+                <div class="cs-arch__label">Operating Principles</div>
+                <div class="cs-arch__desc">The AI&rsquo;s reasoning framework. Evidence-backed rules that govern every recommendation it makes.</div>
+              </div>
+              <div class="cs-arch__arrow">&rarr;</div>
+              <div class="cs-arch__node cs-arch__node--purple">
+                <div class="cs-arch__count">15</div>
+                <div class="cs-arch__label">Domain Playbooks</div>
+                <div class="cs-arch__desc">Structured output templates. Each playbook defines 6 required deliverables the AI must produce.</div>
+              </div>
+              <div class="cs-arch__arrow">&rarr;</div>
+              <div class="cs-arch__node cs-arch__node--green">
+                <div class="cs-arch__count">4000+</div>
+                <div class="cs-arch__label">Combinatorial Prompts</div>
+                <div class="cs-arch__desc">Generated from playbook &times; style &times; constraint &times; output combinations. Scale without repetition.</div>
+              </div>
+              <div class="cs-arch__arrow">&rarr;</div>
+              <div class="cs-arch__node cs-arch__node--yellow">
+                <div class="cs-arch__count">6</div>
+                <div class="cs-arch__label">Output Types</div>
+                <div class="cs-arch__desc">Structured deliverables: plans, checklists, palettes, schedules, procurement lists, measurement specs.</div>
+              </div>
+            </div>
+            <div class="cs-arch__refs">
+              <div class="cs-arch__refs-label">Reference Validation Layer</div>
+              <div class="cs-arch__refs-text">20+ published sources (NKBA, Mayo Clinic, Ergotron/BIFMA, Framery, and more). Every principle and cheat-sheet value links to its source. Zero unsourced claims.</div>
+            </div>
+          </div>
+
+          <!-- Operating Principles -->
+          <h3 class="reveal">How I designed the operating principles</h3>
+          <p class="reveal">These aren&rsquo;t suggestions &mdash; they&rsquo;re hard constraints that force the AI to reason like an expert rather than a generalist. Each one encodes a specific expert behaviour:</p>
+          <div class="reveal">
+            <div class="cs-principle">
+              <span class="cs-principle__num">01</span>
+              <div class="cs-principle__text"><strong>Enforce a reasoning sequence.</strong> The AI must work through function &rarr; flow &rarr; mood &rarr; materials &rarr; lighting &rarr; procurement. No skipping ahead to aesthetics before functional constraints are resolved.</div>
+            </div>
+            <div class="cs-principle">
+              <span class="cs-principle__num">02</span>
+              <div class="cs-principle__text"><strong>Start with movement, not objects.</strong> Map circulation paths before placing anything. This mirrors how experts think &mdash; space is defined by how people move through it.</div>
+            </div>
+            <div class="cs-principle">
+              <span class="cs-principle__num">03</span>
+              <div class="cs-principle__text"><strong>Layer, don&rsquo;t flatten.</strong> Complex outputs (like lighting) require layered thinking: ambient + task + accent, planned per activity zone. The AI can&rsquo;t give a single-fixture answer.</div>
+            </div>
+            <div class="cs-principle">
+              <span class="cs-principle__num">04</span>
+              <div class="cs-principle__text"><strong>Distinguish precision from preference.</strong> Some values are measurable standards (CRI, CCT, clearance distances). Others are subjective. The AI must know which is which.</div>
+            </div>
+            <div class="cs-principle">
+              <span class="cs-principle__num">05</span>
+              <div class="cs-principle__text"><strong>Validate against published standards.</strong> Where industry standards exist, the AI must use them &mdash; not approximate. (e.g., NKBA clearances, BIFMA ergonomic ranges.)</div>
+            </div>
+            <div class="cs-principle">
+              <span class="cs-principle__num">06</span>
+              <div class="cs-principle__text"><strong>Apply ergonomic constraints automatically.</strong> Workstation setups use published body-to-object distance ranges, not guesswork.</div>
+            </div>
+            <div class="cs-principle">
+              <span class="cs-principle__num">07</span>
+              <div class="cs-principle__text"><strong>Treat environmental factors as behavioural.</strong> Lighting, acoustics, and temperature aren&rsquo;t just comfort &mdash; they influence behaviour, productivity, and dwell time.</div>
+            </div>
+            <div class="cs-principle">
+              <span class="cs-principle__num">08</span>
+              <div class="cs-principle__text"><strong>Treat acoustics as structural.</strong> Sound absorption, zoning, and privacy are design inputs &mdash; not afterthoughts to fix later.</div>
+            </div>
+          </div>
+
+          <!-- Playbooks -->
+          <h3 class="reveal">15 domain playbooks, same structure</h3>
+          <p class="reveal">Each playbook follows an identical 6-output format: define goals &amp; constraints, create zoning maps, generate layout options, build material palettes, plan environmental systems, compile procurement lists. The consistency is deliberate &mdash; it&rsquo;s what makes the system scalable and auditable.</p>
+          <div class="cs-playbook-grid reveal">
+            <div class="cs-playbook-tag">Living Room</div>
+            <div class="cs-playbook-tag">Bedroom</div>
+            <div class="cs-playbook-tag">Kitchen</div>
+            <div class="cs-playbook-tag">Dining Room</div>
+            <div class="cs-playbook-tag">Bathroom</div>
+            <div class="cs-playbook-tag">Home Office</div>
+            <div class="cs-playbook-tag">Kids Room</div>
+            <div class="cs-playbook-tag">Studio Apartment</div>
+            <div class="cs-playbook-tag">Restaurant</div>
+            <div class="cs-playbook-tag">Retail Showroom</div>
+            <div class="cs-playbook-tag">Reception/Lobby</div>
+            <div class="cs-playbook-tag">Conference Room</div>
+            <div class="cs-playbook-tag">Hallway/Entry</div>
+            <div class="cs-playbook-tag">Balcony/Terrace</div>
+            <div class="cs-playbook-tag">Wardrobe/Closet</div>
+          </div>
+        </section>
+
+        <hr class="cs-divider">
+
+        <!-- ======== 3. THE DESIGN DECISIONS ======== -->
+        <section class="cs-section reveal">
+          <div class="cs-section__label">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0l1.5 5.5L15 8l-5.5 1.5L8 15l-1.5-5.5L1 8l5.5-1.5z"/></svg>
+            Design Decisions
+          </div>
+          <h2>Four choices that shaped the system</h2>
+
+          <div class="cs-grid-2">
+            <div class="cs-card">
+              <div class="cs-card__title">Constraints before creativity</div>
+              <p>I structured the AI to resolve functional constraints before generating creative options. <strong>The reasoning sequence is enforced, not suggested.</strong> This prevents the most common AI failure: producing beautiful outputs that violate basic domain rules.</p>
+            </div>
+            <div class="cs-card">
+              <div class="cs-card__title">Evidence over opinion</div>
+              <p>Every operating principle links to a published standard. <strong>AI hallucinations become dangerous when someone acts on them in a specialist domain.</strong> The reference layer makes every claim auditable and every recommendation traceable.</p>
+            </div>
+            <div class="cs-card">
+              <div class="cs-card__title">Combinatorial scale</div>
+              <p>Instead of writing prompts individually, I designed a system that generates combinations: <strong>15 playbooks &times; 15 styles &times; 10 constraints &times; 6 outputs = thousands of unique, useful prompts.</strong> The structure is the product, not the individual prompts.</p>
+            </div>
+            <div class="cs-card">
+              <div class="cs-card__title">Domain-agnostic architecture</div>
+              <p>The 4-layer structure (principles &rarr; playbooks &rarr; prompts &rarr; references) isn&rsquo;t specific to any domain. <strong>It&rsquo;s a reusable template for making AI reliably expert in any specialist field</strong> &mdash; from healthcare protocols to financial compliance to engineering standards.</p>
+            </div>
+          </div>
+        </section>
+
+        <hr class="cs-divider">
+
+        <!-- ======== 4. WHAT THIS DEMONSTRATES ======== -->
+        <section class="cs-section reveal">
+          <div class="cs-section__label">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0l1.5 5.5L15 8l-5.5 1.5L8 15l-1.5-5.5L1 8l5.5-1.5z"/></svg>
+            What This Proves
+          </div>
+          <h2>How this connects to my professional work</h2>
+
+          <div class="cs-reflection">
+            <p style="font-size: var(--text-body-sm); color: var(--text-secondary); line-height: var(--leading-body); margin-bottom: var(--space-4);"><strong style="color: var(--accent-primary);">Prompt engineering is information architecture.</strong> I didn&rsquo;t write prompts &mdash; I designed a system for how an AI should reason about a domain. Deciding what it should know, in what order, and what it should never assume. That&rsquo;s the same skill as designing an enterprise workflow: structuring decisions so users reach the right outcome reliably.</p>
+
+            <p style="font-size: var(--text-body-sm); color: var(--text-secondary); line-height: var(--leading-body); margin-bottom: var(--space-4);"><strong style="color: var(--accent-ai);">The pattern transfers directly.</strong> The principle that makes this promptbook work &mdash; structured constraints produce trusted outputs &mdash; is the same principle behind my enterprise work at Microsoft. Orders Self-Serve works because I surfaced eligibility upfront. This promptbook works because I enforced constraints-before-creativity. Same architecture, different domain.</p>
+
+            <p style="font-size: var(--text-body-sm); color: var(--text-secondary); line-height: var(--leading-body); margin-bottom: var(--space-4);"><strong style="color: var(--accent-metric);">Intellectual curiosity as practice.</strong> I built this on my own time because I wanted to understand AI tool design at a structural level &mdash; not just how to use AI, but how to architect systems that make AI reliable. The best designers I know spend time outside their comfort zone, stress-testing their own frameworks.</p>
+
+            <p style="font-size: var(--text-body-sm); color: var(--text-secondary); line-height: var(--leading-body); margin-bottom: 0;"><strong style="color: var(--accent-secure);">Trust requires structure.</strong> The same evidence-first philosophy from my enterprise work applies here. Every claim is source-backed. Every principle is grounded in a published standard. Zero unsourced claims. Making AI trustworthy isn&rsquo;t about better prompts &mdash; it&rsquo;s about better information architecture.</p>
+          </div>
+        </section>
+
+        <hr class="cs-divider">
+
+        <!-- ======== 5. THE NUMBERS ======== -->
+        <section class="cs-section reveal">
+          <div class="cs-section__label">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0l1.5 5.5L15 8l-5.5 1.5L8 15l-1.5-5.5L1 8l5.5-1.5z"/></svg>
+            By the Numbers
+          </div>
+          <h2>What the system contains</h2>
+
+          <div class="cs-stat-grid">
+            <div class="cs-stat-grid__item">
+              <div class="cs-stat-grid__value">8</div>
+              <div class="cs-stat-grid__label">Operating principles (each evidence-linked)</div>
+            </div>
+            <div class="cs-stat-grid__item">
+              <div class="cs-stat-grid__value">15</div>
+              <div class="cs-stat-grid__label">Domain playbooks (6 outputs each)</div>
+            </div>
+            <div class="cs-stat-grid__item">
+              <div class="cs-stat-grid__value">4000+</div>
+              <div class="cs-stat-grid__label">Combinatorial prompts</div>
+            </div>
+            <div class="cs-stat-grid__item">
+              <div class="cs-stat-grid__value">20+</div>
+              <div class="cs-stat-grid__label">Published references</div>
+            </div>
+            <div class="cs-stat-grid__item">
+              <div class="cs-stat-grid__value">90</div>
+              <div class="cs-stat-grid__label">Playbook &times; output combinations</div>
+            </div>
+            <div class="cs-stat-grid__item">
+              <div class="cs-stat-grid__value">0</div>
+              <div class="cs-stat-grid__label">Unsourced claims</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Back to portfolio -->
+        <div style="text-align: center; margin-top: var(--space-12);" class="reveal">
+          <a href="../index.html#side-projects" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border: 1px solid var(--border-subtle); color: var(--text-secondary); border-radius: var(--border-radius-sm); font-weight: 500; font-size: var(--text-body-sm); text-decoration: none; transition: all var(--duration-base) var(--ease-out);">&larr; Back to Portfolio</a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <ul class="footer__links">
+        <li><a href="mailto:prashik.y.lanjewar@gmail.com">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/prashiklanjewar/" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+      <p class="footer__copy">&copy; 2026 Prashik Lanjewar. Designer II at Microsoft.</p>
+    </div>
+  </footer>
+
+  <script src="../js/theme.js" defer></script>
+  <script src="../js/reveal.js" defer></script>
+</body>
+</html>
