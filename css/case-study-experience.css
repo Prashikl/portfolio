@@ -848,3 +848,24 @@
   }
   .cs-process-step::before { left: 19px; top: 44px; }
 }
+
+/* ======== Figure / Image ======== */
+.cs-figure {
+  margin: var(--space-8) 0;
+}
+
+.cs-figure__img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-subtle);
+  display: block;
+}
+
+.cs-figure__caption {
+  font-size: var(--text-caption);
+  color: var(--text-tertiary);
+  line-height: var(--leading-caption);
+  margin-top: var(--space-3);
+  font-style: italic;
+}

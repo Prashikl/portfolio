@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume — Prashik Lanjewar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-size: 9.5pt;
+      line-height: 1.5;
+      color: #1a1a1a;
+      background: #fff;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    .page {
+      display: grid;
+      grid-template-columns: 210px 1fr;
+      min-height: 100vh;
+    }
+
+    /* ---- Dark Sidebar ---- */
+    .sidebar {
+      background: #3b4a5a;
+      color: #e2e8f0;
+      padding: 36px 20px 28px;
+    }
+
+    .sidebar-section {
+      margin-bottom: 28px;
+    }
+
+    .sidebar-section:last-child { margin-bottom: 0; }
+
+    .sidebar-heading {
+      font-size: 9pt;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+      letter-spacing: 0.02em;
+    }
+
+    .sidebar-item {
+      font-size: 8.5pt;
+      color: #cbd5e1;
+      line-height: 1.5;
+      margin-bottom: 4px;
+    }
+
+    .sidebar-item a {
+      color: #cbd5e1;
+      text-decoration: none;
+    }
+
+    .sidebar-label {
+      font-size: 7.5pt;
+      color: #94a3b8;
+      margin-top: 1px;
+    }
+
+    .sidebar-skill {
+      font-size: 8.5pt;
+      color: #e2e8f0;
+      line-height: 1.6;
+    }
+
+    .sidebar-award {
+      font-size: 8.5pt;
+      color: #e2e8f0;
+    }
+
+    /* ---- Main Content ---- */
+    .main {
+      padding: 36px 32px 28px 28px;
+    }
+
+    .header-name {
+      font-size: 26pt;
+      font-weight: 700;
+      color: #111;
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .header-role {
+      font-size: 11pt;
+      color: #555;
+      margin-bottom: 2px;
+    }
+
+    .header-location {
+      font-size: 9pt;
+      color: #888;
+      margin-bottom: 20px;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid #e2e8f0;
+      margin: 18px 0;
+    }
+
+    .section-title {
+      font-size: 14pt;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 14px;
+    }
+
+    .summary {
+      font-size: 9pt;
+      color: #333;
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+
+    /* Experience */
+    .exp-company {
+      font-size: 11pt;
+      font-weight: 700;
+      color: #111;
+      margin-top: 2px;
+    }
+
+    .exp-tenure {
+      font-size: 8pt;
+      color: #888;
+      margin-bottom: 8px;
+    }
+
+    .exp-role-title {
+      font-size: 10pt;
+      font-weight: 600;
+      color: #222;
+    }
+
+    .exp-role-dates {
+      font-size: 8pt;
+      color: #888;
+      margin-bottom: 2px;
+    }
+
+    .exp-role-location {
+      font-size: 8pt;
+      color: #aaa;
+      font-style: italic;
+      margin-bottom: 4px;
+    }
+
+    .exp-desc {
+      font-size: 8.5pt;
+      color: #444;
+      line-height: 1.55;
+      margin-bottom: 6px;
+    }
+
+    .exp-bullets {
+      list-style: disc;
+      padding-left: 14px;
+      margin-bottom: 10px;
+    }
+
+    .exp-bullets li {
+      font-size: 8.5pt;
+      color: #444;
+      line-height: 1.5;
+      margin-bottom: 2px;
+    }
+
+    .exp-block {
+      margin-bottom: 16px;
+      page-break-inside: avoid;
+    }
+
+    .exp-block:last-child { margin-bottom: 0; }
+
+    .role-block {
+      margin-bottom: 10px;
+    }
+
+    /* Education */
+    .edu-block {
+      margin-bottom: 10px;
+    }
+
+    .edu-school {
+      font-size: 10pt;
+      font-weight: 600;
+      color: #111;
+    }
+
+    .edu-degree {
+      font-size: 8.5pt;
+      color: #555;
+    }
+
+    /* Projects */
+    .proj-title {
+      font-size: 10pt;
+      font-weight: 600;
+      color: #222;
+    }
+
+    .proj-tenure {
+      font-size: 8pt;
+      color: #888;
+      margin-bottom: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- ======== SIDEBAR ======== -->
+    <aside class="sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-heading">Contact</div>
+        <div class="sidebar-item">9145335711 <span class="sidebar-label">(Mobile)</span></div>
+        <div class="sidebar-item"><a href="mailto:prashik.y.lanjewar@gmail.com">prashik.y.lanjewar@gmail.com</a></div>
+        <div class="sidebar-item" style="margin-top: 6px;">
+          <a href="https://www.linkedin.com/in/prashiklanjewar/">www.linkedin.com/in/prashiklanjewar</a>
+          <div class="sidebar-label">(LinkedIn)</div>
+        </div>
+        <div class="sidebar-item">
+          <a href="https://prashik.myportfolio.com">www.prashik.myportfolio.com</a>
+          <div class="sidebar-label">(Portfolio)</div>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-heading">Top Skills</div>
+        <div class="sidebar-skill">Enterprise UX</div>
+        <div class="sidebar-skill">Systems Thinking</div>
+        <div class="sidebar-skill">AI-Assisted Design</div>
+        <div class="sidebar-skill">User-Centred Design</div>
+        <div class="sidebar-skill">UX Research</div>
+        <div class="sidebar-skill">Design Strategy</div>
+        <div class="sidebar-skill">Interaction Design</div>
+        <div class="sidebar-skill">Prototyping</div>
+        <div class="sidebar-skill">Design Systems</div>
+        <div class="sidebar-skill">Accessibility</div>
+        <div class="sidebar-skill">Secure-by-Design</div>
+        <div class="sidebar-skill">Responsible AI</div>
+        <div class="sidebar-skill">Figma</div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-heading">Honors-Awards</div>
+        <div class="sidebar-award">Design Innovator</div>
+      </div>
+    </aside>
+
+    <!-- ======== MAIN ======== -->
+    <main class="main">
+      <h1 class="header-name">Prashik Lanjewar</h1>
+      <p class="header-role">Designer II at Microsoft | New Media Design at NID</p>
+      <p class="header-location">Maharashtra, India</p>
+
+      <!-- Summary -->
+      <div class="section-title">Summary</div>
+      <p class="summary">Experience Designer at Microsoft with 4+ years designing intelligent, enterprise-scale systems at the intersection of technology, human behaviour, and organisational complexity. My work focuses on system-level UX for commerce and self-serve platforms — simplifying complex workflows, reducing operational effort, and improving decision-making at scale. Track record of reducing ordering time by ~60%, driving ~80% adoption in 30 days, and supporting multi-billion-dollar enterprise transactions. Increasingly, this involves shaping AI-assisted experiences that augment human judgement while remaining transparent and trustworthy. I actively leverage AI and Copilot-driven design workflows to accelerate exploration, synthesise research, and shorten delivery cycles. Foundation in new media design (NID) and mechanical engineering.</p>
+
+      <hr class="divider">
+
+      <!-- Experience -->
+      <div class="section-title">Experience</div>
+
+      <div class="exp-block">
+        <div class="exp-company">Microsoft</div>
+        <div class="exp-tenure">4+ years</div>
+
+        <div class="role-block">
+          <div class="exp-role-title">UX Designer II</div>
+          <div class="exp-role-dates">September 2024 - Present</div>
+          <div class="exp-role-location">India</div>
+          <p class="exp-desc">Designing AI-assisted, enterprise-scale commerce and self-serve systems — bringing clarity, trust, and structure to complex operational workflows across M365 Admin Centre.</p>
+          <ul class="exp-bullets">
+            <li>Designed a self-serve ordering experience on M365 Admin Centre replacing manual workflows — ~60% faster ordering, ~80% adoption in 30 days, 1000s of partner hours saved annually, $Ms in cost avoidance.</li>
+            <li>Reframed an enterprise seller dashboard from a passive reporting surface into an action-driven decision system, reducing Excel dependency and embedding trust signals.</li>
+            <li>Led design-led retirement of a mission-critical legacy order entry system supporting multi-billion-dollar transactions, applying Parity++ principles with zero UX debt carried forward.</li>
+            <li>Conducted evaluative UX research establishing a SUS baseline of 69.6, connecting usability findings to trust, velocity, and behavioural friction.</li>
+            <li>Served as design partner for Amazon's >$1B enterprise agreement, ensuring role segregation and security controls were UX-viable at scale.</li>
+          </ul>
+        </div>
+
+        <div class="role-block">
+          <div class="exp-role-title">Designer</div>
+          <div class="exp-role-dates">July 2022 - September 2024</div>
+          <div class="exp-role-location">Hyderabad, Telangana, India</div>
+          <p class="exp-desc">End-to-end design ownership of complex enterprise workflows across orders, credits, and compliance.</p>
+          <ul class="exp-bullets">
+            <li>Architected a scalable ordering platform across EA, Non-EA, Partner, and OSC/ROC flows — reusable patterns adopted across 4+ order types.</li>
+            <li>Designed workflow cutting update statement processing from ~10 days to ~5 minutes. Recognised as a top efficiency win.</li>
+            <li>Identified unrestricted edit access, missing consent flows, and zero audit trail in production-bound feature (CICR). Escalated to leadership for security-first redesign.</li>
+            <li>Inherited delivery-blocked credits experience 3 weeks before GA. Shipped on time. Cited by leadership as key growth milestone.</li>
+            <li>Designed unified Activity Log and Audit Report for real-time compliance traceability.</li>
+            <li>Consolidated two legacy credits workflows into a single experience, eliminating a standalone tool.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-block">
+        <div class="exp-company">Hurrey Tech Ventures</div>
+        <div class="exp-tenure">November 2020 - August 2021 (10 months)</div>
+        <div class="role-block">
+          <div class="exp-role-title">Design Lead</div>
+          <div class="exp-role-location">India</div>
+          <p class="exp-desc">Owned the overall design track across the full product family from strategy to execution. Created a new brand identity and led a major UX overhaul.</p>
+        </div>
+      </div>
+
+      <div class="exp-block">
+        <div class="exp-company">Wipro Digital</div>
+        <div class="exp-tenure">January 2020 - July 2020 (7 months)</div>
+        <div class="role-block">
+          <div class="exp-role-title">Design Innovation Intern</div>
+          <div class="exp-role-location">Chennai, Tamil Nadu, India</div>
+          <p class="exp-desc">Led end-to-end design of a financial sector project gamifying personal finance — research, data interpretation, strategy, storyboarding, HCI design, and prototyping.</p>
+        </div>
+      </div>
+
+      <div class="exp-block">
+        <div class="exp-company">IFB Industries Ltd</div>
+        <div class="exp-tenure">June 2019 - January 2020 (8 months)</div>
+        <div class="role-block">
+          <div class="exp-role-title">Experience Design Intern</div>
+          <div class="exp-role-location">Goa</div>
+          <p class="exp-desc">Enhanced in-store customer experience at IFB Points, retail experience design, and future store concepts. Contributed to VR, AR, and IoT research.</p>
+        </div>
+      </div>
+
+      <div class="exp-block">
+        <div class="exp-company">Narangi Brush</div>
+        <div class="exp-tenure">January 2016 - December 2017 (2 years)</div>
+        <div class="role-block">
+          <div class="exp-role-title">Space Designer</div>
+          <div class="exp-role-location">Nagpur</div>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <!-- Projects -->
+      <div class="section-title">Projects</div>
+
+      <div class="exp-block">
+        <div class="proj-title">AI Copilot Promptbook — Domain Expert System</div>
+        <div class="proj-tenure">Side Project · 2024</div>
+        <ul class="exp-bullets">
+          <li>Designed a structured AI promptbook with 8 operating principles, 15 playbooks, 4000+ prompts, and 20+ evidence-backed sources ensuring zero unsourced claims.</li>
+          <li>Created a domain-agnostic framework applicable to any specialist domain.</li>
+        </ul>
+      </div>
+
+      <div class="exp-block">
+        <div class="proj-title">Moments & Metrics — Visual Storytelling for Leadership</div>
+        <div class="proj-tenure">Microsoft · Ongoing</div>
+        <ul class="exp-bullets">
+          <li>Designed a strategic communication framework mapping journey moments to business signals and measurable outcomes for leadership audiences.</li>
+        </ul>
+      </div>
+
+      <div class="exp-block">
+        <div class="proj-title">Design Beyond Screens — Physical Artefacts & Culture</div>
+        <div class="proj-tenure">Microsoft · Ongoing</div>
+        <ul class="exp-bullets">
+          <li>Designed hackathon T-shirts and Studio artefacts as intentional design objects — extending design impact into culture, identity, and shared memory.</li>
+        </ul>
+      </div>
+
+      <div class="exp-block">
+        <div class="proj-title">Hackathon Prototyping & Cross-Functional Leadership</div>
+        <div class="proj-tenure">Microsoft · Ongoing</div>
+        <ul class="exp-bullets">
+          <li>Design lead across multiple hackathons — AI-native prototyping, revenue-oriented framing, cross-functional influence without authority.</li>
+        </ul>
+      </div>
+
+      <hr class="divider">
+
+      <!-- Education -->
+      <div class="section-title">Education</div>
+
+      <div class="edu-block">
+        <div class="edu-school">National Institute of Design</div>
+        <div class="edu-degree">Master's degree, New Media Design · (2017 - 2020)</div>
+      </div>
+
+      <div class="edu-block">
+        <div class="edu-school">Savitribai Phule Pune University</div>
+        <div class="edu-degree">Bachelor's degree, Mechanical Engineering · (2012 - 2016)</div>
+      </div>
+    </main>
+
+  </div>
+</body>
+</html>
