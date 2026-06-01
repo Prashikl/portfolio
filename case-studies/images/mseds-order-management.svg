@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="t d">
+  <title id="t">Schematic: Orders — submitted &amp; draft</title>
+  <desc id="d">Editorial layout abstraction. UI text and data redacted under NDA.</desc>
+
+  <rect width="1600" height="900" fill="#F4F1EA"/>
+
+  <g opacity="0.4">
+
+  <!-- BROWSER CHROME -->
+  <rect x="0" y="0" width="1600" height="34" fill="#11111008"/>
+  <line x1="0" y1="34" x2="1600" y2="34" stroke="#11111018"/>
+  <rect x="14" y="10" width="180" height="24" rx="4" fill="#F4F1EA" stroke="#11111018"/>
+  <rect x="30" y="19" width="120" height="6" fill="#11111060"/>
+  <rect x="0" y="34" width="1600" height="40" fill="#F4F1EA"/>
+  <line x1="0" y1="74" x2="1600" y2="74" stroke="#11111018"/>
+  <rect x="100" y="46" width="1300" height="22" rx="11" fill="none" stroke="#11111028"/>
+  <rect x="118" y="54" width="380" height="6" fill="#11111060"/>
+
+  <!-- DARK HEADER -->
+  <rect x="0" y="74" width="1600" height="58" fill="#111110"/>
+  <g fill="#F4F1EA" opacity=".75">
+    <rect x="22" y="96" width="3" height="3"/><rect x="30" y="96" width="3" height="3"/><rect x="38" y="96" width="3" height="3"/>
+    <rect x="22" y="104" width="3" height="3"/><rect x="30" y="104" width="3" height="3"/><rect x="38" y="104" width="3" height="3"/>
+    <rect x="22" y="112" width="3" height="3"/><rect x="30" y="112" width="3" height="3"/><rect x="38" y="112" width="3" height="3"/>
+  </g>
+  <rect x="68" y="100" width="170" height="8" fill="#F4F1EA" opacity=".9"/>
+  <rect x="540" y="89" width="520" height="28" rx="2" fill="none" stroke="#F4F1EA" stroke-opacity=".25"/>
+  <rect x="558" y="100" width="280" height="6" fill="#F4F1EA" opacity=".45"/>
+  <rect x="1410" y="93" width="20" height="20" fill="none" stroke="#F4F1EA" stroke-opacity=".3"/>
+  <rect x="1444" y="93" width="20" height="20" fill="none" stroke="#F4F1EA" stroke-opacity=".3"/>
+  <rect x="1478" y="93" width="20" height="20" fill="none" stroke="#F4F1EA" stroke-opacity=".3"/>
+  <rect x="1512" y="93" width="56" height="20" fill="none" stroke="#F4F1EA" stroke-opacity=".3"/>
+
+  <!-- LEFT RAIL collapsed -->
+  <line x1="60" y1="132" x2="60" y2="900" stroke="#11111018"/>
+  <g>
+    <rect x="22" y="156" width="14" height="14" fill="none" stroke="#11111060"/>
+    <rect x="22" y="190" width="14" height="14" fill="none" stroke="#11111060"/>
+    <rect x="22" y="224" width="14" height="14" fill="none" stroke="#11111060"/>
+    <rect x="22" y="258" width="14" height="14" fill="none" stroke="#11111060"/>
+    <rect x="22" y="292" width="14" height="14" fill="none" stroke="#11111060"/>
+    <rect x="22" y="326" width="14" height="14" fill="none" stroke="#11111060"/>
+    <rect x="22" y="360" width="14" height="14" fill="none" stroke="#111110" stroke-width="1.2"/>
+    <rect x="0" y="356" width="3" height="22" fill="#C8331C"/>
+    <rect x="22" y="394" width="14" height="14" fill="none" stroke="#11111060"/>
+    <rect x="22" y="428" width="14" height="14" fill="none" stroke="#11111060"/>
+    <rect x="22" y="462" width="14" height="14" fill="none" stroke="#11111060"/>
+  </g>
+
+  <!-- ============ MAIN ============ -->
+  <!-- breadcrumb (4 levels) -->
+  <g>
+    <rect x="100" y="170" width="44" height="6" fill="#11111060"/>
+    <path d="M154 171 l6 5 -6 5" fill="none" stroke="#11111040"/>
+    <rect x="170" y="170" width="84" height="6" fill="#11111060"/>
+    <path d="M264 171 l6 5 -6 5" fill="none" stroke="#11111040"/>
+    <rect x="280" y="170" width="100" height="6" fill="#11111060"/>
+    <path d="M390 171 l6 5 -6 5" fill="none" stroke="#11111040"/>
+    <rect x="406" y="170" width="60" height="6" fill="#11111080"/>
+  </g>
+
+  <!-- title -->
+  <rect x="100" y="200" width="120" height="28" fill="#111110"/>
+
+  <!-- description -->
+  <rect x="100" y="248" width="1300" height="6" fill="#11111080"/>
+  <rect x="100" y="262" width="500" height="6" fill="#11111080"/>
+  <rect x="612" y="262" width="160" height="6" fill="#111110"/>
+  <line x1="612" y1="270" x2="772" y2="270" stroke="#111110"/>
+  <rect x="780" y="262" width="320" height="6" fill="#11111080"/>
+  <rect x="1108" y="262" width="40" height="6" fill="#111110"/>
+  <line x1="1108" y1="270" x2="1148" y2="270" stroke="#111110"/>
+
+  <!-- divider -->
+  <line x1="100" y1="304" x2="1500" y2="304" stroke="#11111018"/>
+
+  <!-- tabs -->
+  <rect x="100" y="324" width="160" height="6" fill="#11111080"/>
+  <rect x="280" y="324" width="120" height="6" fill="#111110"/>
+  <rect x="280" y="338" width="120" height="3" fill="#C8331C"/>
+  <line x1="100" y1="350" x2="1500" y2="350" stroke="#11111018"/>
+
+  <!-- info banner -->
+  <rect x="100" y="372" width="1400" height="40" fill="#11111008" stroke="#11111018"/>
+  <circle cx="124" cy="392" r="8" fill="none" stroke="#11111060"/>
+  <rect x="121" y="389" width="6" height="2" fill="#11111060"/>
+  <rect x="123" y="395" width="2" height="2" fill="#11111060"/>
+  <rect x="148" y="389" width="320" height="6" fill="#11111080"/>
+
+  <!-- toolbar: Delete + counter + search -->
+  <g>
+    <rect x="100" y="438" width="14" height="14" fill="none" stroke="#11111040"/>
+    <rect x="120" y="440" width="60" height="6" fill="#11111080"/>
+  </g>
+  <g>
+    <rect x="1190" y="440" width="50" height="6" fill="#11111080"/>
+    <rect x="1252" y="428" width="220" height="28" rx="2" fill="none" stroke="#11111028"/>
+    <rect x="1272" y="438" width="100" height="6" fill="#11111060"/>
+  </g>
+
+  <!-- filter -->
+  <rect x="100" y="478" width="40" height="6" fill="#11111060"/>
+  <rect x="150" y="468" width="120" height="26" rx="2" fill="none" stroke="#11111028"/>
+  <rect x="170" y="478" width="80" height="4" fill="#11111080"/>
+
+  <!-- table header -->
+  <line x1="100" y1="518" x2="1500" y2="518" stroke="#111110"/>
+  <g>
+    <rect x="100" y="528" width="14" height="14" fill="none" stroke="#11111060"/>
+    <rect x="132" y="532" width="74" height="6" fill="#111110"/>
+    <rect x="380" y="532" width="86" height="6" fill="#111110"/>
+    <rect x="540" y="532" width="60" height="6" fill="#111110"/>
+    <rect x="700" y="532" width="120" height="6" fill="#111110"/>
+    <rect x="900" y="532" width="80" height="6" fill="#111110"/>
+  </g>
+
+  <!-- 3 rows -->
+  <line x1="100" y1="568" x2="1500" y2="568" stroke="#11111014"/>
+  <line x1="100" y1="608" x2="1500" y2="608" stroke="#11111014"/>
+  <line x1="100" y1="648" x2="1500" y2="648" stroke="#11111014"/>
+  <g>
+    <rect x="100" y="580" width="14" height="14" fill="none" stroke="#11111040"/>
+    <rect x="132" y="584" width="120" height="6" fill="#111110"/>
+    <rect x="380" y="584" width="60" height="6" fill="#11111080"/>
+    <rect x="540" y="584" width="120" height="6" fill="#11111080"/>
+    <rect x="700" y="584" width="80" height="6" fill="#11111080"/>
+    <rect x="900" y="584" width="320" height="6" fill="#11111080"/>
+  </g>
+  <g transform="translate(0 40)">
+    <rect x="100" y="580" width="14" height="14" fill="none" stroke="#11111040"/>
+    <rect x="132" y="584" width="100" height="6" fill="#111110"/>
+    <rect x="380" y="584" width="60" height="6" fill="#11111080"/>
+    <rect x="540" y="584" width="120" height="6" fill="#11111080"/>
+    <rect x="700" y="584" width="80" height="6" fill="#11111080"/>
+    <rect x="900" y="584" width="280" height="6" fill="#11111080"/>
+  </g>
+  <g transform="translate(0 80)">
+    <rect x="100" y="580" width="14" height="14" fill="none" stroke="#11111040"/>
+    <rect x="132" y="584" width="80" height="6" fill="#111110"/>
+    <rect x="380" y="584" width="60" height="6" fill="#11111080"/>
+    <rect x="540" y="584" width="120" height="6" fill="#11111080"/>
+    <rect x="700" y="584" width="80" height="6" fill="#11111080"/>
+    <rect x="900" y="584" width="320" height="6" fill="#11111080"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" letter-spacing="1.5" fill="#11111060">
+    <text x="100" y="868">FIG · 05 — VOLUME LICENSING / ORDERS</text>
+  </g>
+
+  </g>
+
+  <!-- diagonal watermark -->
+  <g transform="rotate(-22 800 450)" pointer-events="none">
+    <rect x="0" y="426" width="1600" height="48" fill="#11111014"/>
+    <text x="800" y="460" text-anchor="middle"
+          font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
+          font-size="32" font-weight="500" letter-spacing="14"
+          fill="#11111080">REDACTED · NDA</text>
+  </g>
+</svg>

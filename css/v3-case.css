@@ -382,6 +382,25 @@
 .v3-plate__num { color: var(--v3-signal); }
 .v3-plate__name { color: #F4F1EA; letter-spacing: .08em; }
 .v3-plate__tag { text-align: right; }
+
+/* NDA: blur product screenshots so confidential UI is not legible. */
+.v3-plate__img[src*="images/mseds"][src$=".png"],
+.v3-platerow__img[src*="images/mseds"][src$=".png"],
+.v3-contact__img[src*="images/mseds"][src$=".png"] {
+  filter: blur(28px) saturate(.8);
+  transform: scale(1.04);
+}
+
+/* Editorial schematic: NDA-safe layout abstraction. Lives on paper, not white. */
+.v3-plate__img--schematic,
+.v3-platerow__img--schematic,
+.v3-contact__img--schematic {
+  background: var(--v3-paper, #F4F1EA) !important;
+  box-shadow: none !important;
+  border: 1px solid #11111018;
+  filter: none !important;
+  transform: none !important;
+}
 .v3-plate__img {
   display: block;
   width: calc(100% - 4rem);
