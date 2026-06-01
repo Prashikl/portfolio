@@ -2,6 +2,7 @@
   var KEY = 'portfolio-version';
   var FILES = { v1: 'index-v1.html', v2: 'index-v2.html', v3: 'index.html' };
   var LABELS = { v1: 'Classic', v2: 'Vibrant', v3: 'Edition III' };
+  var IS_PROD = /\.github\.io$/i.test(location.hostname);
 
   function currentVersion() {
     var path = location.pathname.split('/').pop() || '';
@@ -18,7 +19,17 @@
     location.href = base + FILES[version];
   }
 
+  function hideFooterSwitcher() {
+    var nodes = document.querySelectorAll('a[href="index-v1.html"], a[href="index-v2.html"]');
+    nodes.forEach(function (a) {
+      var span = a.closest('span');
+      (span || a).style.display = 'none';
+    });
+  }
+
   function mount() {
+    if (IS_PROD) { hideFooterSwitcher(); return; }
+
     var here = currentVersion();
     if (!here) return;
 
