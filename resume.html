@@ -247,14 +247,47 @@
       .v3-rs-sec__body { padding: 1.5rem 1.5rem; }
     }
 
-    /* Print */
+    /* Print — render PDF that mirrors the v3 page */
     @media print {
-      body { background: #fff; }
-      .v3-frame__corner, .v3-mast, .v3-rs-actions, .v3-foot { display: none !important; }
-      .v3-frame { padding: 0; }
-      .v3-rs-sec { break-inside: avoid; }
-      .v3-rs-job, .v3-rs-role { break-inside: avoid; }
+      @page { size: A4; margin: 14mm 12mm; }
+      html, body {
+        background: #fff !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+      }
+      .v3-frame__corner, .v3-mast, .v3-rs-actions, .v3-foot, .vtoggle { display: none !important; }
+      .v3-frame { padding: 0 !important; border: 0 !important; }
+      .v3-resume { max-width: 100% !important; padding: 0 !important; }
+      .v3-rs-cover, .v3-rs-numbers, .v3-rs-sec { break-inside: avoid; page-break-inside: avoid; }
+      .v3-rs-job, .v3-rs-role, .v3-rs-edu { break-inside: avoid; page-break-inside: avoid; }
+      .v3-rs-name { font-size: 3rem !important; }
+      .v3-rs-num__big { font-size: 1.6rem !important; }
+      .v3-rs-job__co { font-size: 1.25rem !important; }
       a { color: inherit !important; text-decoration: none !important; }
+      /* Preserve signal red and editorial colors */
+      .v3-rs-name em, .v3-rs-sec__num, .v3-rs-bullets li::before,
+      .v3-rs-summary::first-letter { color: var(--v3-signal) !important; }
+    }
+    .v3-rs-btn[type="button"] { font: inherit; cursor: pointer; }
+    .v3-rs-btn:disabled { opacity: .55; cursor: wait; }
+
+    /* Off-screen wrapper used only while html2canvas snapshots the resume */
+    .pdf-stage {
+      position: fixed;
+      left: -10000px;
+      top: 0;
+      width: 1100px;
+      background: var(--v3-paper);
+      z-index: -1;
+      pointer-events: none;
+    }
+    .pdf-stage .v3-frame {
+      border: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      min-height: 0 !important;
+      width: 1100px !important;
     }
   </style>
 </head>
@@ -281,7 +314,7 @@
     <!-- ACTIONS -->
     <div class="v3-rs-actions">
       <span class="v3-rs-actions__lbl">Resume · Living document</span>
-      <a href="javascript:window.print()" class="v3-rs-btn v3-rs-btn--primary" aria-label="Download or print resume as PDF">
+      <a href="assets/Prashik_Lanjewar_Resume_v3.pdf" download="Prashik_Lanjewar_Resume.pdf" class="v3-rs-btn v3-rs-btn--primary" aria-label="Download resume as PDF">
         Download PDF ↓
       </a>
       <a href="https://prashik.myportfolio.com/" target="_blank" rel="noopener" class="v3-rs-btn v3-rs-btn--ghost">
@@ -295,7 +328,7 @@
     <!-- COVER -->
     <section class="v3-rs-cover">
       <div class="v3-rs-cover__main">
-        <div class="v3-cs-kicker">Designer II · Microsoft · Bengaluru</div>
+        <div class="v3-cs-kicker">Designer II · Microsoft · Hyderabad</div>
         <h1 class="v3-rs-name">Prashik <em>Lanjewar</em></h1>
         <p class="v3-rs-role">Experience Designer — enterprise systems, AI-UX, commerce platforms.</p>
         <p class="v3-rs-summary">Four years at Microsoft designing enterprise-scale commerce and self-serve systems. I specialise in system-level UX for complex operational workflows, AI-assisted experiences, and legacy-system modernisation. Track record: ~60% faster ordering, ~80% adoption in 30 days, multi-billion-dollar enterprise transactions supported. Foundation in new media design (NID) and mechanical engineering.</p>
@@ -304,9 +337,8 @@
         <div><dt>Email</dt><dd><a href="mailto:prashik.y.lanjewar@gmail.com">prashik.y.lanjewar@gmail.com</a></dd></div>
         <div><dt>Phone</dt><dd><a href="tel:+919145335711">+91 91453 35711</a></dd></div>
         <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/prashiklanjewar/" target="_blank" rel="noopener">/prashiklanjewar</a></dd></div>
-        <div><dt>Portfolio</dt><dd><a href="index.html">Edition III</a></dd></div>
         <div><dt>Archive</dt><dd><a href="https://prashik.myportfolio.com/" target="_blank" rel="noopener">myportfolio.com</a></dd></div>
-        <div><dt>Located</dt><dd>Bengaluru, India</dd></div>
+        <div><dt>Located</dt><dd>India</dd></div>
       </dl>
     </section>
 
@@ -474,7 +506,7 @@
         <article class="v3-rs-job">
           <div class="v3-rs-job__head">
             <h3 class="v3-rs-job__co">Design Beyond Screens</h3>
-            <span class="v3-rs-job__when">Microsoft · 2023 → 2025</span>
+            <span class="v3-rs-job__when">Microsoft · Ongoing</span>
           </div>
           <ul class="v3-rs-bullets">
             <li>Designed hackathon T-shirts, Pinnacle editions, and Studio artefacts as intentional design objects — translating AI and experimentation themes into wearable form.</li>
@@ -559,9 +591,7 @@
         <div class="v3-rs-edu">
           <div>
             <h3 class="v3-rs-edu__school">Design Innovator</h3>
-            <p class="v3-rs-edu__deg">Microsoft</p>
           </div>
-          <div class="v3-rs-edu__yr">Internal recognition</div>
         </div>
       </div>
     </section>

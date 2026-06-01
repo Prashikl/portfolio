@@ -2,408 +2,459 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Resume — Prashik Lanjewar</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Prashik Lanjewar — Resume</title>
+  <link rel="stylesheet" href="css/v3.css">
   <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      font-size: 9.5pt;
-      line-height: 1.5;
-      color: #1a1a1a;
-      background: #fff;
+    @page { size: 210mm 1500mm; margin: 0; }
+    html, body {
+      margin: 0; padding: 0;
+      background: #F4F1EA;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
     }
+    body.v3 { font-size: 14px; }
+    .v3-frame {
+      border: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      min-height: 0 !important;
+      width: 210mm;
+      box-sizing: border-box;
+    }
 
-    @page {
-      size: A4;
+    .v3-rs-cover {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      border-bottom: 1px solid var(--v3-rule);
+    }
+    .v3-rs-cover__main { grid-column: span 8; padding: 16mm 12mm 12mm; }
+    .v3-rs-cover__meta {
+      grid-column: span 4;
+      border-left: 1px solid var(--v3-rule);
+      padding: 14mm 8mm;
+      display: flex; flex-direction: column; gap: 6mm;
+      font-family: var(--v3-mono);
+      font-size: 9px; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--v3-ink-2);
+    }
+    .v3-rs-cover__meta dt { color: var(--v3-mute); margin-bottom: 2px; }
+    .v3-rs-cover__meta dd { margin: 0; color: var(--v3-ink); line-height: 1.45; text-transform: none; letter-spacing: 0; font-family: var(--v3-read); font-size: 10px; }
+
+    .v3-rs-name {
+      font-family: var(--v3-serif);
+      font-weight: 400;
+      font-size: 60px;
+      line-height: .95;
+      letter-spacing: -.022em;
+      margin: 8px 0 8px;
+    }
+    .v3-rs-name em { font-style: italic; color: var(--v3-signal); }
+    .v3-rs-role-line {
+      font-family: var(--v3-read);
+      font-size: 14px;
+      color: var(--v3-ink-2);
+      margin: 0 0 12px;
+    }
+    .v3-rs-summary {
+      font-family: var(--v3-read);
+      font-size: 12px;
+      line-height: 1.55;
+      color: var(--v3-ink-2);
+      max-width: 38rem;
       margin: 0;
     }
+    .v3-rs-summary::first-letter {
+      font-family: var(--v3-serif); font-size: 3em; float: left;
+      line-height: .85; margin: .1em .15em 0 0; color: var(--v3-signal);
+    }
+    .v3-cs-kicker {
+      font-family: var(--v3-mono);
+      font-size: 9px; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--v3-mute);
+    }
 
-    .page {
+    .v3-rs-numbers {
       display: grid;
-      grid-template-columns: 210px 1fr;
-      min-height: 100vh;
+      grid-template-columns: repeat(4, 1fr);
+      border-bottom: 1px solid var(--v3-rule);
+    }
+    .v3-rs-num {
+      padding: 10mm 8mm;
+      border-right: 1px solid var(--v3-hairline);
+    }
+    .v3-rs-num:last-child { border-right: 0; }
+    .v3-rs-num__big {
+      font-family: var(--v3-serif);
+      font-size: 26px;
+      line-height: .95;
+      letter-spacing: -.018em;
+    }
+    .v3-rs-num__lbl {
+      font-family: var(--v3-mono);
+      font-size: 8px; text-transform: uppercase; letter-spacing: .12em;
+      color: var(--v3-mute);
+      margin-top: 6px; line-height: 1.5;
     }
 
-    /* ---- Dark Sidebar ---- */
-    .sidebar {
-      background: #3b4a5a;
-      color: #e2e8f0;
-      padding: 36px 20px 28px;
+    .v3-rs-sec {
+      display: grid;
+      grid-template-columns: 36mm 1fr;
+      border-bottom: 1px solid var(--v3-hairline);
     }
-
-    .sidebar-section {
-      margin-bottom: 28px;
+    .v3-rs-sec__head {
+      padding: 12mm 8mm;
+      border-right: 1px solid var(--v3-hairline);
+      font-family: var(--v3-mono);
+      font-size: 9px; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--v3-mute);
+      align-self: start;
     }
-
-    .sidebar-section:last-child { margin-bottom: 0; }
-
-    .sidebar-heading {
-      font-size: 9pt;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 10px;
-      letter-spacing: 0.02em;
+    .v3-rs-sec__num {
+      font-family: var(--v3-serif); font-style: italic;
+      font-size: 22px; color: var(--v3-signal);
+      margin-bottom: 4px; letter-spacing: -.01em;
     }
+    .v3-rs-sec__body { padding: 12mm 12mm; }
 
-    .sidebar-item {
-      font-size: 8.5pt;
-      color: #cbd5e1;
-      line-height: 1.5;
-      margin-bottom: 4px;
+    .v3-rs-job { margin-bottom: 10mm; }
+    .v3-rs-job:last-child { margin-bottom: 0; }
+    .v3-rs-job__head {
+      display: flex; justify-content: space-between; align-items: baseline;
+      gap: 1rem; flex-wrap: wrap;
+      border-bottom: 1px solid var(--v3-hairline); padding-bottom: 4px; margin-bottom: 8px;
     }
-
-    .sidebar-item a {
-      color: #cbd5e1;
-      text-decoration: none;
+    .v3-rs-job__co {
+      font-family: var(--v3-serif);
+      font-weight: 400;
+      font-size: 19px;
+      letter-spacing: -.01em;
+      margin: 0;
     }
-
-    .sidebar-label {
-      font-size: 7.5pt;
-      color: #94a3b8;
-      margin-top: 1px;
+    .v3-rs-job__when {
+      font-family: var(--v3-mono);
+      font-size: 8px; text-transform: uppercase; letter-spacing: .12em;
+      color: var(--v3-mute);
     }
-
-    .sidebar-skill {
-      font-size: 8.5pt;
-      color: #e2e8f0;
-      line-height: 1.6;
+    .v3-rs-role { margin-bottom: 8mm; }
+    .v3-rs-role:last-child { margin-bottom: 0; }
+    .v3-rs-role__head {
+      display: flex; justify-content: space-between; align-items: baseline;
+      gap: 1rem; flex-wrap: wrap; margin-bottom: 4px;
     }
-
-    .sidebar-award {
-      font-size: 8.5pt;
-      color: #e2e8f0;
+    .v3-rs-role__t {
+      font-family: var(--v3-serif);
+      font-weight: 400;
+      font-size: 14px;
+      margin: 0;
+      color: var(--v3-ink);
     }
-
-    /* ---- Main Content ---- */
-    .main {
-      padding: 36px 32px 28px 28px;
+    .v3-rs-role__when {
+      font-family: var(--v3-mono);
+      font-size: 8px; text-transform: uppercase; letter-spacing: .1em;
+      color: var(--v3-mute);
     }
-
-    .header-name {
-      font-size: 26pt;
-      font-weight: 700;
-      color: #111;
-      line-height: 1.1;
-      margin-bottom: 4px;
+    .v3-rs-bullets {
+      list-style: none; padding: 0; margin: 0;
+      font-family: var(--v3-read);
+      font-size: 11.5px; line-height: 1.55;
+      color: var(--v3-ink-2);
     }
-
-    .header-role {
-      font-size: 11pt;
-      color: #555;
-      margin-bottom: 2px;
-    }
-
-    .header-location {
-      font-size: 9pt;
-      color: #888;
-      margin-bottom: 20px;
-    }
-
-    .divider {
-      border: none;
-      border-top: 1px solid #e2e8f0;
-      margin: 18px 0;
-    }
-
-    .section-title {
-      font-size: 14pt;
-      font-weight: 700;
-      color: #111;
-      margin-bottom: 14px;
-    }
-
-    .summary {
-      font-size: 9pt;
-      color: #333;
-      line-height: 1.6;
-      margin-bottom: 0;
-    }
-
-    /* Experience */
-    .exp-company {
-      font-size: 11pt;
-      font-weight: 700;
-      color: #111;
-      margin-top: 2px;
-    }
-
-    .exp-tenure {
-      font-size: 8pt;
-      color: #888;
-      margin-bottom: 8px;
-    }
-
-    .exp-role-title {
-      font-size: 10pt;
-      font-weight: 600;
-      color: #222;
-    }
-
-    .exp-role-dates {
-      font-size: 8pt;
-      color: #888;
-      margin-bottom: 2px;
-    }
-
-    .exp-role-location {
-      font-size: 8pt;
-      color: #aaa;
-      font-style: italic;
-      margin-bottom: 4px;
-    }
-
-    .exp-desc {
-      font-size: 8.5pt;
-      color: #444;
-      line-height: 1.55;
-      margin-bottom: 6px;
-    }
-
-    .exp-bullets {
-      list-style: disc;
+    .v3-rs-bullets li {
       padding-left: 14px;
-      margin-bottom: 10px;
-    }
-
-    .exp-bullets li {
-      font-size: 8.5pt;
-      color: #444;
-      line-height: 1.5;
-      margin-bottom: 2px;
-    }
-
-    .exp-block {
-      margin-bottom: 16px;
-      page-break-inside: avoid;
-    }
-
-    .exp-block:last-child { margin-bottom: 0; }
-
-    .role-block {
-      margin-bottom: 10px;
-    }
-
-    /* Education */
-    .edu-block {
-      margin-bottom: 10px;
-    }
-
-    .edu-school {
-      font-size: 10pt;
-      font-weight: 600;
-      color: #111;
-    }
-
-    .edu-degree {
-      font-size: 8.5pt;
-      color: #555;
-    }
-
-    /* Projects */
-    .proj-title {
-      font-size: 10pt;
-      font-weight: 600;
-      color: #222;
-    }
-
-    .proj-tenure {
-      font-size: 8pt;
-      color: #888;
+      position: relative;
       margin-bottom: 4px;
     }
+    .v3-rs-bullets li::before {
+      content: '—';
+      position: absolute; left: 0;
+      color: var(--v3-signal);
+      font-family: var(--v3-mono);
+    }
+    .v3-rs-bullets strong { color: var(--v3-ink); font-weight: 500; }
+
+    .v3-rs-skills {
+      font-family: var(--v3-read);
+      font-size: 11.5px; line-height: 1.7;
+      color: var(--v3-ink-2);
+      margin: 0;
+    }
+    .v3-rs-skills span {
+      display: inline-block; padding: 2px 5px;
+      border: 1px solid var(--v3-hairline);
+      margin: 2px 4px 2px 0;
+      font-family: var(--v3-mono);
+      font-size: 9.5px; letter-spacing: .04em;
+      color: var(--v3-ink);
+      background: var(--v3-paper);
+    }
+
+    .v3-rs-edu {
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 1rem; padding: 5mm 0;
+      border-bottom: 1px solid var(--v3-hairline);
+    }
+    .v3-rs-edu:last-child { border-bottom: 0; }
+    .v3-rs-edu__school { font-family: var(--v3-serif); font-size: 15px; margin: 0; font-weight: 400; }
+    .v3-rs-edu__deg { font-family: var(--v3-read); font-size: 11.5px; color: var(--v3-ink-2); margin: 2px 0 0; }
+    .v3-rs-edu__yr { font-family: var(--v3-mono); font-size: 8px; text-transform: uppercase; letter-spacing: .12em; color: var(--v3-mute); align-self: start; padding-top: 4px; }
   </style>
 </head>
-<body>
-  <div class="page">
+<body class="v3">
 
-    <!-- ======== SIDEBAR ======== -->
-    <aside class="sidebar">
-      <div class="sidebar-section">
-        <div class="sidebar-heading">Contact</div>
-        <div class="sidebar-item">9145335711 <span class="sidebar-label">(Mobile)</span></div>
-        <div class="sidebar-item"><a href="mailto:prashik.y.lanjewar@gmail.com">prashik.y.lanjewar@gmail.com</a></div>
-        <div class="sidebar-item" style="margin-top: 6px;">
-          <a href="https://www.linkedin.com/in/prashiklanjewar/">www.linkedin.com/in/prashiklanjewar</a>
-          <div class="sidebar-label">(LinkedIn)</div>
-        </div>
-        <div class="sidebar-item">
-          <a href="https://prashik.myportfolio.com">www.prashik.myportfolio.com</a>
-          <div class="sidebar-label">(Portfolio)</div>
-        </div>
+  <div class="v3-frame">
+
+    <section class="v3-rs-cover">
+      <div class="v3-rs-cover__main">
+        <div class="v3-cs-kicker">Designer II · Microsoft · Hyderabad</div>
+        <h1 class="v3-rs-name">Prashik <em>Lanjewar</em></h1>
+        <p class="v3-rs-role-line">Experience Designer — enterprise systems, AI-UX, commerce platforms.</p>
+        <p class="v3-rs-summary">Four years at Microsoft designing enterprise-scale commerce and self-serve systems. I specialise in system-level UX for complex operational workflows, AI-assisted experiences, and legacy-system modernisation. Track record: ~60% faster ordering, ~80% adoption in 30 days, multi-billion-dollar enterprise transactions supported. Foundation in new media design (NID) and mechanical engineering.</p>
       </div>
+      <dl class="v3-rs-cover__meta">
+        <div><dt>Email</dt><dd>prashik.y.lanjewar@gmail.com</dd></div>
+        <div><dt>Phone</dt><dd>+91 91453 35711</dd></div>
+        <div><dt>LinkedIn</dt><dd>/prashiklanjewar</dd></div>
+        <div><dt>Archive</dt><dd>prashik.myportfolio.com</dd></div>
+        <div><dt>Located</dt><dd>India</dd></div>
+      </dl>
+    </section>
 
-      <div class="sidebar-section">
-        <div class="sidebar-heading">Top Skills</div>
-        <div class="sidebar-skill">Enterprise UX</div>
-        <div class="sidebar-skill">Systems Thinking</div>
-        <div class="sidebar-skill">AI-Assisted Design</div>
-        <div class="sidebar-skill">User-Centred Design</div>
-        <div class="sidebar-skill">UX Research</div>
-        <div class="sidebar-skill">Design Strategy</div>
-        <div class="sidebar-skill">Interaction Design</div>
-        <div class="sidebar-skill">Prototyping</div>
-        <div class="sidebar-skill">Design Systems</div>
-        <div class="sidebar-skill">Accessibility</div>
-        <div class="sidebar-skill">Secure-by-Design</div>
-        <div class="sidebar-skill">Responsible AI</div>
-        <div class="sidebar-skill">Figma</div>
+    <section class="v3-rs-numbers">
+      <div class="v3-rs-num"><div class="v3-rs-num__big">~60%</div><div class="v3-rs-num__lbl">Faster ordering</div></div>
+      <div class="v3-rs-num"><div class="v3-rs-num__big">~80%</div><div class="v3-rs-num__lbl">Adoption in 30 days</div></div>
+      <div class="v3-rs-num"><div class="v3-rs-num__big">10d → 5m</div><div class="v3-rs-num__lbl">Update statement</div></div>
+      <div class="v3-rs-num"><div class="v3-rs-num__big">&gt;$1B</div><div class="v3-rs-num__lbl">Amazon EA scope</div></div>
+    </section>
+
+    <section class="v3-rs-sec">
+      <div class="v3-rs-sec__head"><div class="v3-rs-sec__num">i</div>Experience</div>
+      <div class="v3-rs-sec__body">
+
+        <article class="v3-rs-job">
+          <div class="v3-rs-job__head">
+            <h3 class="v3-rs-job__co">Microsoft</h3>
+            <span class="v3-rs-job__when">July 2022 — Present · India</span>
+          </div>
+          <div class="v3-rs-role">
+            <div class="v3-rs-role__head">
+              <h4 class="v3-rs-role__t">UX Designer II</h4>
+              <span class="v3-rs-role__when">Sep 2024 — Present</span>
+            </div>
+            <ul class="v3-rs-bullets">
+              <li>Designed a self-serve ordering experience on M365 Admin Centre that replaced manual, ops-heavy workflows — <strong>~60% faster ordering, ~80% adoption in 30 days</strong>, 1000s of partner hours saved annually, $Ms in cost avoidance.</li>
+              <li>Reframed an enterprise seller dashboard from a passive reporting surface into an action-driven decision system, reducing Excel dependency and embedding trust signals throughout.</li>
+              <li>Led design-led retirement of a mission-critical legacy order entry system supporting <strong>multi-billion-dollar transactions</strong>, applying Parity++ to modernise flows while carrying zero UX debt forward.</li>
+              <li>Conducted evaluative UX research with a SUS baseline of <strong>69.6</strong>, connecting usability findings to trust, velocity, and behavioural friction — shifting team's quality bar from feature-complete to behaviour-complete.</li>
+              <li>Served as design partner for Amazon's <strong>&gt;$1B</strong> enterprise agreement, ensuring role segregation and security controls were UX-viable at scale. Patterns became reusable across the platform.</li>
+            </ul>
+          </div>
+          <div class="v3-rs-role">
+            <div class="v3-rs-role__head">
+              <h4 class="v3-rs-role__t">Designer</h4>
+              <span class="v3-rs-role__when">Jul 2022 — Sep 2024</span>
+            </div>
+            <ul class="v3-rs-bullets">
+              <li>Architected a scalable ordering platform across EA, Non-EA, Partner, and OSC/ROC flows. Multi-PO support, bulk editing, multi-SKU search — reusable patterns adopted across <strong>4+ order types</strong>.</li>
+              <li>Designed a streamlined update statement workflow that cut processing from <strong>~10 days to ~5 minutes</strong>. Recognised by stakeholders as a top efficiency win.</li>
+              <li>Proactively flagged unrestricted edit access, missing consent flows, and zero audit trail in a production-bound feature (CICR). Escalated to leadership; full security-first redesign before rollout.</li>
+              <li>Inherited a delivery-blocked credits experience three weeks before GA. Simplified the flow, made hard scope trade-offs, shipped on time. Cited by leadership as a key growth milestone.</li>
+              <li>Designed a unified Activity Log and Audit Report giving real-time compliance traceability, replacing fragmented email-based tracking.</li>
+              <li>Consolidated two separate legacy credits workflows onto VL Central, reducing context-switching for ops teams and eliminating a standalone legacy tool.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="v3-rs-job">
+          <div class="v3-rs-job__head">
+            <h3 class="v3-rs-job__co">Hurrey Tech Ventures</h3>
+            <span class="v3-rs-job__when">Nov 2020 — Aug 2021 · India</span>
+          </div>
+          <div class="v3-rs-role">
+            <div class="v3-rs-role__head">
+              <h4 class="v3-rs-role__t">Design Lead</h4>
+              <span class="v3-rs-role__when">Nov 2020 — Aug 2021</span>
+            </div>
+            <ul class="v3-rs-bullets">
+              <li>Owned the overall design track across the full product family, from strategy through execution.</li>
+              <li>Created a new brand identity and led the products through a major UX overhaul.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="v3-rs-job">
+          <div class="v3-rs-job__head">
+            <h3 class="v3-rs-job__co">Wipro Digital</h3>
+            <span class="v3-rs-job__when">Jan 2020 — Jul 2020 · Chennai</span>
+          </div>
+          <div class="v3-rs-role">
+            <div class="v3-rs-role__head">
+              <h4 class="v3-rs-role__t">Design Innovation Intern</h4>
+              <span class="v3-rs-role__when">Jan — Jul 2020</span>
+            </div>
+            <ul class="v3-rs-bullets">
+              <li>Led end-to-end design of a financial-sector project gamifying personal finance — research, data interpretation, strategy, storyboarding, HCI, prototyping.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="v3-rs-job">
+          <div class="v3-rs-job__head">
+            <h3 class="v3-rs-job__co">IFB Industries Ltd</h3>
+            <span class="v3-rs-job__when">Jun 2019 — Jan 2020 · Goa</span>
+          </div>
+          <div class="v3-rs-role">
+            <div class="v3-rs-role__head">
+              <h4 class="v3-rs-role__t">Experience Design Intern</h4>
+              <span class="v3-rs-role__when">Jun 2019 — Jan 2020</span>
+            </div>
+            <ul class="v3-rs-bullets">
+              <li>Enhanced in-store customer experience at IFB Points — retail experience and future-store concept design.</li>
+              <li>Contributed to the research division focusing on VR, AR, and IoT applications.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="v3-rs-job">
+          <div class="v3-rs-job__head">
+            <h3 class="v3-rs-job__co">Narangi Brush</h3>
+            <span class="v3-rs-job__when">Jan 2016 — Dec 2017 · Nagpur</span>
+          </div>
+          <div class="v3-rs-role">
+            <div class="v3-rs-role__head">
+              <h4 class="v3-rs-role__t">Space Designer</h4>
+              <span class="v3-rs-role__when">Jan 2016 — Dec 2017</span>
+            </div>
+          </div>
+        </article>
+
       </div>
+    </section>
 
-      <div class="sidebar-section">
-        <div class="sidebar-heading">Honors-Awards</div>
-        <div class="sidebar-award">Design Innovator</div>
-      </div>
-    </aside>
+    <section class="v3-rs-sec">
+      <div class="v3-rs-sec__head"><div class="v3-rs-sec__num">ii</div>Side Practice</div>
+      <div class="v3-rs-sec__body">
 
-    <!-- ======== MAIN ======== -->
-    <main class="main">
-      <h1 class="header-name">Prashik Lanjewar</h1>
-      <p class="header-role">Designer II at Microsoft | New Media Design at NID</p>
-      <p class="header-location">Maharashtra, India</p>
-
-      <!-- Summary -->
-      <div class="section-title">Summary</div>
-      <p class="summary">Experience Designer at Microsoft with 4+ years designing intelligent, enterprise-scale systems at the intersection of technology, human behaviour, and organisational complexity. My work focuses on system-level UX for commerce and self-serve platforms — simplifying complex workflows, reducing operational effort, and improving decision-making at scale. Track record of reducing ordering time by ~60%, driving ~80% adoption in 30 days, and supporting multi-billion-dollar enterprise transactions. Increasingly, this involves shaping AI-assisted experiences that augment human judgement while remaining transparent and trustworthy. I actively leverage AI and Copilot-driven design workflows to accelerate exploration, synthesise research, and shorten delivery cycles. Foundation in new media design (NID) and mechanical engineering.</p>
-
-      <hr class="divider">
-
-      <!-- Experience -->
-      <div class="section-title">Experience</div>
-
-      <div class="exp-block">
-        <div class="exp-company">Microsoft</div>
-        <div class="exp-tenure">4+ years</div>
-
-        <div class="role-block">
-          <div class="exp-role-title">UX Designer II</div>
-          <div class="exp-role-dates">September 2024 - Present</div>
-          <div class="exp-role-location">India</div>
-          <p class="exp-desc">Designing AI-assisted, enterprise-scale commerce and self-serve systems — bringing clarity, trust, and structure to complex operational workflows across M365 Admin Centre.</p>
-          <ul class="exp-bullets">
-            <li>Designed a self-serve ordering experience on M365 Admin Centre replacing manual workflows — ~60% faster ordering, ~80% adoption in 30 days, 1000s of partner hours saved annually, $Ms in cost avoidance.</li>
-            <li>Reframed an enterprise seller dashboard from a passive reporting surface into an action-driven decision system, reducing Excel dependency and embedding trust signals.</li>
-            <li>Led design-led retirement of a mission-critical legacy order entry system supporting multi-billion-dollar transactions, applying Parity++ principles with zero UX debt carried forward.</li>
-            <li>Conducted evaluative UX research establishing a SUS baseline of 69.6, connecting usability findings to trust, velocity, and behavioural friction.</li>
-            <li>Served as design partner for Amazon's >$1B enterprise agreement, ensuring role segregation and security controls were UX-viable at scale.</li>
+        <article class="v3-rs-job">
+          <div class="v3-rs-job__head">
+            <h3 class="v3-rs-job__co">A Promptbook for Copilot</h3>
+            <span class="v3-rs-job__when">Side Project · 2024</span>
+          </div>
+          <ul class="v3-rs-bullets">
+            <li>Designed and built a structured AI promptbook turning Copilot into a domain expert: <strong>8 principles, 15 playbooks, 4000+ prompts</strong>.</li>
+            <li>Architected a reference system ensuring zero unsourced claims across 20+ published standards — trustworthy AI assistance for specialist domains.</li>
+            <li>Created a domain-agnostic framework (principles → playbooks → prompts → references) applicable to any creative or technical domain.</li>
           </ul>
-        </div>
+        </article>
 
-        <div class="role-block">
-          <div class="exp-role-title">Designer</div>
-          <div class="exp-role-dates">July 2022 - September 2024</div>
-          <div class="exp-role-location">Hyderabad, Telangana, India</div>
-          <p class="exp-desc">End-to-end design ownership of complex enterprise workflows across orders, credits, and compliance.</p>
-          <ul class="exp-bullets">
-            <li>Architected a scalable ordering platform across EA, Non-EA, Partner, and OSC/ROC flows — reusable patterns adopted across 4+ order types.</li>
-            <li>Designed workflow cutting update statement processing from ~10 days to ~5 minutes. Recognised as a top efficiency win.</li>
-            <li>Identified unrestricted edit access, missing consent flows, and zero audit trail in production-bound feature (CICR). Escalated to leadership for security-first redesign.</li>
-            <li>Inherited delivery-blocked credits experience 3 weeks before GA. Shipped on time. Cited by leadership as key growth milestone.</li>
-            <li>Designed unified Activity Log and Audit Report for real-time compliance traceability.</li>
-            <li>Consolidated two legacy credits workflows into a single experience, eliminating a standalone tool.</li>
+        <article class="v3-rs-job">
+          <div class="v3-rs-job__head">
+            <h3 class="v3-rs-job__co">Moments &amp; Metrics</h3>
+            <span class="v3-rs-job__when">Microsoft · Ongoing</span>
+          </div>
+          <ul class="v3-rs-bullets">
+            <li>Authored a strategic communication framework mapping critical journey moments to business signals and measurable outcomes for leadership audiences.</li>
+            <li>Created MnM value maps and Sankey-style flow diagrams to communicate effort-to-impact-to-outcome narratives across hackathons and readouts.</li>
           </ul>
+        </article>
+
+        <article class="v3-rs-job">
+          <div class="v3-rs-job__head">
+            <h3 class="v3-rs-job__co">Design Beyond Screens</h3>
+            <span class="v3-rs-job__when">Microsoft · Ongoing</span>
+          </div>
+          <ul class="v3-rs-bullets">
+            <li>Designed hackathon T-shirts, Pinnacle editions, and Studio artefacts as intentional design objects — translating AI and experimentation themes into wearable form.</li>
+            <li>Extended design into culture, identity, and shared memory — artefacts that anchor team identity beyond the screens that ship.</li>
+          </ul>
+        </article>
+
+        <article class="v3-rs-job">
+          <div class="v3-rs-job__head">
+            <h3 class="v3-rs-job__co">Hackathon Prototyping &amp; Leadership</h3>
+            <span class="v3-rs-job__when">Microsoft · Ongoing</span>
+          </div>
+          <ul class="v3-rs-bullets">
+            <li>Design lead across multiple Microsoft hackathons — reframed ideas toward revenue enablement, built AI-native prototypes under tight timelines.</li>
+            <li>Influenced decisions without authority across cross-functional teams; framed outcomes for leadership clarity around revenue, scale, and cost impact.</li>
+          </ul>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="v3-rs-sec">
+      <div class="v3-rs-sec__head"><div class="v3-rs-sec__num">iii</div>Skills</div>
+      <div class="v3-rs-sec__body">
+        <p class="v3-rs-skills">
+          <span>Enterprise UX</span>
+          <span>Systems Thinking</span>
+          <span>AI-Assisted Design</span>
+          <span>Copilot Workflows</span>
+          <span>Design Strategy</span>
+          <span>UX Research</span>
+          <span>User-Centred Design</span>
+          <span>Information Architecture</span>
+          <span>Interaction Design</span>
+          <span>Prototyping</span>
+          <span>Design Systems</span>
+          <span>Accessibility</span>
+          <span>Secure-by-Design</span>
+          <span>Responsible AI</span>
+          <span>Stakeholder Alignment</span>
+          <span>Cross-Functional Leadership</span>
+          <span>Figma</span>
+        </p>
+      </div>
+    </section>
+
+    <section class="v3-rs-sec">
+      <div class="v3-rs-sec__head"><div class="v3-rs-sec__num">iv</div>Education</div>
+      <div class="v3-rs-sec__body">
+        <div class="v3-rs-edu">
+          <div>
+            <h3 class="v3-rs-edu__school">National Institute of Design (NID)</h3>
+            <p class="v3-rs-edu__deg">Master's degree, New Media Design</p>
+          </div>
+          <div class="v3-rs-edu__yr">2017 — 2020</div>
+        </div>
+        <div class="v3-rs-edu">
+          <div>
+            <h3 class="v3-rs-edu__school">Savitribai Phule Pune University</h3>
+            <p class="v3-rs-edu__deg">Bachelor's degree, Mechanical Engineering</p>
+          </div>
+          <div class="v3-rs-edu__yr">2012 — 2016</div>
         </div>
       </div>
+    </section>
 
-      <div class="exp-block">
-        <div class="exp-company">Hurrey Tech Ventures</div>
-        <div class="exp-tenure">November 2020 - August 2021 (10 months)</div>
-        <div class="role-block">
-          <div class="exp-role-title">Design Lead</div>
-          <div class="exp-role-location">India</div>
-          <p class="exp-desc">Owned the overall design track across the full product family from strategy to execution. Created a new brand identity and led a major UX overhaul.</p>
+    <section class="v3-rs-sec" style="border-bottom:0">
+      <div class="v3-rs-sec__head"><div class="v3-rs-sec__num">v</div>Honours</div>
+      <div class="v3-rs-sec__body">
+        <div class="v3-rs-edu" style="border-bottom:0">
+          <div>
+            <h3 class="v3-rs-edu__school">Design Innovator</h3>
+          </div>
         </div>
       </div>
-
-      <div class="exp-block">
-        <div class="exp-company">Wipro Digital</div>
-        <div class="exp-tenure">January 2020 - July 2020 (7 months)</div>
-        <div class="role-block">
-          <div class="exp-role-title">Design Innovation Intern</div>
-          <div class="exp-role-location">Chennai, Tamil Nadu, India</div>
-          <p class="exp-desc">Led end-to-end design of a financial sector project gamifying personal finance — research, data interpretation, strategy, storyboarding, HCI design, and prototyping.</p>
-        </div>
-      </div>
-
-      <div class="exp-block">
-        <div class="exp-company">IFB Industries Ltd</div>
-        <div class="exp-tenure">June 2019 - January 2020 (8 months)</div>
-        <div class="role-block">
-          <div class="exp-role-title">Experience Design Intern</div>
-          <div class="exp-role-location">Goa</div>
-          <p class="exp-desc">Enhanced in-store customer experience at IFB Points, retail experience design, and future store concepts. Contributed to VR, AR, and IoT research.</p>
-        </div>
-      </div>
-
-      <div class="exp-block">
-        <div class="exp-company">Narangi Brush</div>
-        <div class="exp-tenure">January 2016 - December 2017 (2 years)</div>
-        <div class="role-block">
-          <div class="exp-role-title">Space Designer</div>
-          <div class="exp-role-location">Nagpur</div>
-        </div>
-      </div>
-
-      <hr class="divider">
-
-      <!-- Projects -->
-      <div class="section-title">Projects</div>
-
-      <div class="exp-block">
-        <div class="proj-title">AI Copilot Promptbook — Domain Expert System</div>
-        <div class="proj-tenure">Side Project · 2024</div>
-        <ul class="exp-bullets">
-          <li>Designed a structured AI promptbook with 8 operating principles, 15 playbooks, 4000+ prompts, and 20+ evidence-backed sources ensuring zero unsourced claims.</li>
-          <li>Created a domain-agnostic framework applicable to any specialist domain.</li>
-        </ul>
-      </div>
-
-      <div class="exp-block">
-        <div class="proj-title">Moments & Metrics — Visual Storytelling for Leadership</div>
-        <div class="proj-tenure">Microsoft · Ongoing</div>
-        <ul class="exp-bullets">
-          <li>Designed a strategic communication framework mapping journey moments to business signals and measurable outcomes for leadership audiences.</li>
-        </ul>
-      </div>
-
-      <div class="exp-block">
-        <div class="proj-title">Design Beyond Screens — Physical Artefacts & Culture</div>
-        <div class="proj-tenure">Microsoft · Ongoing</div>
-        <ul class="exp-bullets">
-          <li>Designed hackathon T-shirts and Studio artefacts as intentional design objects — extending design impact into culture, identity, and shared memory.</li>
-        </ul>
-      </div>
-
-      <div class="exp-block">
-        <div class="proj-title">Hackathon Prototyping & Cross-Functional Leadership</div>
-        <div class="proj-tenure">Microsoft · Ongoing</div>
-        <ul class="exp-bullets">
-          <li>Design lead across multiple hackathons — AI-native prototyping, revenue-oriented framing, cross-functional influence without authority.</li>
-        </ul>
-      </div>
-
-      <hr class="divider">
-
-      <!-- Education -->
-      <div class="section-title">Education</div>
-
-      <div class="edu-block">
-        <div class="edu-school">National Institute of Design</div>
-        <div class="edu-degree">Master's degree, New Media Design · (2017 - 2020)</div>
-      </div>
-
-      <div class="edu-block">
-        <div class="edu-school">Savitribai Phule Pune University</div>
-        <div class="edu-degree">Bachelor's degree, Mechanical Engineering · (2012 - 2016)</div>
-      </div>
-    </main>
+    </section>
 
   </div>
+
+  <script>
+    // Auto-fit @page height to actual content height (eliminates trailing whitespace).
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        var px = Math.max(
+          document.documentElement.scrollHeight,
+          document.body.scrollHeight
+        );
+        var mm = Math.ceil(px * 25.4 / 96) + 2;
+        var s = document.createElement('style');
+        s.textContent = '@page { size: 210mm ' + mm + 'mm; margin: 0; }';
+        document.head.appendChild(s);
+        document.title = 'H=' + mm;
+      }, 600);
+    });
+  </script>
 </body>
 </html>
