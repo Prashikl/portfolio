@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Legacy Operations Modernization — Edition IV</title>
+  <meta name="description" content="Designing parity, automation, exception handling, and auditability for a multi-release legacy operations modernization program.">
+  <meta name="theme-color" content="#ffb4dc">
+  <link rel="stylesheet" href="../css/v4.css?v=2"><link rel="stylesheet" href="../css/v4-interior.css?v=2">
+</head>
+<body class="v4 v4-inner v4-inner--pink">
+  <a class="skip-link" href="#case">Skip to case study</a>
+  <header class="v4-nav"><a class="v4-nav__back" href="../index-v4.html"><span aria-hidden="true">←</span> V4 Index</a><a class="v4-logo" href="../index-v4.html"><span>PL</span><strong>Prashik Lanjewar</strong></a><a class="v4-nav__cta" href="../v4-evidence.html">Evidence index <span aria-hidden="true">↗</span></a></header>
+  <main id="case">
+    <section class="v4-cs-hero">
+      <div class="v4-cs-hero__copy">
+        <div><p class="v4-cs-hero__eyebrow">Case 04 · Operational UX · 2024–2026</p><h1>From manual entry to <em>exception-led operations.</em></h1><p class="v4-cs-hero__lead">Defining parity, automation, failure recovery, and auditability while a critical legacy order-management surface moved through a multi-release modernization.</p></div>
+        <dl class="v4-cs-meta"><div><dt>Role</dt><dd>Ordering UX designer</dd></div><div><dt>Users</dt><dd>Agents · validators · countersignatories</dd></div><div><dt>Status</dt><dd>Mixed evidence · in flight</dd></div></dl>
+      </div>
+      <div class="v4-cs-hero__art"><img src="images/mseds-order-management.svg" alt="Sanitized order management interface representing operational modernization"><div class="v4-cs-hero__badge">Intent over screen parity</div></div>
+    </section>
+
+    <div class="v4-cs-body">
+      <aside class="v4-cs-rail"><p>On this page</p><a href="#snapshot">Snapshot</a><a href="#research">Research</a><a href="#model">Model</a><a href="#decisions">Decisions</a><a href="#delivery">Delivery</a><a href="#evidence">Evidence</a><a href="#reflection">Reflection</a></aside>
+      <div class="v4-cs-content">
+        <section class="v4-cs-section" id="snapshot" data-reveal>
+          <div class="v4-cs-section__label"><span>01</span> Snapshot</div>
+          <h2>A rebuild could preserve the very work it needed to remove.</h2>
+          <p>Operations agents used a legacy order-entry and management surface plus connected tools to search, create, edit, validate, reject, submit, and audit licensing orders. A screen-for-screen rebuild would preserve manual toil; removing too much would break high-consequence work.</p>
+          <div class="v4-cs-grid"><article class="v4-cs-card"><div class="v4-cs-card__num">Business need</div><h3>Retire without breaking trust</h3><p>Reduce repetitive entry and operational cost while preserving continuity, compliance, and precise recovery.</p></article><article class="v4-cs-card"><div class="v4-cs-card__num">North star</div><h3>Exception-led operations</h3><p>Automation handles predictable work; people resolve understandable exceptions through precise manual paths.</p></article></div>
+          <div class="v4-evidence-strip"><span class="v4-evidence v4-evidence--verified">Verified contribution</span><p>I helped map legacy and future workflows and shaped residual human capabilities, status, failure visibility, activity/audit concepts, and parity-versus-automation decisions.</p></div>
+        </section>
+
+        <section class="v4-cs-section" id="research" data-reveal>
+          <div class="v4-cs-section__label"><span>02</span> Research landscape</div>
+          <h2>The pain was systemic, not cosmetic.</h2>
+          <p>A three-day online immersion and field visit used controlled crowdsourcing, agent show-and-tells, and observation to map agreement and order workflows, tool relationships, manual augmentation, and confidence in automation. I consumed that research and translated it into ordering and exception-design questions; the research team and operations agents produced the evidence.</p>
+          <div class="v4-cs-grid v4-cs-grid--metrics"><article class="v4-cs-card"><div class="v4-cs-card__num">30+</div><h3>Tools and artifacts</h3><p>Used concurrently across the operational workflow.</p></article><article class="v4-cs-card"><div class="v4-cs-card__num">100–200</div><h3>Items per request</h3><p>Some requests required line-by-line entry or checking.</p></article><article class="v4-cs-card"><div class="v4-cs-card__num">4–5 min</div><h3>Hygiene checks</h3><p>A research observation per case, not a realized saving.</p></article><article class="v4-cs-card"><div class="v4-cs-card__num">100+</div><h3>Referenced rules</h3><p>Business rules were not integrated into the tools.</p></article></div>
+          <p class="v4-note"><strong>Evidence boundary:</strong> these figures describe observed problem scale. Definitions and publication permission still require confirmation.</p>
+        </section>
+
+        <section class="v4-cs-section" id="model" data-reveal>
+          <div class="v4-cs-section__label"><span>03</span> Before / after model</div>
+          <h2>Separate the enduring job from the legacy implementation.</h2>
+          <div class="v4-cs-flow"><article><span>Research</span><div><h3>Ground in actual operations</h3><p>Use immersion findings, workflow demonstrations, linked specifications, and work-item evidence to understand manual work and trust.</p></div></article><article><span>Decide</span><div><h3>Eliminate, reuse, build, or retire</h3><p>Classify each legacy capability instead of assuming parity means duplication.</p></div></article><article><span>Split</span><div><h3>Two complementary tracks</h3><p>Design modern capabilities for residual human work and automation for repeatable, data-driven flows.</p></div></article><article><span>Recover</span><div><h3>Make partial failure first-class</h3><p>Expose batch and tenant outcomes, failure reasons, and precise manual reprocessing.</p></div></article><article><span>Audit</span><div><h3>Make validation legible</h3><p>Consolidate what was checked, what failed, and who owns the next action for validators and countersignatories.</p></div></article></div>
+          <blockquote class="v4-cs-quote">The right modernization unit is the enduring user job, not the legacy screen.</blockquote>
+        </section>
+
+        <section class="v4-cs-section" id="decisions" data-reveal>
+          <div class="v4-cs-section__label"><span>04</span> Product decisions</div>
+          <h2>Automation UX is largely exception UX.</h2>
+          <div class="v4-cs-grid"><article class="v4-cs-card"><div class="v4-cs-card__num">Parity</div><h3>Intent, not pixels</h3><p>Preserve jobs and controls while avoiding historical implementation complexity.</p></article><article class="v4-cs-card"><div class="v4-cs-card__num">Search</div><h3>Precision first</h3><p>Use high-precision identifiers for action-led arrivals; keep broad attributes as filters.</p></article><article class="v4-cs-card"><div class="v4-cs-card__num">States</div><h3>Actions follow status</h3><p>Accepted, Pending, Review, Hold, Rejected, Invalid, and Partially Billed states require distinct controls, flags, comments, and view-only behavior.</p></article><article class="v4-cs-card"><div class="v4-cs-card__num">Failure</div><h3>Batch and tenant visibility</h3><p>One tenant must not block all processing; users need aggregate status and detailed recovery.</p></article><article class="v4-cs-card"><div class="v4-cs-card__num">Audit</div><h3>Accountable history</h3><p>Validation outcomes, transitions, comments, and next ownership make correctness usable.</p></article><article class="v4-cs-card"><div class="v4-cs-card__num">Upstream</div><h3>Fix causes where possible</h3><p>Do not preserve manual correction when authoritative reporting or an upstream fix is safer.</p></article></div>
+        </section>
+
+        <section class="v4-cs-section" id="delivery" data-reveal>
+          <div class="v4-cs-section__label"><span>05</span> Multi-release delivery</div>
+          <h2>Status stayed feature-level.</h2>
+          <div class="v4-status-list"><article><span>Phase 1</span><div><h3>Enrollment, search, order creation</h3><p>Some development walkthroughs were complete and other designs remained under evaluation in February 2026.</p></div></article><article><span>Phase 2</span><div><h3>Cart and submission</h3><p>Designs were shared with development; walkthrough and feasibility work remained active.</p></div></article><article><span>Phase 3</span><div><h3>Management</h3><p>Status, details, actions, comments, validation, rejection, and audit behavior were defined through specifications and review.</p></div></article><article><span>Phase 3.1+</span><div><h3>Expanded ordering and dependencies</h3><p>New scope changed timing; later step-up, reconciliation, license-reduction, hold, and pending dependencies remained unresolved.</p></div></article></div>
+          <p>A formal April–May 2026 programme UAT covered early migrated capabilities with test leads, auditors, validators, production-like examples, scripts, bug logging, triage, and daily status. That proves programme testing, not my execution of every test.</p>
+        </section>
+
+        <section class="v4-cs-section" id="evidence" data-reveal>
+          <div class="v4-cs-section__label"><span>06</span> Evidence ledger</div>
+          <h2>Planning scale is not realized impact.</h2>
+          <div class="v4-ledger"><article><span class="v4-evidence v4-evidence--verified">Verified fact</span><p>Phase 1 and 2 designs were shared with development; initial Phase 1 reviews were completed and technical-feasibility discussions were planned.</p></article><article><span class="v4-evidence v4-evidence--verified">Programme fact</span><p>Formal end-to-end UAT was organized for April–May 2026. Direct personal test ownership is not established.</p></article><article><span class="v4-evidence v4-evidence--directional">Planning scale</span><p>8.3K non-package orders/up to 13%, 5K mid-term orders, roughly 210 of 2.5K extension orders at retrieval risk, 68K package-based orders, 4.5K another order type, and an anticipated +10% automation opportunity all require definition and deployment validation.</p></article><article><span class="v4-evidence v4-evidence--validate">Validate</span><p>No single overall GA or retirement date, complete realized outcome set, project-specific accessibility closure, or controlled pilot is established.</p></article></div>
+          <h3>Measurement needed by phase</h3><p>Automation completion, exception rate, manual touches, processing time, correctness defects, invoice issues, support cases, recovery success, UAT defect themes, and production telemetry.</p>
+        </section>
+
+        <section class="v4-cs-section" id="reflection" data-reveal>
+          <div class="v4-cs-section__label"><span>07</span> Reflection</div>
+          <h2>Correctness and compliance are user outcomes.</h2>
+          <ul class="v4-bullets"><li>Preserve the enduring job, remove obsolete behavior, automate the repeatable, and make failure recoverable.</li><li>Treat status, cause, scope, recovery, accountability, and auditability as the core of automation UX.</li><li>Use explicit change control when scope arrives after plan publication.</li><li>Track design readiness at feature level rather than hiding uncertainty in one programme status.</li><li>Keep source-of-truth specifications, service contracts, fallback commitments, and unresolved parity questions visible before sign-off.</li></ul>
+          <div class="v4-evidence-strip"><span class="v4-evidence v4-evidence--validate">Open validation</span><p>Confirm production phases, research-volume disclosure, retrieval-fix deployment, authoritative specifications, service/fallback contracts, and one delivered phase with a concrete before/after outcome.</p></div>
+        </section>
+      </div>
+    </div>
+    <a class="v4-cs-next" href="v4-copilot-promptbook.html"><div><small>Next case</small><strong>AI-Augmented Design</strong></div><span aria-hidden="true">↗</span></a>
+  </main>
+  <footer class="v4-footer"><span>© 2026 Prashik Lanjewar</span><span>Case 04 · Edition IV</span><span>Source status: mixed / in flight</span></footer><div class="v4-cursor" aria-hidden="true"></div><script src="../js/v4.js?v=1" defer></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1250" role="img" aria-labelledby="title desc">
+  <title id="title">From complexity to clarity</title>
+  <desc id="desc">An editorial systems map turns tangled inputs into a clear product flow.</desc>
+  <defs><pattern id="dots" width="32" height="32" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="2" fill="#151515" opacity=".18"/></pattern></defs>
+  <rect width="1000" height="1250" fill="#58d8e6"/><rect x="34" y="34" width="932" height="1182" fill="url(#dots)" stroke="#151515" stroke-width="4"/>
+  <path d="M0 150L480 0h520v350L600 470 0 350Z" fill="#ffb4dc" stroke="#151515" stroke-width="4"/>
+  <g fill="none" stroke="#151515" stroke-width="7" stroke-linecap="round"><path d="M98 214C240 130 242 366 380 264S548 372 634 248"/><path d="M90 300c120 100 210-120 336 6s192-54 264 12"/><path d="M170 110c-32 166 196 96 142 264"/></g>
+  <g stroke="#151515" stroke-width="4"><circle cx="98" cy="214" r="22" fill="#d9f54a"/><circle cx="380" cy="264" r="22" fill="#ff5c35"/><circle cx="634" cy="248" r="22" fill="#3255ff"/><circle cx="170" cy="110" r="22" fill="#fff8ee"/></g>
+  <path d="M620 384l52 52 126-142" fill="none" stroke="#151515" stroke-width="22"/><rect x="565" y="505" width="330" height="485" fill="#fff8ee" stroke="#151515" stroke-width="5"/>
+  <rect x="615" y="566" width="230" height="28" fill="#151515"/><rect x="615" y="632" width="166" height="18" fill="#3255ff"/><rect x="615" y="684" width="230" height="92" fill="#d9f54a" stroke="#151515" stroke-width="4"/><rect x="615" y="810" width="102" height="112" fill="#ff5c35" stroke="#151515" stroke-width="4"/><rect x="743" y="810" width="102" height="112" fill="#58d8e6" stroke="#151515" stroke-width="4"/>
+  <path d="M118 540h318v318H118z" fill="#3255ff" stroke="#151515" stroke-width="5" transform="rotate(-5 277 699)"/><path d="M176 614h206M176 666h156M176 718h190" stroke="#fff8ee" stroke-width="18"/><circle cx="404" cy="925" r="112" fill="#ffb4dc" stroke="#151515" stroke-width="5"/><path d="M346 925h116M404 867v116" stroke="#151515" stroke-width="16"/>
+  <path d="M116 1090h770" stroke="#151515" stroke-width="5"/><text x="116" y="1160" fill="#151515" font-family="Space Grotesk, sans-serif" font-size="52" font-weight="700">SYSTEMS → EXPERIENCE</text>
+</svg>

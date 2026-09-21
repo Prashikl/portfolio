@@ -441,5 +441,5 @@ body.v3 .menu-overlay { display: none; }
 [data-theme="light"] body.v3 { background: var(--v3-paper); }
 
 @media print {
-  .vtoggle { display: none !important; }
+  .vtoggle, .vdrop { display: none !important; }
 }

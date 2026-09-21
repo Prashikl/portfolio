@@ -310,47 +310,93 @@ body.v2 .theme-toggle { color: var(--v2-text); border-color: var(--v2-line-stron
 .v2-contact__links a:hover { color: var(--v2-text); border-color: var(--v2-text); }
 
 /* ========================================
-   Floating Version Toggle (shared v1 + v2)
+   Floating Version Dropdown (shared v1 + v2 + v3)
    ======================================== */
-.vtoggle {
+.vdrop {
   position: fixed;
-  bottom: 1.5rem;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 1.25rem;
+  right: 1.25rem;
   z-index: 9999;
-  display: inline-flex;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  width: auto;
+  min-width: 88px;
+  user-select: none;
+}
+.vdrop__trigger {
+  appearance: none;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
   align-items: center;
-  gap: 0;
-  padding: 4px;
-  background: rgba(10,10,14,.85);
-  border: 1px solid rgba(255,255,255,.12);
-  border-radius: 999px;
-  backdrop-filter: blur(16px) saturate(140%);
-  -webkit-backdrop-filter: blur(16px) saturate(140%);
-  box-shadow: 0 12px 40px rgba(0,0,0,.4), inset 0 0 0 1px rgba(255,255,255,.04);
-  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background: linear-gradient(180deg, #3b4252 0%, #232831 100%);
+  border: 1px solid #14171c;
+  border-radius: 7px;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.08) inset,
+    0 -1px 0 rgba(0,0,0,.4) inset,
+    0 8px 22px rgba(0,0,0,.45);
+  color: #d6dae3;
+  font-family: inherit;
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: filter .2s;
 }
-.vtoggle__btn {
-  appearance: none; border: 0; cursor: pointer;
-  padding: 8px 18px;
-  font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
-  color: rgba(255,255,255,.6);
-  background: transparent;
-  border-radius: 999px;
-  transition: color .25s, background .25s;
+.vdrop__trigger:hover { filter: brightness(1.1); }
+
+.vdrop__caret {
+  width: 0; height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #d6dae3;
+  margin-left: 12px;
+  transition: transform .2s;
 }
-.vtoggle__btn[aria-pressed="true"] {
-  color: #07070A;
-  background: linear-gradient(120deg, #5B7CFA, #FF4D8D);
-  box-shadow: 0 4px 16px rgba(255,77,141,.35);
+.vdrop[data-open="true"] .vdrop__caret { transform: rotate(180deg); }
+
+.vdrop__list {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 6px 0;
+  list-style: none;
+  background: linear-gradient(180deg, #323845 0%, #1f242d 100%);
+  border: 1px solid #14171c;
+  border-radius: 7px;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.06) inset,
+    0 -1px 0 rgba(0,0,0,.4) inset,
+    0 -8px 22px rgba(0,0,0,.4);
+  display: none;
 }
-.vtoggle__btn:hover[aria-pressed="false"] { color: #fff; }
-.vtoggle__label {
-  font-size: 10px; color: rgba(255,255,255,.4); padding: 0 8px 0 10px; letter-spacing: .14em;
+.vdrop[data-open="true"] .vdrop__list { display: block; }
+
+.vdrop__opt {
+  padding: 12px 18px;
+  color: #c4c9d3;
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background .15s, color .15s;
 }
-[data-theme="light"] .vtoggle { background: rgba(255,255,255,.92); border-color: rgba(0,0,0,.08); }
-[data-theme="light"] .vtoggle__btn { color: rgba(0,0,0,.55); }
-[data-theme="light"] .vtoggle__label { color: rgba(0,0,0,.4); }
+.vdrop__opt:hover {
+  background: rgba(255,255,255,.05);
+  color: #fff;
+}
+.vdrop__opt[aria-selected="true"] {
+  background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.02));
+  color: #fff;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.08) inset,
+    0 -1px 0 rgba(0,0,0,.3) inset;
+}
 
 @media (prefers-reduced-motion: reduce) {
   .v2-hero__mesh, .v2-marquee__track { animation: none; }
