@@ -32,7 +32,6 @@
     if (IS_PROD) hideFooterSwitcher();
 
     var here = currentVersion();
-    if (!here) return;
 
     var el = document.createElement('div');
     el.className = 'vdrop';
@@ -60,12 +59,12 @@
 
     el.innerHTML =
       '<button type="button" class="vdrop__trigger" aria-haspopup="listbox" aria-expanded="false">' +
-        '<span class="vdrop__label">' + LABELS[here] + '</span>' +
+        '<span class="vdrop__label">' + (LABELS[here] || '') + '</span>' +
         '<span class="vdrop__caret" aria-hidden="true"></span>' +
       '</button>' +
       '<ul class="vdrop__list" role="listbox">' + opts + '</ul>';
 
-    document.body.appendChild(el);
+    if (here) document.body.appendChild(el);
 
     var lock = document.createElement('div');
     lock.className = 'vlock';
