@@ -94,6 +94,8 @@
     var error = lock.querySelector('.vlock__error');
     var cancel = lock.querySelector('.vlock__cancel');
     var targetVersion = null;
+    var targetHref = null;
+    var returnFocus = trigger;
 
     function setOpen(open) {
       el.setAttribute('data-open', open ? 'true' : 'false');
@@ -105,13 +107,25 @@
       form.reset();
       error.textContent = '';
       targetVersion = null;
-      trigger.focus();
+      targetHref = null;
+      returnFocus.focus();
     }
 
     function openPasswordDialog(version) {
       if (version === currentVersion()) return;
       targetVersion = version;
+      targetHref = null;
+      returnFocus = trigger;
       title.textContent = 'Open ' + LABELS[version] + '?';
+      lock.hidden = false;
+      window.setTimeout(function () { password.focus(); }, 0);
+    }
+
+    function openProtectedLink(link) {
+      targetVersion = null;
+      targetHref = link.href;
+      returnFocus = link;
+      title.textContent = 'Open ' + (link.getAttribute('data-password-label') || 'protected page') + '?';
       lock.hidden = false;
       window.setTimeout(function () { password.focus(); }, 0);
     }
@@ -128,6 +142,13 @@
       openPasswordDialog(li.getAttribute('data-v'));
     });
 
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest('a[data-password-protected]');
+      if (!link) return;
+      e.preventDefault();
+      openProtectedLink(link);
+    });
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       if (password.value !== PASSWORD) {
@@ -135,7 +156,8 @@
         password.select();
         return;
       }
-      navigate(targetVersion);
+      if (targetVersion) navigate(targetVersion);
+      else location.href = targetHref;
     });
 
     cancel.addEventListener('click', closePasswordDialog);
