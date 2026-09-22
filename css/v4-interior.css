@@ -26,8 +26,8 @@
 .v4-cs-meta div { padding: 1rem 1rem 0 0; }
 .v4-cs-meta dt { font: 600 .67rem var(--v4-display); text-transform: uppercase; letter-spacing: .1em; color: rgba(21,21,21,.5); }
 .v4-cs-meta dd { margin: .25rem 0 0; font-weight: 600; }
-.v4-cs-hero__art { position: relative; min-height: 38rem; overflow: hidden; background: var(--inner-accent); border-left: 1px solid var(--v4-ink); }
-.v4-cs-hero__art img { width: 100%; height: 100%; object-fit: cover; mix-blend-mode: multiply; filter: grayscale(.1) contrast(1.04); }
+.v4-cs-hero__art { position: relative; display: grid; place-items: center; min-height: 38rem; overflow: hidden; padding: clamp(1.25rem,3vw,3rem); background: var(--inner-accent); border-left: 1px solid var(--v4-ink); }
+.v4-cs-hero__art img { width: auto; max-width: 100%; height: auto; max-height: 100%; object-fit: contain; background: #f4f0e8; mix-blend-mode: normal; filter: none; }
 .v4-cs-hero__art img.v4-illustration { mix-blend-mode: normal; filter: none; }
 .v4-cs-hero__art--type { display: grid; place-items: center; }
 .v4-cs-hero__art--type strong { font: 700 clamp(6rem,14vw,14rem)/.72 var(--v4-display); letter-spacing: -.1em; transform: rotate(-7deg); }
@@ -108,9 +108,9 @@
 .v4-rs-hero__row p { max-width: 40rem; margin: 0; font-size: 1.2rem; }
 .v4-rs-actions { display: flex; flex-wrap: wrap; gap: .8rem; justify-content: flex-end; }
 .v4-rs { max-width: 86rem; margin: 0 auto; padding: 6rem clamp(1.25rem,5vw,5rem); }
-.v4-rs-section { display: grid; grid-template-columns: 13rem 1fr; gap: 3rem; padding: 3rem 0; border-top: 1px solid var(--v4-ink); }
+.v4-rs-section { display: grid; grid-template-columns: 3rem 1fr; gap: 3rem; align-items: stretch; padding: 3rem 0; border-top: 1px solid var(--v4-ink); }
 .v4-rs-section > div { min-width: 0; }
-.v4-rs-section > h2 { margin: 0; font: 600 .78rem var(--v4-display); text-transform: uppercase; letter-spacing: .1em; }
+.v4-rs-section > h2 { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 100%; margin: 0; font: 600 .78rem var(--v4-display); text-transform: uppercase; letter-spacing: .1em; writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; }
 .v4-rs-job { padding-bottom: 2.5rem; }
 .v4-rs-job:last-child { padding-bottom: 0; }
 .v4-rs-job__head { display: flex; justify-content: space-between; gap: 1.5rem; align-items: baseline; }
@@ -128,6 +128,7 @@
   .v4-cs-body { grid-template-columns: 1fr; padding-top: 4rem; }
   .v4-cs-rail { display: none; }
   .v4-rs-hero__row, .v4-rs-section { grid-template-columns: 1fr; gap: 1.5rem; }
+  .v4-rs-section > h2 { justify-self: start; width: fit-content; min-height: 0; writing-mode: horizontal-tb; transform: none; }
   .v4-rs-actions { justify-content: flex-start; }
   .v4-cs-grid--metrics { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .v4-arc { grid-template-columns: 1fr 1fr; }
@@ -140,7 +141,7 @@
   .v4-cs-hero__copy { padding: 2.2rem 1.1rem 1.5rem; gap: 2rem; }
   .v4-cs-hero h1 { margin-block: .8rem 1rem; font-size: 3.35rem; }
   .v4-cs-hero__lead { font-size: 1rem; }
-  .v4-cs-hero__art { min-height: 14rem; height: 28vh; }
+  .v4-cs-hero__art { min-height: 18rem; height: 42vh; padding: 1rem; }
   .v4-cs-meta { grid-template-columns: 1fr 1fr; }
   .v4-cs-grid { grid-template-columns: 1fr; }
   .v4-cs-body { padding-inline: 1.1rem; }
@@ -164,8 +165,8 @@
   .v4-inner--profile .v4-rs-hero__row p { max-width: 145mm; font-size: 12pt; }
   .v4-inner--profile .v4-rs-actions { display: none; }
   .v4-inner--profile .v4-rs { max-width: none; padding: 10mm 16mm 12mm; }
-  .v4-inner--profile .v4-rs-section { grid-template-columns: 32mm 1fr; gap: 8mm; padding: 5mm 0; }
-  .v4-inner--profile .v4-rs-section > h2 { padding: 2.5mm 3mm; font-size: 7.5pt; }
+  .v4-inner--profile .v4-rs-section { grid-template-columns: 9mm 1fr; gap: 8mm; padding: 5mm 0; }
+  .v4-inner--profile .v4-rs-section > h2 { width: 9mm; padding: 3mm 2.5mm; font-size: 7.5pt; writing-mode: vertical-rl; transform: rotate(180deg); }
   .v4-inner--profile .v4-rs-job { padding-bottom: 4mm; }
   .v4-inner--profile .v4-rs-job h3 { font-size: 16pt; }
   .v4-inner--profile .v4-rs-job p { margin-block: 1.5mm; font-size: 9.5pt; line-height: 1.35; }

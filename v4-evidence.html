@@ -5,6 +5,15 @@
   <title>Evidence Index — Prashik Lanjewar · Edition IV</title>
   <meta name="description" content="Evidence states, career arc, supporting stories, project inventory, metrics guardrails, source register, and validation checklist for Edition IV.">
   <meta name="theme-color" content="#d9f54a">
+  <script>
+    try {
+      if (sessionStorage.getItem('portfolio-evidence-access') !== 'granted') {
+        location.replace('index-v4.html?unlock=evidence');
+      }
+    } catch (error) {
+      location.replace('index-v4.html?unlock=evidence');
+    }
+  </script>
   <link rel="stylesheet" href="css/v4.css?v=2"><link rel="stylesheet" href="css/v4-interior.css?v=2">
 </head>
 <body class="v4 v4-inner v4-inner--lime">

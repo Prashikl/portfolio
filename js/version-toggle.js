@@ -1,6 +1,7 @@
 (function () {
   var KEY = 'portfolio-version';
   var PASSWORD = 'trust';
+  var EVIDENCE_ACCESS_KEY = 'portfolio-evidence-access';
   var FILES = { v1: 'index-v1.html', v2: 'index-v2.html', v3: 'index-v3.html', v4: 'index-v4.html' };
   var LABELS = { v1: 'V1', v2: 'V2', v3: 'V3', v4: 'V4' };
   var IS_PROD = /\.github\.io$/i.test(location.hostname);
@@ -156,7 +157,12 @@
         return;
       }
       if (targetVersion) navigate(targetVersion);
-      else location.href = targetHref;
+      else {
+        if (/v4-evidence\.html(?:[?#]|$)/.test(targetHref)) {
+          sessionStorage.setItem(EVIDENCE_ACCESS_KEY, 'granted');
+        }
+        location.href = targetHref;
+      }
     });
 
     cancel.addEventListener('click', closePasswordDialog);
@@ -172,6 +178,14 @@
       if (!lock.hidden) closePasswordDialog();
       else setOpen(false);
     });
+
+    if (new URLSearchParams(location.search).get('unlock') === 'evidence') {
+      var evidenceLink = document.querySelector('a[data-password-protected][href^="v4-evidence.html"]');
+      if (evidenceLink) {
+        history.replaceState(null, '', location.pathname + location.hash);
+        openProtectedLink(evidenceLink);
+      }
+    }
   }
 
   if (document.readyState === 'loading') {

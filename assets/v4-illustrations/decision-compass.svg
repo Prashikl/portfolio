@@ -1,1 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1400" role="img" aria-labelledby="title desc"><title id="title">Commerce decision compass</title><desc id="desc">Commercial signals converge into a clear directional decision.</desc><rect width="1200" height="1400" fill="#58d8e6"/><path d="M0 0h1200v300H0z" fill="#ffb4dc"/><text x="70" y="126" fill="#151515" font-family="Space Grotesk, sans-serif" font-size="76" font-weight="700">WHAT NEXT?</text><text x="70" y="225" fill="#151515" font-family="Space Grotesk, sans-serif" font-size="76" font-weight="700">AND WHY?</text><g stroke="#151515" stroke-width="6"><circle cx="600" cy="820" r="390" fill="#fff8ee"/><circle cx="600" cy="820" r="280" fill="#d9f54a"/><path d="M600 530l82 250 250 40-250 70-82 220-82-220-250-70 250-40z" fill="#3255ff"/><circle cx="600" cy="820" r="80" fill="#ff5c35"/></g><g stroke="#151515" stroke-width="5"><rect x="70" y="430" width="220" height="150" fill="#fff8ee" transform="rotate(-5 180 505)"/><rect x="910" y="465" width="220" height="150" fill="#ff5c35" transform="rotate(5 1020 540)"/><rect x="70" y="1110" width="220" height="150" fill="#3255ff" transform="rotate(4 180 1185)"/><rect x="910" y="1090" width="220" height="150" fill="#ffb4dc" transform="rotate(-4 1020 1165)"/></g><g font-family="Space Grotesk, sans-serif" font-size="30" font-weight="700"><text x="108" y="520">AGREEMENTS</text><text x="966" y="555">INVOICES</text><text x="120" y="1200" fill="#fff8ee">SEARCH</text><text x="954" y="1176">CONTEXT</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1400" role="img" aria-labelledby="title desc">
+  <title id="title">Commerce decision compass</title>
+  <desc id="desc">Commercial signals converge into a clear directional decision.</desc>
+  <rect width="1200" height="1400" fill="#f4f0e8"/>
+  <text x="64" y="76" fill="#151515" font-family="Space Grotesk, sans-serif" font-size="20" font-weight="600" letter-spacing="4">DECISION COMPASS</text>
+  <text x="1136" y="76" fill="#151515" font-family="Space Grotesk, sans-serif" font-size="18" font-weight="600" text-anchor="end">SIGNAL → ACTION</text>
+  <path d="M64 118h1072" stroke="#151515" stroke-opacity=".16" stroke-width="2"/>
+  <g transform="translate(600 710)">
+    <circle r="390" fill="none" stroke="#151515" stroke-opacity=".12" stroke-width="2"/>
+    <circle r="285" fill="#fffdf8" stroke="#151515" stroke-width="3"/>
+    <circle r="155" fill="#d9f54a" stroke="#151515" stroke-width="3"/>
+    <path d="M0 102-54-24 0-190 54-24z" fill="#3255ff" stroke="#151515" stroke-width="4"/>
+    <circle r="32" fill="#ff5c35" stroke="#151515" stroke-width="4"/>
+    <path d="M0-285v-66M285 0h66M0 285v66M-285 0h-66" stroke="#151515" stroke-width="3"/>
+  </g>
+  <g font-family="Space Grotesk, sans-serif">
+    <g transform="translate(405 188)"><rect width="390" height="118" fill="#fffdf8" stroke="#151515" stroke-width="3"/><circle cx="42" cy="59" r="15" fill="#58d8e6" stroke="#151515" stroke-width="2"/><text x="76" y="66" fill="#151515" font-size="20" font-weight="600" letter-spacing="2">AGREEMENTS</text></g>
+    <g transform="translate(804 650)"><rect width="332" height="118" fill="#151515"/><circle cx="42" cy="59" r="15" fill="#ff5c35"/><text x="76" y="66" fill="#fffdf8" font-size="20" font-weight="600" letter-spacing="2">INVOICES</text></g>
+    <g transform="translate(405 1110)"><rect width="390" height="118" fill="#fffdf8" stroke="#151515" stroke-width="3"/><circle cx="42" cy="59" r="15" fill="#ffb4dc" stroke="#151515" stroke-width="2"/><text x="76" y="66" fill="#151515" font-size="20" font-weight="600" letter-spacing="2">SEARCH</text></g>
+    <g transform="translate(64 650)"><rect width="332" height="118" fill="#fffdf8" stroke="#151515" stroke-width="3"/><circle cx="42" cy="59" r="15" fill="#d9f54a" stroke="#151515" stroke-width="2"/><text x="76" y="66" fill="#151515" font-size="20" font-weight="600" letter-spacing="2">CONTEXT</text></g>
+    <text x="600" y="1330" fill="#151515" font-size="34" font-weight="600" text-anchor="middle">What next, and why?</text>
+  </g>
+</svg>

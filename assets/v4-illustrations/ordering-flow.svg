@@ -1,1 +1,53 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc"><title id="title">Enterprise ordering flow</title><desc id="desc">Orders move through a playful but structured enterprise workflow.</desc><rect width="1600" height="900" fill="#58d8e6"/><path d="M0 675h1600v225H0z" fill="#ffb4dc"/><g stroke="#151515" stroke-width="5"><path d="M80 450h1440"/><path d="M260 450v-150h290v150M780 450V190h320v260M1290 450V290h190v160" fill="none"/></g><g stroke="#151515" stroke-width="5"><rect x="125" y="350" width="270" height="190" fill="#fff8ee" transform="rotate(-4 260 445)"/><rect x="660" y="225" width="330" height="250" fill="#d9f54a"/><rect x="1210" y="320" width="260" height="190" fill="#ff5c35" transform="rotate(3 1340 415)"/></g><g fill="#151515"><rect x="170" y="395" width="170" height="22"/><rect x="170" y="440" width="110" height="14"/><rect x="710" y="280" width="230" height="24"/><rect x="710" y="332" width="180" height="16"/><rect x="710" y="374" width="210" height="16"/><rect x="1260" y="374" width="160" height="22"/></g><path d="M400 438h230m370 0h180" stroke="#151515" stroke-width="16" stroke-dasharray="24 18"/><path d="m610 410 42 28-42 28m550-56 42 28-42 28" fill="#fff8ee" stroke="#151515" stroke-width="5"/><circle cx="175" cy="690" r="72" fill="#3255ff" stroke="#151515" stroke-width="5"/><circle cx="500" cy="690" r="72" fill="#d9f54a" stroke="#151515" stroke-width="5"/><circle cx="825" cy="690" r="72" fill="#fff8ee" stroke="#151515" stroke-width="5"/><circle cx="1150" cy="690" r="72" fill="#3255ff" stroke="#151515" stroke-width="5"/><path d="M247 690h181m144 0h181m144 0h181" stroke="#151515" stroke-width="8"/><text x="84" y="120" fill="#151515" font-family="Space Grotesk, sans-serif" font-size="88" font-weight="700">ORDER / ALIGN / SHIP</text><text x="84" y="820" fill="#151515" font-family="Space Grotesk, sans-serif" font-size="30" font-weight="700">RULES</text><text x="410" y="820" fill="#151515" font-family="Space Grotesk, sans-serif" font-size="30" font-weight="700">REVIEW</text><text x="735" y="820" fill="#151515" font-family="Space Grotesk, sans-serif" font-size="30" font-weight="700">RECOVER</text><text x="1060" y="820" fill="#151515" font-family="Space Grotesk, sans-serif" font-size="30" font-weight="700">RELEASE</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Enterprise ordering flow</title>
+  <desc id="desc">Four connected stages move an enterprise order from intent through release.</desc>
+  <rect width="1600" height="900" fill="#f4f0e8"/>
+  <g fill="none" stroke="#151515" stroke-opacity=".1" stroke-width="2">
+    <path d="M80 168h1440M80 736h1440"/>
+    <path d="M220 168v568M620 168v568M1000 168v568M1380 168v568" stroke-dasharray="5 12"/>
+  </g>
+  <text x="80" y="94" fill="#151515" font-family="Space Grotesk, sans-serif" font-size="24" font-weight="600" letter-spacing="4">ENTERPRISE ORDERING</text>
+  <text x="1520" y="94" fill="#151515" font-family="Space Grotesk, sans-serif" font-size="20" font-weight="600" text-anchor="end">INTENT → RELEASE</text>
+  <path d="M220 500C370 500 455 390 620 390S850 560 1000 560s220-145 380-145" fill="none" stroke="#151515" stroke-width="5"/>
+  <path d="m1352 387 38 27-39 26" fill="none" stroke="#151515" stroke-width="5"/>
+  <g stroke="#151515" stroke-width="4">
+    <circle cx="220" cy="500" r="35" fill="#3255ff"/>
+    <circle cx="620" cy="390" r="35" fill="#d9f54a"/>
+    <circle cx="1000" cy="560" r="35" fill="#ffb4dc"/>
+    <circle cx="1380" cy="415" r="35" fill="#ff5c35"/>
+  </g>
+  <g font-family="Space Grotesk, sans-serif">
+    <g transform="translate(95 245)">
+      <rect width="250" height="142" fill="#fffdf8" stroke="#151515" stroke-width="3"/>
+      <text x="24" y="36" fill="#151515" font-size="18" font-weight="600" letter-spacing="2">01 · INTENT</text>
+      <rect x="24" y="66" width="155" height="10" fill="#151515"/>
+      <rect x="24" y="92" width="104" height="7" fill="#151515" opacity=".34"/>
+      <rect x="24" y="112" width="178" height="7" fill="#151515" opacity=".18"/>
+    </g>
+    <g transform="translate(495 502)">
+      <rect width="250" height="142" fill="#fffdf8" stroke="#151515" stroke-width="3"/>
+      <text x="24" y="36" fill="#151515" font-size="18" font-weight="600" letter-spacing="2">02 · RULES</text>
+      <circle cx="38" cy="78" r="10" fill="#d9f54a" stroke="#151515" stroke-width="3"/>
+      <rect x="61" y="72" width="128" height="10" fill="#151515"/>
+      <circle cx="38" cy="110" r="10" fill="#d9f54a" stroke="#151515" stroke-width="3"/>
+      <rect x="61" y="104" width="86" height="10" fill="#151515" opacity=".36"/>
+    </g>
+    <g transform="translate(875 245)">
+      <rect width="250" height="142" fill="#fffdf8" stroke="#151515" stroke-width="3"/>
+      <text x="24" y="36" fill="#151515" font-size="18" font-weight="600" letter-spacing="2">03 · REVIEW</text>
+      <rect x="24" y="65" width="202" height="52" fill="#ffb4dc" stroke="#151515" stroke-width="3"/>
+      <path d="m45 91 12 12 24-30" fill="none" stroke="#151515" stroke-width="5"/>
+      <rect x="100" y="86" width="92" height="9" fill="#151515"/>
+    </g>
+    <g transform="translate(1255 515)">
+      <rect width="250" height="142" fill="#151515"/>
+      <text x="24" y="36" fill="#fffdf8" font-size="18" font-weight="600" letter-spacing="2">04 · RELEASE</text>
+      <circle cx="52" cy="91" r="24" fill="#d9f54a"/>
+      <path d="m40 91 9 9 17-22" fill="none" stroke="#151515" stroke-width="4"/>
+      <rect x="91" y="76" width="118" height="9" fill="#fffdf8"/>
+      <rect x="91" y="98" width="76" height="7" fill="#fffdf8" opacity=".45"/>
+    </g>
+  </g>
+  <text x="80" y="812" fill="#151515" font-family="Space Grotesk, sans-serif" font-size="38" font-weight="600">A coherent path through rules, review, and recovery.</text>
+  <circle cx="1488" cy="797" r="18" fill="#d9f54a" stroke="#151515" stroke-width="3"/>
+</svg>
