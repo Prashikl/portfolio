@@ -43,7 +43,7 @@ body.v4 :focus-visible { outline: 3px solid var(--v4-blue); outline-offset: 4px;
 .v4-status span { width: .65rem; height: .65rem; border-radius: 50%; background: var(--v4-coral); box-shadow: 0 0 0 .3rem rgba(255,92,53,.18); animation: v4-pulse 2s ease-in-out infinite; }
 @keyframes v4-pulse { 50% { box-shadow: 0 0 0 .55rem rgba(255,92,53,0); } }
 .v4-hero h1 { max-width: 12ch; margin: 0; font: 600 clamp(3.6rem,5.6vw,6.4rem)/.88 var(--v4-display); letter-spacing: -.06em; }
-.v4-hero__hello { display: block; width: fit-content; margin-bottom: .55em; color: var(--v4-blue); font-size: .34em; line-height: 1; letter-spacing: 0; }
+.v4-hero__hello { display: block; width: fit-content; margin-bottom: .55em; color: var(--v4-blue); font-size: .48em; line-height: 1; letter-spacing: 0; }
 .v4-hero h1 em { position: relative; color: var(--v4-coral); font-style: normal; white-space: nowrap; }
 .v4-hero h1 em::after { content: ''; position: absolute; left: 0; right: 0; bottom: -.08em; height: .11em; border-radius: 50%; background: var(--v4-coral); transform: rotate(-1deg); }
 .v4-hero__copy > p { max-width: 39rem; margin: 1.7rem 0 0; font-size: 1.08rem; color: rgba(21,21,21,.74); }
