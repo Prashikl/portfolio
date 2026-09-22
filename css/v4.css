@@ -36,7 +36,7 @@ body.v4 :focus-visible { outline: 3px solid var(--v4-blue); outline-offset: 4px;
 .v4-nav__cta:hover { background: var(--v4-lime); color: var(--v4-ink) !important; }
 
 .v4-hero { position: relative; min-height: 100svh; display: grid; grid-template-columns: minmax(0,1.12fr) minmax(24rem,.88fr); align-items: end; gap: clamp(1rem,3vw,4rem); padding: 9rem clamp(1.25rem,5vw,5rem) 3rem; overflow: hidden; isolation: isolate; }
-.v4-hero::before { content: ''; position: absolute; inset: 0 auto 0 0; width: 44%; background: var(--v4-lime); clip-path: polygon(0 0,100% 0,68% 100%,0 100%); z-index: -2; }
+.v4-hero::before { content: ''; position: absolute; inset: 0 auto 0 0; width: 60%; background: var(--v4-lime); clip-path: polygon(0 0,100% 0,85% 100%,0 100%); z-index: -2; }
 .v4-hero::after { content: ''; position: absolute; inset: 0 0 0 auto; width: 43%; background: var(--v4-cyan); clip-path: polygon(22% 0,100% 0,100% 100%,0 100%); z-index: -2; }
 .v4-hero__copy { position: relative; z-index: 2; max-width: 54rem; padding-bottom: 2rem; }
 .v4-status { display: inline-flex; align-items: center; gap: .75rem; margin-bottom: 1.5rem; padding: .45rem .65rem; background: var(--v4-paper); font: 600 .72rem var(--v4-display); text-transform: uppercase; letter-spacing: .08em; }
@@ -47,7 +47,7 @@ body.v4 :focus-visible { outline: 3px solid var(--v4-blue); outline-offset: 4px;
 .v4-hero h1 em { color: var(--v4-blue); font-style: normal; }
 .v4-hero__statement { max-width: 19ch; margin: 1.65rem 0 0; font: 600 clamp(1.75rem,2.7vw,2.8rem)/1 var(--v4-display); letter-spacing: -.035em; }
 .v4-hero__statement strong { color: var(--v4-coral); font-weight: inherit; }
-.v4-hero__summary { max-width: 36rem; margin: 1.35rem 0 0; font-size: 1.05rem; color: rgba(21,21,21,.74); }
+.v4-hero__summary { max-width: 31rem; margin: 1.35rem 0 0; font-size: 1.05rem; color: rgba(21,21,21,.74); text-wrap: pretty; }
 .v4-hero__actions { display: flex; flex-wrap: wrap; gap: .9rem; margin-top: 2rem; }
 .v4-button { display: inline-flex; align-items: center; gap: .75rem; padding: .95rem 1.2rem; text-decoration: none; font-weight: 600; border: 1px solid var(--v4-ink); }
 .v4-button--ink { background: var(--v4-ink); color: #fff !important; }
@@ -154,6 +154,9 @@ body.v4 :focus-visible { outline: 3px solid var(--v4-blue); outline-offset: 4px;
   .v4-nav { grid-template-columns: 1fr auto; }
   .v4-nav nav { display: none; }
   .v4-hero { min-height: auto; grid-template-columns: 1fr; padding-top: 8rem; }
+  .v4-hero::before { inset: 0 0 auto; width: 100%; height: 58%; clip-path: polygon(0 0,100% 0,86% 100%,0 100%); }
+  .v4-hero::after { inset: auto 0 0; width: 100%; height: 48%; clip-path: polygon(14% 0,100% 0,100% 100%,0 100%); }
+  .v4-hero__copy { max-width: 36rem; }
   .v4-hero h1 { font-size: clamp(4.4rem,9vw,5.6rem); }
   .v4-hero__visual { width: min(100%,42rem); max-height: none; }
   .v4-scroll { display: none; }
