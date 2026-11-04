@@ -10,6 +10,19 @@
 .v4-inner--profile .v4-rs-hero .v4-button--line { border-color: #fff; color: #fff; }
 .v4-inner--profile .v4-rs-section > h2 { width: fit-content; padding: .45rem .65rem; background: var(--v4-ink); color: #fff; }
 .v4-inner--profile .v4-rs-role { color: #1857ff; }
+.v4-inner--profile .v4-rs-contact { display: flex; flex-wrap: wrap; gap: 1rem 2.75rem; margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,.4); }
+.v4-rs-contact__label { display: block; margin: 0 0 .3rem; color: var(--v4-lime); font: 500 .76rem var(--v4-display); letter-spacing: .06em; }
+.v4-rs-contact__row { display: flex; align-items: center; gap: .5rem; }
+.v4-inner--profile .v4-rs-contact a { color: #fff; font-size: 1.05rem; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .3em; }
+.v4-copy { appearance: none; display: inline-flex; margin: 0; padding: 0; border: 0; background: none; color: rgba(255,255,255,.65); line-height: 0; cursor: pointer; transition: color .15s; }
+.v4-copy:hover { color: #fff; }
+.v4-copy:focus-visible { outline: 1px solid #fff; outline-offset: 3px; }
+.v4-copy__icon { width: 1rem; height: 1rem; }
+.v4-copy__icon--done { display: none; }
+.v4-copy[data-copied] { color: var(--v4-lime); }
+.v4-copy[data-copied] .v4-copy__icon--copy { display: none; }
+.v4-copy[data-copied] .v4-copy__icon--done { display: block; }
+.v4-copy__msg { min-width: 3rem; color: var(--v4-lime); font-size: .76rem; }
 .v4-inner--profile .v4-rs-skills :is(a, span) { padding: .6rem .85rem; border: 1px solid var(--v4-ink); border-radius: 0; background: var(--v4-lime); color: var(--v4-ink); font: 600 .76rem var(--v4-display); text-decoration: none; }
 .v4-inner .v4-nav { position: sticky; background: rgba(255,248,238,.92); border-color: var(--v4-line); backdrop-filter: blur(14px); }
 .v4-inner .v4-nav__back { display: inline-flex; align-items: center; gap: .5rem; text-decoration: none; font-weight: 600; }
@@ -164,6 +177,9 @@
   .v4-inner--profile .v4-rs-hero__row { grid-template-columns: 1fr; gap: 0; }
   .v4-inner--profile .v4-rs-hero__row p { max-width: 145mm; font-size: 12pt; }
   .v4-inner--profile .v4-rs-actions { display: none; }
+  .v4-copy, .v4-copy__msg { display: none !important; }
+  .v4-inner--profile .v4-rs-contact { margin-top: 5mm; padding-top: 3mm; gap: 3mm 12mm; }
+  .v4-inner--profile .v4-rs-contact a { font-size: 9.5pt; }
   .v4-inner--profile .v4-rs { max-width: none; padding: 10mm 16mm 12mm; }
   .v4-inner--profile .v4-rs-section { grid-template-columns: 9mm 1fr; gap: 8mm; padding: 5mm 0; }
   .v4-inner--profile .v4-rs-section > h2 { width: 9mm; padding: 3mm 2.5mm; font-size: 7.5pt; writing-mode: vertical-rl; transform: rotate(180deg); }
