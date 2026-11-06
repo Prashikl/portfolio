@@ -384,9 +384,9 @@
 .v3-plate__tag { text-align: right; }
 
 /* NDA: blur product screenshots so confidential UI is not legible. */
-.v3-plate__img[src*="images/mseds"][src$=".png"],
-.v3-platerow__img[src*="images/mseds"][src$=".png"],
-.v3-contact__img[src*="images/mseds"][src$=".png"] {
+.v3-plate__img[src*="images/self-service"][src$=".png"],
+.v3-platerow__img[src*="images/self-service"][src$=".png"],
+.v3-contact__img[src*="images/self-service"][src$=".png"] {
   filter: blur(28px) saturate(.8);
   transform: scale(1.04);
 }
